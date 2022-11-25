@@ -1,0 +1,90 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Ron Stoner
+tagline: Security, Privacy, Sovereignty 
+picture: ron.jpg #keep a 100x100 image inside images folder.
+#email: 
+description: > # this means to ignore newlines until "baseurl:"
+  Ron Stoner is a hacker, security engineer, privacy advocate, and practioner of sovereign technologies.
+#baseurl: "/yudish" # the subpath of your site, e.g. /blog
+url: "https://ron.stoner.com" # the base hostname & protocol for your site
+brand-color: "#b45f38"
+permalink: ":title/"
+
+# Footer
+credits: webjeda #credits on the footer
+version: 2.0
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+
+sass:
+  style: compressed
+
+disqus-shortname: webjeda-sample
+#analytics: UA-83979019-1
+
+include: [_pages]
+
+#compress.html
+compress_html:
+  clippings:
+    [
+      html,
+      div,
+      p,
+      ul,
+      td,
+      h1,
+      h2,
+      h3,
+      h4,
+      link,
+      meta,
+      footer,
+      nav,
+      img,
+      header,
+      hr,
+      br,
+      head,
+      style,
+      li,
+      ul,
+      ol,
+      time,
+      main,
+      script,
+      title,
+    ]
+  comments: ["<!-- ", " -->"]
+  endings: [all]
+  ignore:
+    envs: [local]
+  blanklines: false
+  profile: false
+  startings: []
+
+prose:
+  rooturl: ""
+  siteurl: "http://prose.github.io/starter/"
+  relativeLinks: "http://prose.github.io/starter/links.jsonp"
+  media: "images"
+  ignore:
+    - index.md
+    - _config.yml
+    - /_layouts
+    - /_includes
+
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
