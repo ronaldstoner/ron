@@ -19,14 +19,6 @@ plugins:
 brand-color: "#b45f38"
 permalink: ":title/"
 
-# Gems
-gems:
-    - jekyll-font-awesome-sass
-
-# Footer
-credits: webjeda #credits on the footer
-version: 2.0
-
 # Build settings
 markdown: kramdown
 kramdown:
