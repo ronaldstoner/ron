@@ -14,6 +14,8 @@ description: > # this means to ignore newlines until "baseurl:"
   Ron Stoner is a hacker, security engineer, privacy advocate, and practioner of sovereign technologies.
 #baseurl: "/yudish" # the subpath of your site, e.g. /blog
 url: "https://ron.stoner.com" # the base hostname & protocol for your site
+plugins:
+    - jekyll-sitemap
 brand-color: "#b45f38"
 permalink: ":title/"
 
