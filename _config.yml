@@ -30,7 +30,6 @@ highlighter: rouge
 sass:
   style: compressed
 
-disqus-shortname: webjeda-sample
 #analytics: UA-83979019-1
 
 include: [_pages]
