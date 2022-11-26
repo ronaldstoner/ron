@@ -21,10 +21,11 @@ layout: compress
 
     {% include footer.html %}
     
-{% if site.analytics %}
-{% include analytics.html %}
-{% endif %}
- 
+    {% if site.analytics %}
+    {% include analytics.html %}
+    {% endif %}
+
+    {% include open-embed.html %}
   </body>
 
 </html>
