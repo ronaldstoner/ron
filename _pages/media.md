@@ -14,8 +14,10 @@ permalink: /media/
        
 
 ## Audio
-- [Test](https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3)
+- [Test](https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3?autoplay=1&loop=1&controls=0)
 **Test Text**
+
+https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3?autoplay=1&loop=1&controls=0
 
 
 ## Video
