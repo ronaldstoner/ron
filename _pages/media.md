@@ -17,9 +17,6 @@ permalink: /media/
 - [Test](https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3)
 **Test Text**
 
-https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3
-
-
 ## Video
 [![TERRIFYING HACKS and How They Could Have Been Prevented - CCSS Livestream
 ](https://img.youtube.com/vi/w0vnmHSXxDU/0.jpg)](https://www.youtube.com/watch?v=w0vnmHSXxDU)  
