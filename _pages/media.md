@@ -14,8 +14,12 @@ permalink: /media/
        
 
 ## Audio
-- [Test](https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3)
-**Test Text**
+- [Stacking Sats: Extreme Edition](https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Stacking_Sats_Extreme_Edition.mp3)
+- [Travel Security Tips](https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Travel_Security.mp3)
+- [Securing Bitcoin For the Next 100 Years](https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Bitcoin_Security_The_Next_100_Years.mp3)
+- [What To Do If Your Nation Bans Bitcoin](https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_What_to_do_if_Your_Nation_Bans_Bitcoin.mp3)
+- [None Shall Pass - Bitcoin Citadel Planning](https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_None_Shall_Pass_-_Building_Bitcoin_Citadels.mp3)
+
 
 ## Video
 [![TERRIFYING HACKS and How They Could Have Been Prevented - CCSS Livestream
