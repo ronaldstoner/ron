@@ -14,10 +14,10 @@ permalink: /projects/
 {% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/shapeshift.png" title="Shapeshift" image_link="https://shapeshift.com" description="A non-custodial open source platform to trade, track, buy, and earn digital currencies" %}
 
 
-{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/keepkey.jpg" title="KeepKey" image_link="https://www.keepkey.com/" description="A multi-currency hardware wallet that allows for the generation of private keys and cold storage" %}
+{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/keepkey.jpg" title="KeepKey" image_link="https://www.keepkey.com/" description="An STM32 based multi-currency hardware wallet that allows for the generation of private keys and cold storage" %}
 
 
-{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/c4.png" title="CCSS" image_link="https://cryptoconsortium.org/" description="CryptoCurency Certification Consortium - Crypto Currency Security Standard Committee Member & Architect of CCSS Auditor Exam" %}
+{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/c4.png" title="CryptoCurency Certification Consortium" image_link="https://cryptoconsortium.org/" description="Crypto Currency Security Standard Committee Member & Architect of the CCSS Auditor Exam" %}
 
 
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nes-nesume/main/images/nesume-stoner-4.png" title="NESume" image_link="https://github.com/ronaldstoner/nes-nesume" description="The world's first resume built into a playable Nintendo NES game" %}
