@@ -7,8 +7,7 @@ permalink: /projects/
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/casa.png" title="Casa" image_link="https://keys.casa" description="Self-sovereign multisignature hardware and software" %}
 
 
-{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/onion78.jpg" title="Onion78" image_link="https://github.com/0xBEEFCAF3/Onion78" description="BIP-78 Payjoin Over Tor - 
-(MIT 2021 Bitcoin Hackathon Winner)" %}
+{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/onion78.jpg" title="Onion78" image_link="https://github.com/0xBEEFCAF3/Onion78" description="BIP-78 Payjoin Over Tor" %}
 
 
 {% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/shapeshift.png" title="Shapeshift" image_link="https://shapeshift.com" description="Non-custodial open source platform to trade digital currencies" %}
