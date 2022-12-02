@@ -4,9 +4,20 @@ title: Contact
 permalink: /contact/
 ---
 
-<form accept-charset="UTF-8" action="https://formkeep.com/f/48706f4facd173d77baaee87f35bd706" method="POST">
-  <input type="email" name="email" placeholder="Your Email">
-  <input type="text" name="name" placeholder="Message">
-  <input type="hidden" name="utf8" value="✓">
-  <button type="submit">Submit</button>
-</form>
+<div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/48706f4facd173d77baaee87f35bd706?embedded=1"></div>
+
+<script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+<script type="text/javascript" src="https://formkeep-production-herokuapp-com.global.ssl.fastly.net/formkeep-embed.js"></script>
+
+<!-- Get notified when the form is submitted, add your own code below: -->
+<script>
+const formkeepEmbed = document.querySelector('#formkeep-embed')
+
+formkeepEmbed.addEventListener('formkeep-embed:submitting', _event => {
+  console.log('Submitting form...')
+})
+
+formkeepEmbed.addEventListener('formkeep-embed:submitted', _event => {
+  console.log('Submitted form...')
+})
+</script>
