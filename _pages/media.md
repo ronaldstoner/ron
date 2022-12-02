@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Media
-permalink: /media2/
+permalink: /media/
 ---
 
 ## Articles
