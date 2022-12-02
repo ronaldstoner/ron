@@ -22,4 +22,4 @@ permalink: /projects/
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nes-nesume/main/images/nesume-stoner-4.png" title="NESume" image_link="https://github.com/ronaldstoner/nes-nesume" description="The world's first resume built into a playable Nintendo NES game" %}
 
 
-{% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/ron/raw/gh-pages/images/pegabufficorn.png" title="EthSplainer 2.0" image_link="https://www.ethsplainer.com" description="Module based Ethereum education tool" %}
+{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/pegabufficorn.png" title="EthSplainer 2.0" image_link="https://www.ethsplainer.com" description="Module based Ethereum education tool" %}
