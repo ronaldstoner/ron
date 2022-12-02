@@ -17,7 +17,7 @@ permalink: /projects/
 {% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/keepkey.jpg" title="KeepKey" image_link="https://www.keepkey.com/" description=" STM32 based multi-currency hardware wallet" %}
 
 
-{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/c4.png" title="CryptoCurency Certification Consortium" image_link="https://cryptoconsortium.org/" description="Crypto Currency Security Standard Committee Member" %}
+{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/c4.png" title="CryptoCurrency Certification Consortium" image_link="https://cryptoconsortium.org/" description="Crypto Currency Security Standard Committee Member" %}
 
 
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nes-nesume/main/images/nesume-stoner-4.png" title="NESume" image_link="https://github.com/ronaldstoner/nes-nesume" description="The world's first resume built into a playable Nintendo NES game" %}
