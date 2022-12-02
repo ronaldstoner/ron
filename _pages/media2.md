@@ -15,10 +15,10 @@ permalink: /media2/
 
 ## Audio
 - Stacking Sats: Extreme Edition 
-{% include embed-audio.html src="https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Stacking_Sats_Extreme_Edition.mp3" %}
+{% include audio.html src="https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Stacking_Sats_Extreme_Edition.mp3" %}
 
 - Travel Security Tips
-{% include embed-audio.html src="https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Travel_Security.mp3" %}
+{% include audio.html src="https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Travel_Security.mp3" %}
 
 - [Securing Bitcoin For the Next 100 Years](https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Bitcoin_Security_The_Next_100_Years.mp3)
 - [What To Do If Your Nation Bans Bitcoin](https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_What_to_do_if_Your_Nation_Bans_Bitcoin.mp3)
