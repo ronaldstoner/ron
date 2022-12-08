@@ -5,7 +5,11 @@
     </a>
   </div>
   <div>
-    <h2>{{ include.title }}</h2>
+    <h2>
+      <a href="{{ include.image_link }}">
+      {{ include.title }}
+      </a>
+    </h2>
     {{ include.description | markdownify }}
   </div>
 </div>
