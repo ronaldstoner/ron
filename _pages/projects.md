@@ -4,6 +4,9 @@ title: Projects
 permalink: /projects/
 ---
 
+{% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nes-nesume/main/images/nesume-stoner-4.png" title="NESume" image_link="https://github.com/ronaldstoner/nes-nesume" description="The world's first resume built into a playable Nintendo NES game" %}
+
+
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/casa.png" title="Casa" image_link="https://keys.casa" description="Self-sovereign multisignature hardware and software" %}
 
 
@@ -17,9 +20,6 @@ permalink: /projects/
 
 
 {% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/c4.png" title="CryptoCurrency Certification Consortium" image_link="https://cryptoconsortium.org/" description="CryptoCurrency Security Standard Committee Member" %}
-
-
-{% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nes-nesume/main/images/nesume-stoner-4.png" title="NESume" image_link="https://github.com/ronaldstoner/nes-nesume" description="The world's first resume built into a playable Nintendo NES game" %}
 
 
 {% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/pegabufficorn.png" title="EthSplainer 2.0" image_link="https://www.ethsplainer.com" description="Module based Ethereum education tool" %}

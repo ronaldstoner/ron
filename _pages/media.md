@@ -36,6 +36,9 @@ permalink: /media/
 {% include audio.html src="https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_None_Shall_Pass_-_Building_Bitcoin_Citadels.mp3" %}
 
 
+- Cybersecurity 101 
+{% include audio.html src="https://github.com/ronaldstoner/ron/raw/gh-pages/audio/Casa_Spaces_-_Cybersecurity-101.mp3" %}
+
 
 ## Video
 
