@@ -33,12 +33,12 @@ Images and media content on nostr is generally hosted on servers remotely, as op
 
 In the process, the server can see your IP address and other information about your device, such as the type of browser and operating system being used. This information may be collected and stored by the server owner or operator for various purposes, such as tracking user behavior, analyzing traffic patterns, and targeting users with ads.
 
-### <i class="fa fa-exclamation-triangle"> Pixel Tracking 
+### <i class="fa fa-exclamation-triangle fa-lg"> Pixel Tracking 
 Pixel tracking is a technique used by website owners and advertisers to track and collect information about users' online behavior. It involves inserting small, transparent pixels, also known as web beacons, into images or other media on a website. 
 
 When a user views the image or note containing the pixel, the pixel sends a request to a server to retrieve the image and record the user's IP address and other information about the device, such as the type of browser and operating system being used.
 
-### <i class="fa fa-exclamation-triangle"> EXIF Data
+### <i class="fa fa-exclamation-triangle fa-lg"> EXIF Data
 EXIF data, or Exchangeable Image File Format data, is metadata that is embedded in a photo or image file. This metadata can include information about the camera used to take the photo, the settings used, the date and time the photo was taken, and other details.
 
 EXIF data can potentially compromise a user's privacy in a number of ways. For example, if a user shares a photo on a social media platform that includes their location data in the Exif data, it may be possible for someone to determine the exact location where the photo was taken. Exif data can also include personal information, such as the owner of the camera or the software used to edit the photo.
