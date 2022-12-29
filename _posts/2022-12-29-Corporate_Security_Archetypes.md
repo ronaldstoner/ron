@@ -3,7 +3,9 @@ layout: post
 title:  "Corporate Security Archetypes"
 ---
 
-# Corporate Security Archetypes
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/corporate-security.png" width="300"> 
+</p>
 
 ## An amalgamation of users
 As a security leader, I've seen a variety of corporate security user archetypes over my career. These include individuals who are proactive about security, those who may have some concerns but may not fully understand the risks, and those who are simply not interested. 
