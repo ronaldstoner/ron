@@ -26,7 +26,7 @@ When a user connects to a relay, the relay can see the IP address of that device
 It is important for users to be aware of this, as a user IP address can reveal information about their location and online activity. IP addresses also provide attackers with a direct line to you for attack enumeration and vulnerability profiling.
 
 ## <i class="fa fa-exclamation-triangle fa-lg"> Impersonation
-Public and private keypairs function as both the authentication mechanism and indentity of a user. As identity is not tied to a unique username, any user can generate a keypair and set their username and picture to anything they want. This can cause instances of fraud, identity theft, damage to reputation, and harassment.
+Public and private keypairs function as both the authentication mechanism and identity of a user. As identity is not tied to a unique username, any user can generate a keypair and set their username and picture to anything they want. This can cause instances of fraud, identity theft, damage to reputation, and harassment.
 
 ## <i class="fa fa-exclamation-triangle fa-lg"> Images and Media
 Images and media content on nostr is generally hosted on servers remotely, as opposed to company servers that are controlled by an organizational entity. As such, any user may host and link content from servers they control. This can open up privacy concerns and information leakage.
@@ -59,7 +59,7 @@ Users that require the utmost privacy will choose to run their own relays. Note 
 ## <i class="fa fa-check-circle fa-lg"> Verify NIP-05
 NIP-05 is a nostr improvement that maps nostr keys to DNS-based internet identifiers. This means that website and domain owners can provide a DNS record on their website which helps to confirm their identity. Various nostr clients and front ends will display NIP-05 verification status on user profiles which helps to provide a greater sense of confidence in user identity. 
 
-Note: this is not a be-all-end-all control as servers providing NIP-05 verificiaton can be compromised. Paid services also exist providing NIP-05 verification and these services may use their own forms (or no) identity verification.
+Note: this is not a be-all-end-all control as servers providing NIP-05 verification can be compromised. Paid services also exist providing NIP-05 verification and these services may use their own forms (or no) identity verification.
 
 ## <i class="fa fa-check-circle fa-lg"> Scrub Image EXIF Data
 Users should be aware of the EXIF data that is included in the photos they share online and consider removing or obscuring this data if necessary. Users should also be aware of which image hosting sites scrub and remove exif data and which do not. Some photo editing software and smartphone apps allow users to remove EXIF data from photos before sharing them online.
