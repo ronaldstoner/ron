@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "nostr - Security and Privcay Tips"
+title:  "Nostr Security and Privacy Tips"
 ---
 
 <p align="center">
