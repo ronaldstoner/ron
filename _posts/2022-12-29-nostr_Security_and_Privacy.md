@@ -16,7 +16,7 @@ With all new protocols comes new security and privacy concerns that end users sh
 ## <i class="fa fa-exclamation-triangle fa-lg"> Cross Site Scripting (XSS)
 Cross-site scripting (XSS) is a type of cyber attack that involves injecting malicious code into a website or web application. This code is typically executed in the context of the affected website, allowing the attacker to perform a variety of malicious actions, such as stealing sensitive data, manipulating the website's content or functionality, or redirecting users to malicious websites.
 
-One way that XSS attacks can be introduced is through nostr notes and links. For example, an attacker could create a note that contains malicious code and share it via a relay. Since nostr is decentralized, anyone can choose to write a front end client that parses the malicious note for viewing. If a user is using a vulnerable client and clicks on the post their web browser may execute the code and the attack may be successful. 
+One way that XSS attacks can be introduced is through nostr notes and links. For example, an attacker could create a note that contains malicious code and share it via a relay. Since nostr is decentralized, anyone can choose to write a front end client that parses the malicious note for viewing. If a user is using a vulnerable client and clicks on the note their web browser may execute the code and the attack may be successful. 
 
 ## <i class="fa fa-exclamation-triangle fa-lg"> IP Address
 Relay operators can see the IP address of a nostr user when a user adds and connects to their relay. An IP address is a unique numerical label assigned to every device connected to the internet, and it is used to identify and communicate with that device. 
@@ -34,19 +34,19 @@ Images and media content on nostr is generally hosted on servers remotely, as op
 In the process, the server can see your IP address and other information about your device, such as the type of browser and operating system being used. This information may be collected and stored by the server owner or operator for various purposes, such as tracking user behavior, analyzing traffic patterns, and targeting users with ads.
 
 ### <i class="fa fa-exclamation-triangle fa-lg"> Pixel Tracking 
-Pixel tracking is a technique used by website owners and advertisers to track and collect information about users' online behavior. It involves inserting small, transparent pixels, also known as web beacons, into images or other media on a website. 
+Pixel tracking is a technique used by website owners and advertisers to track and collect information about users' online behavior. It involves inserting small, transparent pixels, also known as web beacons, into images or other media on a nostr note. 
 
 When a user views the image or note containing the pixel, the pixel sends a request to a server to retrieve the image and record the user's IP address and other information about the device, such as the type of browser and operating system being used.
 
 ### <i class="fa fa-exclamation-triangle fa-lg"> EXIF Data
 EXIF data, or Exchangeable Image File Format data, is metadata that is embedded in a photo or image file. This metadata can include information about the camera used to take the photo, the settings used, the date and time the photo was taken, and other details.
 
-EXIF data can potentially compromise a user's privacy in a number of ways. For example, if a user shares a photo on a social media platform that includes their location data in the Exif data, it may be possible for someone to determine the exact location where the photo was taken. Exif data can also include personal information, such as the owner of the camera or the software used to edit the photo.
+EXIF data can potentially compromise a user's privacy in a number of ways. For example, if a user shares a photo on a nostr platform that includes their location data in the Exif data, it may be possible for someone to determine the exact location where the photo was taken. Exif data can also include personal information, such as the owner of the camera or the software used to edit the photo.
 
 # Defenses
 
 ## <i class="fa fa-check-circle fa-lg"> Use Tested Clients and Front Ends
-To protect against XSS attacks, it is important for website and web application developers to implement proper input validation and sanitization, and for users to be cautious when clicking on links or interacting with unfamiliar content on social media platforms.
+To protect against XSS attacks, it is important for website and web application developers to implement proper input validation and sanitization, and for users to be cautious when clicking on links or interacting with unfamiliar content on nostr.
 
 ## <i class="fa fa-check-circle fa-lg"> VPN and TOR
 Users can use a virtual private network (VPN) and/or the onion routing (TOR) network to mask their IP address and encrypt their internet connection which helps protect privacy when connecting and interacting with relays, links, and content in notes.
