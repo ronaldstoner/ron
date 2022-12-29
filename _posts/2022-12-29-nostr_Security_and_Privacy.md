@@ -34,14 +34,14 @@ Images and media content on nostr is generally hosted on servers remotely, as op
 In the process, the server can see your IP address and other information about your device, such as the type of browser and operating system being used. This information may be collected and stored by the server owner or operator for various purposes, such as tracking user behavior, analyzing traffic patterns, and targeting users with ads.
 
 ## <i class="fa fa-exclamation-triangle fa-lg"> Pixel Tracking 
-Pixel tracking is a technique used by website owners and advertisers to track and collect information about users' online behavior. It involves inserting small, transparent pixels, also known as web beacons, into images or other media on a nostr note. 
+Pixel tracking is a technique used by website owners and advertisers to track and collect information about users' online behavior. It involves inserting small, transparent pixels, also known as web beacons, into images or other media on a nostr note or profile image. 
 
 When a user views the image or note containing the pixel, the pixel sends a request to a server to retrieve the image and record the user's IP address and other information about the device, such as the type of browser and operating system being used.
 
 ## <i class="fa fa-exclamation-triangle fa-lg"> EXIF Data
 EXIF data, or Exchangeable Image File Format data, is metadata that is embedded in a photo or image file. This metadata can include information about the camera used to take the photo, the settings used, the date and time the photo was taken, and other details.
 
-EXIF data can potentially compromise a user's privacy in a number of ways. For example, if a user shares a photo on a nostr platform that includes their location data in the Exif data, it may be possible for someone to determine the exact location where the photo was taken. Exif data can also include personal information, such as the owner of the camera or the software used to edit the photo.
+EXIF data can potentially compromise a user's privacy in a number of ways. For example, if a user shares a photo on a nostr platform that includes their location data in the EXIF data, it may be possible for someone to determine the exact location where the photo was taken. EXIF data can also include personal information, such as the owner of the camera or the software used to edit the photo.
 
 # Defenses
 
@@ -59,10 +59,10 @@ Users that require the utmost privacy will choose to run their own relays. Note 
 ## <i class="fa fa-check-circle fa-lg"> Verify NIP-05
 NIP-05 is a nostr improvement that maps nostr keys to DNS-based internet identifiers. This means that website and domain owners can provide a DNS record on their website which helps to confirm their identity. Various nostr clients and front ends will display NIP-05 verification status on user profiles which helps to provide a greater sense of confidence in user identity. 
 
-Note: this is not a be-all-end-all control as servers providing NIP-05 verification can be compromised. Paid services also exist providing NIP-05 verification and these services may use their own forms (or no) identity verification.
+Note: this is not a be-all-end-all control as servers providing NIP-05 verification can be compromised. Paid services also exist providing NIP-05 verification and these services may use their own forms of (or no) identity verification.
 
 ## <i class="fa fa-check-circle fa-lg"> Scrub Image EXIF Data
-Users should be aware of the EXIF data that is included in the photos they share online and consider removing or obscuring this data if necessary. Users should also be aware of which image hosting sites scrub and remove exif data and which do not. Some photo editing software and smartphone apps allow users to remove EXIF data from photos before sharing them online.
+Users should be aware of the EXIF data that is included in the photos they share online and consider removing or obscuring this data if necessary. Users should also be aware of which image hosting sites scrub and remove EXIF data and which do not. Some photo editing software and smartphone apps allow users to remove EXIF data from photos before sharing them online.
 
 ## <i class="fa fa-check-circle fa-lg"> Don't Click Unknown Links
 Users should never be clicking unsolicited links posted in notes. Unsolicited links can result in off-client phishing attacks, malware downloads, and scams. 
