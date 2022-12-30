@@ -1,5 +1,6 @@
 ---
 layout: post
+date: 2022-12-29 01:03 -0700
 title:  "Corporate Security Archetypes"
 description: "The five corporate securtiy archetypes I've encountered in my career"
 image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/corporate-security.png"

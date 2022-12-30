@@ -8,7 +8,7 @@ permalink: /about/
 Ron Stoner is a hacker, security engineer, privacy advocate, and practitioner of sovereign technologies. He has spent multiple years working, guiding, and educating the Information Security and Cryptocurrency community.
 
 
-**Notable Hackathons:**
+**Notable Hackathons**
 - ETHDenver 2020 Open Track Finalist & Celebrity Judges Choice
 - ETHDenver 2021 Hackathon Finalist
 - MIT 2021 Bitcoin Hackathon Winner
