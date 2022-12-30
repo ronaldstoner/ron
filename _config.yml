@@ -19,7 +19,6 @@ brand-color: "#b45f38"
 permalink: ":title/"
 
 twitter:
-  username: forwardsecrecy
   card: summary_large_image
 
 locale: en_US
