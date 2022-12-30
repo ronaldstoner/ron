@@ -11,13 +11,18 @@ tagline: Security, Privacy, Sovereignty
 picture: ron.jpg #keep a 100x100 image inside images folder.
 #email: 
 description: > # this means to ignore newlines until "baseurl:"
-  Ron Stoner is a hacker, security engineer, privacy advocate, and practioner of sovereign technologies.
+  Ron Stoner is a hacker, security engineer, privacy advocate, and a practitioner of sovereign technologies.
 #baseurl: "/yudish" # the subpath of your site, e.g. /blog
 url: "https://ron.stoner.com" # the base hostname & protocol for your site
-plugins:
-    - jekyll-sitemap
+
 brand-color: "#b45f38"
 permalink: ":title/"
+
+twitter:
+  username: forwardsecrecy
+  card: summary_large_image
+
+locale: en_US
 
 # Build settings
 markdown: kramdown
@@ -85,3 +90,4 @@ prose:
 plugins:
   - jekyll-paginate
   - jekyll-seo-tag
+  - jekyll-sitemap

@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Nostr Security and Privacy Tips"
+description: "Security and privacy tips and findings for nostr"
+image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-security.png"
 ---
 
 <p align="center">

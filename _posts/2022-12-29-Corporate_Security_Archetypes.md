@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Corporate Security Archetypes"
+description: ""
+image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/corporate-security.png"
 ---
 
 <p align="center">
