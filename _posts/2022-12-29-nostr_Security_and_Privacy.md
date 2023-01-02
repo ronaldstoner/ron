@@ -16,6 +16,12 @@ With all new protocols comes new security and privacy concerns that end users sh
 
 # Findings 
 
+## <i class="fa fa-exclamation-triangle fa-lg"> Private Keys
+Most nostr impementations currently use a single signature private key generated inside the web browser. In order to use nostr based web applications users must copy and paste private keys into clients in plain text. If someone else obtains your private key, they can potentially access and take control of your nostr keypair and account.
+
+## <i class="fa fa-exclamation-triangle fa-lg"> Encrypted DM Metadata
+While nostr offers the ability to send encrypted DMs to user pubkeys, the metadata of these messages are broadcast publicly via relays. This is the same as a bitcoin transaction being viewable on the public ledger. The contents of the direct message will be encrypted, but other metadata like the sender and recipient can be viewed by anyone. 
+
 ## <i class="fa fa-exclamation-triangle fa-lg"> Cross Site Scripting (XSS)
 Cross-site scripting (XSS) is a type of cyber attack that involves injecting malicious code into a website or web application. This code is typically executed in the context of the affected website, allowing the attacker to perform a variety of malicious actions, such as stealing sensitive data, manipulating the website's content or functionality, or redirecting users to malicious websites.
 
@@ -47,6 +53,9 @@ EXIF data, or Exchangeable Image File Format data, is metadata that is embedded 
 EXIF data can potentially compromise a user's privacy in a number of ways. For example, if a user shares a photo on a nostr platform that includes their location data in the EXIF data, it may be possible for someone to determine the exact location where the photo was taken. EXIF data can also include personal information, such as the owner of the camera or the software used to edit the photo.
 
 # Defenses
+
+## <i class="fa fa-check-circle fa-lg"> Private Key Management
+Extensions such as nos2x and Alby can help users to manage and store their private key material. This is currently the best solution while hardware wallet and signing device manufacturers incorporate further private key security, such as master keys, multi-signature schemas, and other key enhancements.  
 
 ## <i class="fa fa-check-circle fa-lg"> Use Tested Clients and Front Ends
 To protect against XSS attacks, it is important for website and web application developers to implement proper input validation and sanitization, and for users to be cautious when clicking on links or interacting with unfamiliar content on nostr.
