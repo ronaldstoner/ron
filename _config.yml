@@ -7,11 +7,11 @@
 
 # Site settings
 title: Ron Stoner
-tagline: Security, Privacy, Sovereignty 
+tagline: Security, Privacy, Self-Sovereignty 
 picture: ron.jpg #keep a 100x100 image inside images folder.
 #email: 
 description: > # this means to ignore newlines until "baseurl:"
-  Ron Stoner is a hacker, security engineer, privacy advocate, and a practitioner of sovereign technologies.
+  Ron Stoner is a hacker, security engineer, privacy advocate, and a practitioner of self-sovereign technologies.
 #baseurl: "/yudish" # the subpath of your site, e.g. /blog
 url: "https://ron.stoner.com" # the base hostname & protocol for your site
 
