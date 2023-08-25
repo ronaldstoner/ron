@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/forwardsecrecy
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://ron.stoner.com
+  * I am forwardsecrecy (https://keybase.io/forwardsecrecy) on keybase.
+  * I have a public key ASC1KA0eOkgPqTfdyCeOHLrJjFldLcjrGz4Jz6pFw4-Ejwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120d958b62c4a09bc71856675bb94191898af1bee8c3768628f0028f2f60756100b0a",
+      "host": "keybase.io",
+      "kid": "0120b5280d1e3a480fa937ddc8278e1cbac98c595d2dc8eb1b3e09cfaa45c38f848f0a",
+      "uid": "8a61148321c174a29dc2b2c1e706dc19",
+      "username": "forwardsecrecy"
+    },
+    "merkle_root": {
+      "ctime": 1692985907,
+      "hash": "fa5389ffb619d392dcc5d417be0c2e47c65e5aeb70cb2f0e677658f9e984dd37b9322f10a56c2e92fdbd80b112018ff591cfc575fde1267eb44a79a3efe28b01",
+      "hash_meta": "089369d4bd46fa66cf86f20c3a67d31c41eb8cd13d3233d232df1a3f8cfb2bce",
+      "seqno": 24851066
+    },
+    "service": {
+      "entropy": "8H38ACFzjJ5TcKXNJ21LBadr",
+      "hostname": "ron.stoner.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.2.1"
+  },
+  "ctime": 1692985970,
+  "expire_in": 504576000,
+  "prev": "0594e8418d04fb1f9ff7077a5c7bcb1a4d86504dd35838017bc9f6eb45af7ff5",
+  "seqno": 8,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgtSgNHjpID6k33cgnjhy6yYxZXS3I6xs+Cc+qRcOPhI8Kp3BheWxvYWTESpcCCMQgBZToQY0E+x+f9wd6XHvLGk2GUE3TWDgBe8n260Wvf/XEIBvUxxZkEYn6sILJaqabPQsDFGHrnUP2/JOanehTRIGPAgHCo3NpZ8RAImEK7Vvddduq95Hmj2JussH4bLCm36ca+w8OxJ7ApEp0zFVzQPbEYHn2N+vGD0x9IjaF7/FaNrg8Q7hGKCyZCahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIG62db8KMu+JLyj5ifgdhzJpRDEW8dHvUXPKYaC3sQlvo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/forwardsecrecy
+
+==================================================================
