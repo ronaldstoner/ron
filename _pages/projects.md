@@ -4,7 +4,21 @@ title: Projects
 permalink: /projects/
 ---
 
+
+
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nes-nesume/main/images/nesume-stoner-4.png" title="NESume" image_link="https://github.com/ronaldstoner/nes-nesume" description="The world's first resume built into a playable Nintendo NES game" %}
+
+
+{% include module.html image_path="https://pypi.org/static/images/logo-small.2a411bc6.svg" title="SelfHash" image_link="https://pypi.org/project/selfhash/" description="Self-hashing python module" %}
+
+
+{% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/Bitcoin-PAL/blob/main/frontend/src/owl.png" title="BitcoinPAL" image_link="https://github.com/ronaldstoner/Bitcoin-PAL/tree/main" description="Bitcoin based LLM education tool" %}
+
+
+{% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/munstr/main/assets/images/frankenstein.png" title="Munstr" image_link="https://github.com/ronaldstoner/munstr/tree/main" description="Schnorr signature based MuSig over Nostr" %}
+
+
+{% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nostr-irc/main/images/poc.png" title="nostr-irc" image_link="https://github.com/ronaldstoner/nostr-irc/tree/main" description="Terminal based nostr text client" %}
 
 
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/casa.png" title="Casa" image_link="https://keys.casa" description="Self-sovereign multisignature hardware and software" %}

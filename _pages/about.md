@@ -8,6 +8,8 @@ Ron Stoner is a hacker, security engineer, privacy advocate, and practitioner of
 
 
 **Notable Hackathons**
+- Bolt.fun AI4All Hackathon Education Track Winner
+- MIT 2023 Bitcoin Hackathon Winner
 - ETHDenver 2020 Open Track Finalist & Celebrity Judges Choice
 - ETHDenver 2021 Hackathon Finalist
 - MIT 2021 Bitcoin Hackathon Winner
