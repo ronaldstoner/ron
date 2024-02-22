@@ -10,7 +10,6 @@ image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/SelfH
   <img src="https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/SelfHash.png" alt="" width="300"> 
 </p>
 
-# SelfHash: Ensuring the Integrity of Your Python Scripts
 I'm excited to announce the initial public release of SelfHash 0.1.1 that I worked on in October of 2023. SelfHash was designed to add an extra layer of security and verification to your Python scripts before execution - ensuring that it has not been tampered with.
 
 ## Problem
