@@ -89,5 +89,4 @@ TL;DR — Non-Technical
 In non-technical terms I used a website against itself to let me read it’s files. Using two tricks I was able to access protected files, one of which contained a flag.
 
 **Note**
-This content was originally posted at https://medium.com/@forwardsecrecy/google-ctf-2017-mindreader-570e8acf53b7 and is being re-hosted here for archival purposes.
-
+This content was originally posted at [https://medium.com/@forwardsecrecy/google-ctf-2017-mindreader-570e8acf53b7](https://medium.com/@forwardsecrecy/google-ctf-2017-mindreader-570e8acf53b7) and is being re-hosted here for archival purposes.

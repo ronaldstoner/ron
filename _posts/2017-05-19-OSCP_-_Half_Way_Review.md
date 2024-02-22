@@ -33,4 +33,4 @@ The final exam for the course itself is a 24 hour hack session in a totally new 
 I have to say hats off to **Offensive Security** for designing a course that’s fun, challenging, and reinforces a lot of the penetration testing methodology that one should know. I’ll be taking my final exam in a few weeks at which point I’ll post another review detailing the last half of my experience in the course.
 
 **Note**
-This content was originally posted at https://medium.com/@forwardsecrecy/oscp-half-way-review-c27f3e04bcbb and is being re-hosted here for archival purposes.
+This content was originally posted at [https://medium.com/@forwardsecrecy/oscp-half-way-review-c27f3e04bcbb](https://medium.com/@forwardsecrecy/oscp-half-way-review-c27f3e04bcbb) and is being re-hosted here for archival purposes.

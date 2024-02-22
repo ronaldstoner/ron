@@ -70,4 +70,4 @@ There are several potential security concerns to be aware of when using SelfHash
 ## Conclusion
 In today's world where code integrity is of paramount importance SelfHash strives to offer a simple and effective solution to ensure your Python scripts have not been tampered with. While it should be a part of a comprehensive security strategy and not relied upon as the sole security measure, SelfHash provides an extra layer of security that can help enhance peace of mind. 
 
-I hope you find SelfHash useful and look forward to your feedback. Please feel free to contribute to the project on the GitHub page located at https://github.com/ronaldstoner/selfhash-python
+I hope you find SelfHash useful and look forward to your feedback. Please feel free to contribute to the project on the GitHub page located at [https://github.com/ronaldstoner/selfhash-python](https://github.com/ronaldstoner/selfhash-python)

@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2017-06-19 04:00 -0700
-title:  "OSCP - Half Way Review"
+title:  "OSCP - POST Exam and Final Review"
 description: "A post exam review of the OSCP certification process"
 ---
 
@@ -67,4 +67,4 @@ One other point on this topic is to make sure you have a reporting template read
 The experience of the training and exam can be frustrating, fulfilling, educational, unforgiving, and unique. No other training I’ve completed comes anywhere close to the level of satisfaction and personal pride I took from completing this course. While you may be eager to pass and achieve your certification, make sure you really enjoy your time. You will miss the one of a kind lab and exam networks. It’s a bittersweet feeling, but now it’s time to keep moving forward and get to work.
 
 **Note**
-This content was originally posted at https://medium.com/@forwardsecrecy/oscp-post-exam-and-final-review-448e51bf7dae and is being re-hosted here for archival purposes.
+This content was originally posted at [https://medium.com/@forwardsecrecy/oscp-post-exam-and-final-review-448e51bf7dae](https://medium.com/@forwardsecrecy/oscp-post-exam-and-final-review-448e51bf7dae) and is being re-hosted here for archival purposes.
