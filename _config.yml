@@ -32,6 +32,9 @@ highlighter: rouge
 sass:
   style: compressed
 
+# Pagination
+paginate: 5
+
 #analytics: UA-83979019-1
 
 include: [_pages]

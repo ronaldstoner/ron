@@ -46,6 +46,13 @@ table {
     display: inline-block;
 }
 
+img {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 img + em {
     font-weight: 600;
     margin-bottom: 20px;
