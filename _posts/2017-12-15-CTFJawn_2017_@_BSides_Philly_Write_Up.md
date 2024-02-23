@@ -24,24 +24,24 @@ Challenge 0x1 was simply a picture of Good Ol’ Ben Franklin. For those of you 
 [http://ctfjawn.org:8000/6368616c6c656e6765307831.htm](http://ctfjawn.org:8000/6368616c6c656e6765307831.htm)
 
 ![](https://cdn-images-1.medium.com/max/2000/1*kqhNXJdD6JCqaPVoALOPqg.png)
-*(Good advice, but it’s not the flag)*
+Good advice, but it’s not the flag
 
 Navigating to the URL showed some text, but it was not the flag we were looking for. Knowing that there was other ways to query that website and have data returned, we started playing with **cURL** and it’s various options. Doing a **GET HEAD** request through cURL revealed some information, which included the flag.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*5VcVDp-1MB1Y5MHRI1-Nfw.png)
-*(Running curl -I and getting the flag!)*
+Running curl -I and getting the flag!
 
 ### Challenge — 0x2
 
 Challenge 0x2 revolved around a packet capture (.pcap) file that needed to be analyzed. Loading up the packet capture in **Wireshark** showed a variety of HTTP/HTTPs traffic, including traffic over the **TOR** network. **TOR** allows anonymous browsing capabilities using onion routing technology. Instead of websites ending in .com and .net, **TOR** websites end in .onion. A few of the **DNS** lookups in the packet capture show traffic attempting to go to a few onion sites on the **TOR** network.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*zGuOljN4mesX7AAjqtNdnQ.png)
-*(Finding the TOR .onion domain names)*
+Finding the TOR .onion domain names
 
 Browsing to these domain names using the **TOR Browser Bundle** found a webpage hosted on **6uu4urm652npg23t.onion.**
 
 ![](https://cdn-images-1.medium.com/max/2000/1*Zg0bhlomrprS6P0jWVGG7A.png)
-*(Finding the TOR website)*
+Finding the TOR website
 
 On the website were a few clues — a **base64** encoding string, a link to a reversed hex string, and a number that was labeled **_botjawn**. Decoding most of these strings (which were prevalent throughout the challenges) resulted in various easter eggs, Rick Rolls, and a music video of The Dead Milkmen — a popular Philadelphia punk band.
 
@@ -50,7 +50,7 @@ On the website were a few clues — a **base64** encoding string, a link to a re
 After burning through the false flags and various easter eggs in the challenge, we took a look at the source code for the website. While the code itself didn’t show much, there seemed to be a bunch of white space and returns at the bottom.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*sTRaMf_kMSpx7fd_U-jpJA.png)
-*(That doesn’t look like source code!)*
+That doesn’t look like source code!
 
 Commented out at the very bottom of the source code is the flag. On to the next challenge.
 
@@ -63,7 +63,7 @@ Challenge 3 related to a spreadsheet hosted on **Google Docs**, and some comment
 The spreadsheet contained some values related to “BitJawn” mining and while the spreadsheet itself seemed legitimate, the data contained did not.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*pKRsg4lGmLGKuhKmBTIdfQ.png)
-*(The spreadsheet, possibly containing hidden data)*
+The spreadsheet, possibly containing hidden data
 
 From the comments listed in the **Gist**, we know there’s a few peculiar things about this document. We see a few numbers listed and a note about how the spreadsheet is centered on column 215. I thought this was interesting for a few reasons because 215 is a Philadelphia Area Code, but it also shows that there’s columns hidden prior to where the spreadsheet data starts. The columns hidden between Columns A and HE (Column 213) were unhidden, but no new data was found.
 
@@ -88,33 +88,33 @@ In what started to look like another false lead (more Dead Milkmen) we see that 
 Three separate packet capture files relating to 802.11 WiFi traffic were handed to the team to be analyzed. Since all three of the packet capture files were encrypted, we needed to first break the WiFi encryption from the packet capture so we could see what traffic was being sent. Yes kids, you can break WiFi keys using packet captures thousands of miles away from the actual Access Point/Router.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*TnchJGUaK1W7bFb-or0fbQ.png)
-*(A bunch of encrypted WiFi packets)*
+A bunch of encrypted WiFi packets
 
 Generally these types of attacks use a brute force or dictionary attack method, but what word list would we use? Previously in the CTF we saw an easter egg pointing to a Ben Franklin/Philly themed word list hosted on **Github**.
 
 [https://raw.githubusercontent.com/TheRichardSaunders/loot/master/lists/aphorism-list-4.txt](https://raw.githubusercontent.com/TheRichardSaunders/loot/master/lists/aphorism-list-4.txt)
 
 ![](https://cdn-images-1.medium.com/max/2000/1*DoHD3rqTASKxvkMKIuvIRA.png)
-*(These look like GREAT WiFi passwords!)*
+These look like GREAT WiFi passwords!
 
 The list happened to be Aphorism sayings written by Ben Franklin in **Poor Richards’ Almanac**. The WiFi cracking tool **aircrack-ng** was loaded up against one of the packet capture files, and the WiFi key was hacked.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*uGkFx-0C-G-WP1WzMCMMvQ.png)
-*(Hacking the WiFi password in seconds)*
+Hacking the WiFi password in seconds
 
 The WiFi key “**Bydiligenceandpatiencethemousebitintwothecable**” was captured and then applied to the rest of the packet capture files. This decrypted the WiFi traffic and allowed us to see what was actually going on. The challenge description was “*Host 13.58.63.15 is waiting for a UDP packet with a key as the data string*” so we took the newly cracked key and sent it.
 
 Using the Linux command line and **netcat**, we sent the UDP packet with the correct key to the IP listed in the challenge.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*YvzQEjeGcsyp16SDaG5Exw.png)
-*(Sending the UDP packet, and getting the flag!)*
+Sending the UDP packet, and getting the flag!
 
 ### Final Flag
 
 Now that we had all 4 flags, we needed to figure out what to do with them and how to submit. On the challenge Github repository we find a file that gives us a few clues as to what needs to be done.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*PnicHcuCYgx70QZjCA1atQ.png)
-*(Instructions listed at [https://github.com/TheRichardSaunders/loot/blob/master/scripts/sgalf.py](https://github.com/TheRichardSaunders/loot/blob/master/scripts/sgalf.py)*
+Instructions listed at [https://github.com/TheRichardSaunders/loot/blob/master/scripts/sgalf.py](https://github.com/TheRichardSaunders/loot/blob/master/scripts/sgalf.py)
 
 So the flags needed to be **concatenated**, **hexed** (they already were), **reversed**, **base64 encoding/decoded**, and then reversed again per the instructions. **Python** was able to step in, and we were able to code a quick script to do the conversions.
 
@@ -123,22 +123,22 @@ So the flags needed to be **concatenated**, **hexed** (they already were), **rev
 Running the script gave us the output we needed — **“Most of the learning in use, is of no great use.”**
 
 ![](https://cdn-images-1.medium.com/max/2000/1*Iiu9Os25xpDgQ_oLKTY0ow.png)
-*(Decrypting the final flag)*
+Decrypting the final flag
 
 Now that we had the final flag, what did we need to do with it? Way back in Challenge 0x2 (and it’s screenshot in this writeup) we see that the TOR website makes mention of a **“free node”** and **#ctfjawn**. Visting the **FreeNode** IRC server and **#ctfjawn** room showed that there was a bot listening by the name of **_botjawn**. Challenge 0x2 had a number listed next to the term **_botjawn**. Let’s send that number from Challenge 0x2’s TOR webpage to the bot and see what happens.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*avLImkpkffT9__u3VlkgHQ.png)
-*(A _botjawn easter egg! Don’t worry, it’s just The Dead Milkmen again)*
+A _botjawn easter egg! Don’t worry, it’s just The Dead Milkmen again
 
 Sending some text to **_botjawn** shows that it repeats the text unless one sends a string the bot is specifically looking for. We took the final flag **“Most of the learning in use, is of no great use.”** and sent it to the bot.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*lVP69tQX6u8yxvhN0gX-KQ.png)
-*(Whoa! Almost there!)*
+Whoa! Almost there!
 
 The bot tells us to look for a **ctfjawn** binary and give it the string “**Well done is better than well said**.” The ctfjawn binary located on the challenge **Github** is executed ****and the requested input is passed to it.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*zcVqbuF_1kog59DTh8tbiQ.png)
-*(Running the binary and passing it the required string)*
+Running the binary and passing it the required string
 
 We receive the coordinates Lat/Long: `MzkuOTQ5NTMyOSwgLTc1LjE0NjYwNjE=`
 
@@ -147,7 +147,7 @@ The above string is converted from **base64** and we get a latitude and longitud
 The coordinates are submitted to **_botjawn** and the challenge is now completed and solved.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*6Gr4yedYEODbPeXthQRC8Q.png)
-*(For The Win!)*
+For The Win!
 
 ### Thanks
 
