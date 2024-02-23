@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2022-06-01 05:00 -0700
-title:  "Bitcoin security tips to help you while traveling"
+title:  "Bitcoin Security Tips To Help You While Traveling"
 description: "Traveling tips from a cryptocurrency security professional"
 ---
 
@@ -15,17 +15,9 @@ Getting to the destination safely is the part of your trip where some quick prep
 
 **Never take the majority of your Casa keyset with you.** Your keyset is designed for geographical distribution and security. If you need to transact in bitcoin at the conference, it is better to use the mobile single key wallet with a limited amount of funds. Having a majority of keys in your possession makes YOU the single point of failure and puts your funds at risk. Learn more about how to keep your bitcoin wallet safe in the below article.
 
-[
+## The Dos and Don’ts of Bitcoin Key Management
 
-The Dos and Don’ts of Bitcoin Key Management
-
-The internet is a dangerous place, especially when you’re protecting bitcoin. Jameson Lopp covers what you need to know to stay safe in a perilous environment.
-
-![](https://blog.keys.casa/favicon.png)Jameson Lopp
-
-![](https://blog.keys.casa/content/images/2020/06/bitcoin_security.png)
-
-](https://blog.keys.casa/the-dos-and-donts-of-bitcoin-key-management/)
+![](https://blog.keys.casa/the-dos-and-donts-of-bitcoin-key-management/)
 
 **Don’t advertise the goods.** The first layer of security is privacy, and privacy is about flying under the radar. Every time I am in a travel hub, I take note of who is wearing a cryptocurrency shirt or who has a bitcoin sticker on the lid of their laptop. Criminals and thieves take note of this as well. Don’t broadcast to everyone you’re traveling with bitcoin.
 
