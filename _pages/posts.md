@@ -1,12 +1,18 @@
 ---
-layout: page
+layout: default
 title: Posts
 permalink: /posts/
 ---
 
-<style>
-      {% capture include_to_scssify %}
-      {% include post.scss %}
-      {% endcapture %}
-      {{ include_to_scssify | scssify }}
-</style>
+<div class="home">
+    <ul class="post-list">
+        {% for post in site.posts %}
+            <li class="post-box">
+                <a href="{{ post.url | prepend: site.baseurl }}">
+                    <h2 class="post-link">{{ post.title }}</h2>
+                </a>
+                <p>{{post.content | strip_html | truncate: 150}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
