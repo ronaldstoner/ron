@@ -14,8 +14,8 @@ layout: default
                     <li class="post-box">
                         <a href="{{ post.url | prepend: site.baseurl }}">
                             <h2 class="post-link">{{ post.title }}</h2>
-                            <span class="date">{{ page.date }}</span>
                         </a>
+                        <span class="date">{{ post.date | date: "%B %d %Y"}}</span>
                         <p>{{post.content | strip_html | truncate: 150}}</p>
                     </li>
                 {% endfor %}
