@@ -235,3 +235,12 @@ pre {
   height: 100%;
   border: 0;
 }
+
+.date {
+  font-size: 0.8em;
+  color: $grey-color;
+  opacity: 0.7;
+  @media screen and (max-width: $on-palm) {
+    font-size: 0.6em;
+  }
+}
