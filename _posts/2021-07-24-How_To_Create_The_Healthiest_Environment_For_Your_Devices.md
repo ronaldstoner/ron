@@ -5,7 +5,7 @@ title:  "Bitcoin security 101: How to create the healthiest environment for your
 description: "Tips for electronic devices that deal with digital currency"
 ---
 
-By now, we all should be familiar with the mantra of “not your keys, not your coins.” A lot of guides and information are available to bitcoin connoisseurs regarding how to secure your keys and seeds.  However, I don’t see much information published about how bitcoin HODLers can secure their environments when using those keys.
+By now, we all should be familiar with the mantra of “not your keys, not your coins.” A lot of guides and information are available to bitcoin connoisseurs regarding how to secure your keys and seeds. However, I don’t see much information published about how bitcoin HODLers can secure their environments when using those keys.
 
 The following are some practical and “paranoid-level” tips and steps I use to help secure healthy environments for my devices and hardware wallets.
 
@@ -42,9 +42,9 @@ Those that wish to be extremely cautious may choose to use an air gapped compute
 Hardware wallet(s)
 ------------------
 
-The “keys to the kingdom” that control your bitcoin should reside in your hardware wallet. If you are not using a hardware wallet, [sign up for a Casa account here](https://keys.casa/gold?ref=blog.keys.casa). Before we touch any hardware, let’s ensure we are electrically grounded by either touching a door knob, large piece of metal, or a common ground. This ensures we don’t zap our devices with static charge when handling them.
+The “keys to the kingdom” that control your bitcoin should reside in your hardware wallet. If you are not using a hardware wallet, [sign up for a Casa account here](https://keys.casa/gold?ref=ron.stoner.com). Before we touch any hardware, let’s ensure we are electrically grounded by either touching a door knob, large piece of metal, or a common ground. This ensures we don’t zap our devices with static charge when handling them.
 
-1.  Run hardware device firmware updates periodically to ensure the latest security updates have been applied. (At Casa, our team reviews every firmware update for the hardware wallets we support. If you're a Casa member, be sure to consult our [help center](https://support.keys.casa/hc/en-us/articles/360045460372?ref=blog.keys.casa) before updating your firmware.)
+1.  Run hardware device firmware updates periodically to ensure the latest security updates have been applied. (At Casa, our team reviews every firmware update for the hardware wallets we support. If you're a Casa member, be sure to consult our [help center](https://support.keys.casa/hc/en-us/articles/360045460372?ref=ron.stoner.com) before updating your firmware.)
 2.  Perform a Casa Health Check in the Casa mobile app to ensure the health of each of your hardware devices.
 3.  Use only the supplier-provided USB cable. USB cables vary in voltage, stability, and there are even attacks that can be built into makeshift cables!
 4.  Always verify all prompts and addresses on the hardware wallet screen.
