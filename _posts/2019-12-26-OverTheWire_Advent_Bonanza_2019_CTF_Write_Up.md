@@ -5,14 +5,13 @@ title:  "OverTheWire Advent Bonanza 2019"
 description: "A CTF write up for the OverTheWire Advent Bonanza 2019 CTF"
 ---
 
-This write up is a culmniation of articles from a Capture The Flag competition and are all being concatenated here. You can see other challenge write ups on the main post [here](https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641).
+This write up is a culmination of articles from a Capture The Flag competition and are all being concatenated here. You can see other challenge write ups on the main post [here](https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641).
 
 
 ## Easter Egg 1
 
 ![](https://cdn-images-1.medium.com/max/9856/1*ysIzi8PQiPZ0bMQ_jSyS9w.jpeg)
 
-This write up is part of a bigger Capture The Flag competition. You can see other challenge write ups on the main post [here](https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641).
 
 Part of the fun of CTF challenges is searching for Easter Egg flags. These flags usually don’t require a ton of advanced skill, but are random fun things to find for points during an intense competition.
 

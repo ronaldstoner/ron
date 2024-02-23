@@ -5,8 +5,6 @@ title:  "Hackmethod August 2017 — Challenges Write Up"
 description: "A CTF writeup for the Hackmethod August 2017 Challenges"
 ---
 
-## Hackmethod August 2017 — Challenges Write Up
-
 In addition to providing training and security services, the folks over at Hackmethod run a monthly Capture The Flag style challenge for hackers and information security professionals. Make sure you give them a visit at [https://hackmethod.com/](https://hackmethod.com/)
 
 This month’s set of challenges involved something I had no prior knowledge or experience with — 3D Printing. The August set — **Print3d **— included a challenge for an **.STL** file, 3D Printer **G-Code** analysis, and a packet capture that needed to be dissected. I’ve yet to partake in a 3D printer based challenge during a CTF so I was looking forward to tackling the tasks at hand.
