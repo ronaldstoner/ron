@@ -1,17 +1,13 @@
 <div class="home">
     <ul class="post-list">
-        <div class="home">
-            <ul class="post-list">
-                {% for post in site.posts %}
-                    <li class="post-box">
-                        <a href="{{ post.url | prepend: site.baseurl }}">
-                            <h2 class="post-link">{{ post.title }}</h2>
-                            <span class="date">{{ page.date | date_to_long_string: "ordinal", "US" }}</span>
-                        </a>
-                        <p>{{post.content | truncate: 300}}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% for post in site.posts %}
+            <li class="post-box">
+                <a href="{{ post.url | prepend: site.baseurl }}">
+                    <h2 class="post-link">{{ post.title }}</h2>
+                    <span class="date">{{ page.date }}</span>
+                </a>
+                <p>{{post.content | strip_html | truncate: 300}}</p>
+            </li>
+        {% endfor %}
     </ul>
 </div>

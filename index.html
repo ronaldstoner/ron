@@ -5,7 +5,6 @@ layout: default
 <header class="post-header">
     <h1 class="post-title">Recent Posts</h1>
 </header>
-</br>
 
 <div class="home">
     <ul class="post-list">
@@ -15,7 +14,7 @@ layout: default
                     <li class="post-box">
                         <a href="{{ post.url | prepend: site.baseurl }}">
                             <h2 class="post-link">{{ post.title }}</h2>
-                            <span class="date">{{ page.date | date_to_long_string: "ordinal", "US" }}</span>
+                            <span class="date">{{ page.date }}</span>
                         </a>
                         <p>{{post.content | strip_html | truncate: 150}}</p>
                     </li>
