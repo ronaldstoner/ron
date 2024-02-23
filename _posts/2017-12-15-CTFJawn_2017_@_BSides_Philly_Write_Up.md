@@ -7,7 +7,8 @@ image: "https://cdn-images-1.medium.com/max/2000/1*ST1-igWFDQUNsnX_RLu1Pg.png"
 ---
 
 
-![Image by [Tieatie](https://dribbble.com/tieatie)](https://cdn-images-1.medium.com/max/2000/1*ST1-igWFDQUNsnX_RLu1Pg.png)
+![](https://cdn-images-1.medium.com/max/2000/1*ST1-igWFDQUNsnX_RLu1Pg.png)
+*Image by [Tieatie](https://dribbble.com/tieatie)*
 
 ## CTFJawn 2017 @ BSides Philly Write Up
 
