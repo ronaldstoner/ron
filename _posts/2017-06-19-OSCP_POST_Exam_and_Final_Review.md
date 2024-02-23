@@ -12,7 +12,7 @@ In the early morning hours of a not particular Sunday morning, I stood outside o
 
 These two extremely opposite experiences were about to collide in a 24 hour man versus machine battle of tactics and wits. I was about to take my OSCP final exam. At that moment — like something out of a heist movie — church bells started ringing in the distance signalling that 9:00 AM had arrived. I gathered my things and slowly walked back inside (in my mind to some grooving funk music). On my way back to the computer room I heard a ding on my phone indicating a new e-mail had arrived. I had received my VPN credentials and it was time to begin my exam.
 
- <iframe src="https://medium.com/media/16ffdcb0d25d9f1a8526d0ec8dc06d47" frameborder=0></iframe>
+ <iframe src="https://www.youtube.com/embed/-Xu4bqN3poI?si=9OVQJ3-q3sfADmGR" frameborder=0></iframe>
 
 For those not familiar with the OSCP it’s essentially a training course and certification indicating that you can effectively use penetration testing and hacking methods to perform a security assessment. It culminates in a 24 hour exam where a student must exploit an unknown computer network and it’s servers.
 
@@ -26,7 +26,8 @@ At that point I had what I believed to be half the network hacked and a low leve
 
 I continued to enumerate and exploit until fatigue, cloudiness, and doubt started to creep in when my progress seemed to stagnate. I walked away to take a break and eat some much needed food (which my significant other was kind enough to make) and give my mind a break.
 
-![OSCP snacks](https://cdn-images-1.medium.com/max/2000/1*bmKsgbaedp2b_W98E5Z-IQ.jpeg)
+![](https://cdn-images-1.medium.com/max/2000/1*bmKsgbaedp2b_W98E5Z-IQ.jpeg)
+*OSCP snacks*
 
 Coming back to the exam refreshed definitely helped because I was able to root another server and low level user. The points earned for these tasks combined with my lab report and training exercises were in my mind enough to earn a passing score, but I didn’t want to leave things to chance as you are not told your score or many points your submitted report is worth.
 

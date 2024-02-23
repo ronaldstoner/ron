@@ -5,7 +5,8 @@ title:  "Brain_Gamez — A Forensic Challenge"
 description: "A write up for Brain_Gamez my own personal CTF challenge"
 ---
 
-![Brain Leaking by [Nick Staab](https://dribbble.com/staabo)](https://cdn-images-1.medium.com/max/2000/1*O-q3ViAmFpijo9G58YuRGg.gif)
+![](https://cdn-images-1.medium.com/max/2000/1*O-q3ViAmFpijo9G58YuRGg.gif)
+*Brain Leaking by [Nick Staab](https://dribbble.com/staabo)*
 
 Back in October I created a forensic challenge called Brain_Gamez, which was hosted on the Hackmethod Monthly CTF site ([https://ctf.hackmethod.com](https://ctf.hackmethod.com/)). Brain_Gamez is a 32 KB JPG image file, which contains a mix of steganography and obfuscation techniques. It was up to the CTF hackers to figure out what to do with the image, and piece together a solution to find the final flag. What follows is the steps taken needed to solve the challenge.
 
@@ -28,9 +29,11 @@ Base64 decoding the string reveals the plain text “N0t_F1aG_BuT_m4Y_n33d". So,
 
 **File** command output looks normal for the most part. We see the **base64** string listed in the command output, so the string above that we decoded could have been found that way as well. Time to look further.
 
-![Viewing the hex for the start of the file](https://cdn-images-1.medium.com/max/2000/1*frN2NrAzAY5VrWcJps71vA.png)
+![](https://cdn-images-1.medium.com/max/2000/1*frN2NrAzAY5VrWcJps71vA.png)
+*Viewing the hex for the start of the file*
 
-![Viewing the hex for the end of the file](https://cdn-images-1.medium.com/max/2000/1*CIc68WU-EsZZ1pTtukXQBg.png)
+![](https://cdn-images-1.medium.com/max/2000/1*CIc68WU-EsZZ1pTtukXQBg.png)
+*Viewing the hex for the end of the file*
 
 Hex editing the JPEG file shows the expected JPEG file headers, with the hex values FF D8 (Start of Image)listed. What’s unexpected though, is the end characters being different than FF D9 (End of Image) and the text flag.txt showing up.
 

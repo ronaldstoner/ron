@@ -21,7 +21,8 @@ The training course requires a great deal of time, effort, and self-dedication. 
 
 I’ve heard war stories from fellow students that have had to re-up their lab time due to life commitments and others that have had to attempt the final exam multiple times. Depending on your pace you may root 3 or 4 boxes in one night, but spend the next 3 days with your head on the desk chipping away at a single server.
 
-![Sometimes you’ll think all is lost, but then something like this happens](https://cdn-images-1.medium.com/max/2000/1*u96Y7slmd_BG6se7iVyV3A.png)
+![](https://cdn-images-1.medium.com/max/2000/1*u96Y7slmd_BG6se7iVyV3A.png)
+*Sometimes you’ll think all is lost, but then something like this happens*
 
 ## The Other
 

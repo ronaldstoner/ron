@@ -35,21 +35,25 @@ The rules were as follows:
 
 Navigating to the website linked in the challenge description came up with a HTTP login form. Per the website, there was no need to dirbust or SQL inject, so a different way was needed to complete this challenge.
 
-![The website running on TCP port 8080](https://cdn-images-1.medium.com/max/2000/1*EARK5xwk5Mj4AwU6xjWhkA.png)
+![](https://cdn-images-1.medium.com/max/2000/1*EARK5xwk5Mj4AwU6xjWhkA.png)
+*The website running on TCP port 8080*
 
 The website itself didn’t respond to many of the usual pokes and prods, so it was time to break out the scanners and see what could be found. Using a web vulnerability scanner it was determined that the website was running the Apache module **mod_negotiation**, with the **MultiViews** option enabled. This module can be abused so that file names on the server can be discovered.
 
-![Scanner output showing a vulnerable module](https://cdn-images-1.medium.com/max/2000/1*A2I5lS1QZmSXQUxd1mTgDA.png)
+![](https://cdn-images-1.medium.com/max/2000/1*A2I5lS1QZmSXQUxd1mTgDA.png)
+*Scanner output showing a vulnerable module*
 
 The Metasploit auxiliary scanner **mod_negotiation_brute** makes abusing this vulnerability easy. The scanner runs a predefined set of URLs against the server in order to discover potential file names. A file with the name of **functions.js** is found and it’s contents are checked.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*SAJKh5uvGn8U_XslWYA38A.png)
 
-![Finding the functions.js file and checking it’s contents](https://cdn-images-1.medium.com/max/2000/1*7GURycseI_Ib5IM5nT8N0g.png)
+![](https://cdn-images-1.medium.com/max/2000/1*7GURycseI_Ib5IM5nT8N0g.png)
+*Finding the functions.js file and checking its contents*
 
 It appears there is a commented out test function that the original developer left in the code. Inside the function **testLogin()** we can see credentials for the user **larry **encoded in **base64 **format. The **base64** password string is decoded on the command line, and the password for **larry** is revealed.
 
-![Decoding larry’s password](https://cdn-images-1.medium.com/max/2000/1*yGq4JLT6ZdaPCtmnhEb5gw.png)
+![](https://cdn-images-1.medium.com/max/2000/1*yGq4JLT6ZdaPCtmnhEb5gw.png)
+*Decoding larry’s password*
 
 The password **S7up!d_Curly!** is captured and the user can be authenticated through the web application. It appears we’ve completed the first challenge. The captured credentials are encoded according to the challenge rules and submitted for a sweet 10 points. When logging in as the **larry** user on the web application a clue for the next challenge appears.
 
@@ -63,11 +67,13 @@ Per the last step in challenge 1 the goal is now to login as the **admin** user 
 
 ![](https://cdn-images-1.medium.com/max/2000/1*UPWbfsi4TZxIwl3j2PLG9g.png)
 
-![Changing the admin_access flag from ‘no’ to ‘yes’](https://cdn-images-1.medium.com/max/2000/1*AWINjg5nNUNHdPgrrfyKuA.png)
+![](https://cdn-images-1.medium.com/max/2000/1*AWINjg5nNUNHdPgrrfyKuA.png)
+*Changing the admin_access flag from ‘no’ to ‘yes’*
 
 Changing the variable worked and the **admin** user was logged in. The webpage now revealed the challenge flag. It was submitted and 15 points were gained.
 
-![Beating the challenge](https://cdn-images-1.medium.com/max/2000/1*j_yO7BOBDoZitemVAps-DQ.png)
+![](https://cdn-images-1.medium.com/max/2000/1*j_yO7BOBDoZitemVAps-DQ.png)
+*Beating the challenge*
 
 ### Challenge 3 — U+002F flag.txt
 > # Using the server from Web Flag : find and read flag.txt
@@ -84,13 +90,15 @@ For those not familiar — Shellshock is a software bug within the Linux Bash sh
 
 would execute against a script found in the **/cgi-bin** directory called **stats**. **Stats** provided some information that was displayed on the main index page from challenge 1. The method of command delivery was a bit brutal in that the server required absolute paths for all commands entered, and the shellshock payload had to be manually modified and delivered each time a new command was to be run. This made enumerating especially hard and tedious. Thankfully a snippet of code from a RFI shell (Remote File Include), and a bit of python could save the day.
 
- <iframe src="https://medium.com/media/f1d6483c68607fdc0992e2523f9c1317" frameborder=0></iframe>
+ <script src="https://gist.github.com/ronaldstoner/6d88198439c1327ffaf513a5a165b6c9.js" charset="utf-8"></script>
 
 Using the new Shellshock shell made navigating through the file system a lot quick and easier. **/flag.txt** was found and it’s contents were revealed, thereby solving the challenge for an additional 20 points, and a clue to the next and final challenge.
 
-![Listing the contents of / and finding flag.txt](https://cdn-images-1.medium.com/max/2000/1*8W7inxV6d8eJTO1s2xbD9w.png)
+![](https://cdn-images-1.medium.com/max/2000/1*8W7inxV6d8eJTO1s2xbD9w.png)
+*Listing the contents of / and finding flag.txt*
 
-![Using the created Shellshock console to reveal the flag.txt](https://cdn-images-1.medium.com/max/2000/1*4doG8XCJ7ag5Ij1yrjvQPg.png)
+![](https://cdn-images-1.medium.com/max/2000/1*4doG8XCJ7ag5Ij1yrjvQPg.png)
+*Using the created Shellshock console to reveal the flag.txt*
 
 ### Challenge 4 — Zippity do dah
 > # Locate the zip file on the same web server from the Web Flag challenge.
@@ -101,31 +109,39 @@ Using the new Shellshock shell made navigating through the file system a lot qui
 
 The final challenge has to do with a zipfile located somewhere on the server. Since the Shellshock console seems to be working well, it can be used to help locate the zipfile. The Linux “find” command is ran looking for all files with the .zip extension.
 
-![Running “find -name '*.zip'” to determine zip file locations](https://cdn-images-1.medium.com/max/2000/1*q_lnnxeap7BBX9yv1QL7VQ.png)
+![](https://cdn-images-1.medium.com/max/2000/1*q_lnnxeap7BBX9yv1QL7VQ.png)
+*Running “find -name '*.zip'” to determine zip file locations*
 
-![Confirming the MD5 hash from the clue at the end of challenge 3](https://cdn-images-1.medium.com/max/2000/1*SIgcLSdT5Gyl5VTgV-Jv2w.png)
+![](https://cdn-images-1.medium.com/max/2000/1*SIgcLSdT5Gyl5VTgV-Jv2w.png)
+*Confirming the MD5 hash from the clue at the end of challenge 3*
 
-**EASYFLAG.zip** is found in **/home/curly**, but the challenge instructions indicate the file should not be moved or unzipped on the server — Interesting. Unfortunately, tools like **SCP**, **netcat**, and other file transfer tools either are missing or do not work on the server. The file needs to be transferred a different way. Using **base64 **a hash can be made of the file’s contents and copied as plain text.
+**EASYFLAG.zip** is found in **/home/curly**, but the challenge instructions indicate the file should not be moved or unzipped on the server — Interesting. Unfortunately, tools like **SCP**, **netcat**, and other file transfer tools either are missing or do not work on the server. The file needs to be transferred a different way. Using **base64** a hash can be made of the file’s contents and copied as plain text.
 
-![Creating a base64 hash of the zip file](https://cdn-images-1.medium.com/max/2000/1*xkkTQGWUv22iJf893TW5Vg.png)
+![](https://cdn-images-1.medium.com/max/2000/1*xkkTQGWUv22iJf893TW5Vg.png)
+*Creating a base64 hash of the zip file*
 
 The contents are copied and moved to my attacking server, where base64 can be used again in order to convert the string back into a zipfile.
 
-![Using base64 to convert back to a zipfile and extracting the contents](https://cdn-images-1.medium.com/max/2000/1*82QilaYz9h3V_TdD_cgTNQ.png)
+![](https://cdn-images-1.medium.com/max/2000/1*82QilaYz9h3V_TdD_cgTNQ.png)
+*Using base64 to convert back to a zipfile and extracting the contents*
 
 The zipfile appears to have an extra 265 bytes, causing errors during the extraction. While the file **REALFLAG.txt** does extract (and contains some interesting information), the ponderer in me wanted to fix the zipfile to see if anything else was present. Using the **zip** command the file and the extra 265 bytes can be fixed, creating a new archive.
 
-![Fixing and extracting the new fixed.zip file](https://cdn-images-1.medium.com/max/2000/1*oG6RrnC2zLlk5rGsHYDavg.png)
+![](https://cdn-images-1.medium.com/max/2000/1*oG6RrnC2zLlk5rGsHYDavg.png)
+*Fixing and extracting the new fixed.zip file*
 
 Extracting the fixed archive shows two text files — **EASYFLAG.txt **and **REALFLAG.txt**
 
-![Great, I’ve been trolled by EASYFLAG.txt](https://cdn-images-1.medium.com/max/2000/1*W6mBWOJSoOhiDy9tCfZrEA.png)
+![](https://cdn-images-1.medium.com/max/2000/1*W6mBWOJSoOhiDy9tCfZrEA.png)
+*Great, I’ve been trolled by EASYFLAG.txt*
 
-![Interesting info in REALFLAG.txt](https://cdn-images-1.medium.com/max/2000/1*6DNp0VMzLRuqWt-gxKCVew.png)
+![](https://cdn-images-1.medium.com/max/2000/1*6DNp0VMzLRuqWt-gxKCVew.png)
+*Interesting info in REALFLAG.txt*
 
-The string located in **REALFLAG.txt** appears to be what is needed to complete the challenge. Checking the string reveals that it is not **Base64**, **MD5**, or **SHA1**, but **HEX** data. The data can be converted from **HEX **into a readable file with the **xxd **tool. Doing so reveals the flag, gets 25 points, completes Challenge 4, and ends the challenge set for June.
+The string located in **REALFLAG.txt** appears to be what is needed to complete the challenge. Checking the string reveals that it is not **Base64**, **MD5**, or **SHA1**, but **HEX** data. The data can be converted from **HEX **into a readable file with the **xxd** tool. Doing so reveals the flag, gets 25 points, completes Challenge 4, and ends the challenge set for June.
 
-![VICTORY! — Revealing the file contents and capturing the flag](https://cdn-images-1.medium.com/max/2000/1*fpWj_aTcny4hAVOYvBjvMw.png)
+![](https://cdn-images-1.medium.com/max/2000/1*fpWj_aTcny4hAVOYvBjvMw.png)
+*VICTORY! — Revealing the file contents and capturing the flag*
 
 
 **Note**

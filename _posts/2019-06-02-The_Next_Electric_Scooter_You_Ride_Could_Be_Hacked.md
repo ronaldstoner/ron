@@ -16,7 +16,8 @@ With new technology comes new security vulnerabilities, and with new security vu
 
 ### Our Test Subject
 
-![The Xiaomi Mi M365](https://cdn-images-1.medium.com/max/2000/1*EmRq5vflveBxNixCJxhkRg.jpeg)
+![](https://cdn-images-1.medium.com/max/2000/1*EmRq5vflveBxNixCJxhkRg.jpeg)
+*The Xiaomi Mi M365*
 
 The Xiaomi Mi M365 Electric Scooter provides an 8.6 Miles long-range battery and can reach a speed of up to 15.5 MPH. They can be purchased new for around $400 USD from the manufacturer, or from your favorite web shopping store that begins with the letter ‘A’. It also happens to be original model that Bird was using with some slight hardware modifications. The “liberation” process for this scooter is extremely similar to an upgrade I did to a personal scooter of mine — replacing an original dashboard with a newly upgraded PRO model version. While a PRO version board is not needed for the hack, it does add things like a digital speedometer and faster speeds.
 
@@ -32,11 +33,13 @@ No further authentication was required after connecting over open Bluetooth to w
 
 ### Security Hole #3: No Hardware Security
 
-![A replacement dashboard](https://cdn-images-1.medium.com/max/2002/1*91HmMWFkJhjhIjFJyE6fJw.jpeg)
+![](https://cdn-images-1.medium.com/max/2002/1*91HmMWFkJhjhIjFJyE6fJw.jpeg)
+*A replacement dashboard*
 
 The upgrade I performed (and part of the “liberation” process as it has been described to me) is to swap out the entire dashboard of the scooter. The dashboard includes the **BLE** Bluetooth controller and acts as the brain and controller of the scooter. Replacements are EXTREMELY RARE (ahem) and can be had from your favorite internet hardware re-seller or in some cases — Walmart (I don’t advocate this). Swapping out the dashboard takes only a few minutes, and new firmware can instantly be flashed to it via an Android phone or tablet. Once the dashboard is swapped out and a new firmware is written, the scooter is effectively in control of the new owner.
 
-![Performing my own board swap](https://cdn-images-1.medium.com/max/2000/1*JWE-1WyVauuBox2oIdbM1A@2x.jpeg)
+![](https://cdn-images-1.medium.com/max/2000/1*JWE-1WyVauuBox2oIdbM1A@2x.jpeg)
+*Performing my own board swap*
 
 ### **Brake-ing it all down**
 
