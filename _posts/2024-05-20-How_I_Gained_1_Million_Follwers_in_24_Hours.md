@@ -6,7 +6,9 @@ description: "Gaming the social media follower count"
 image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-number1.png"
 ---
 
-Social media dominance often translates to influence and power. I reecently embarked on an exercise to expose the fragility and manipulability of these platforms. My mission was to gain 1 million followers on Nostr within 24 hours. 
+Social media dominance often translates to influence and power. I recently embarked on an exercise to expose the fragility and manipulability of these platforms. My mission was to gain 1 million followers on Nostr within 24 hours. 
+
+![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-number1.png)
 
 Here’s how it all worked.
 
@@ -28,7 +30,7 @@ In the same way, during a Sybil attack a person creates many fake identities on 
 
 ### The Approach
 
-I like taking advantages of existing features in products. I've always been keen on using the system functionality against itself. While what I did was nothing novel, it was achieveable none-the-less. I knew from other scripts I worked on prior that generating over 1 million keypairs locally on a CPU and broadcasting them into the Nostr network was both cheap and easy, but would take some time to broadcast follow events. In a world of cheap, easy, and fast you only get two of out the three. 
+I like taking advantages of existing features in products. I've always been keen on using the system functionality against itself. While what I did was nothing novel, it was achievable none-the-less. I knew from other scripts I worked on prior that generating over 1 million keypairs locally on a CPU and broadcasting them into the Nostr network was both cheap and easy, but would take some time to broadcast follow events. In a world of cheap, easy, and fast you only get two out of the three. 
 
 The exercise was accomplished with less than 200 lines of code. However, I won't share that here as I don't want others to replicate my actions.
 
@@ -59,16 +61,14 @@ Total new followers per hour = 100 * 60 * 60 = 360,000
 
 To hit 1 million followers in 24 hours: 1,000,000 / 360,000 ≈ 2.78 hours
 
-<p align="center">
-  ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-stats.gif)
-  *It's alive and working*
-</p>
+![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-stats.gif)
+*It's alive and working*
 
 ### Observations
 
 I walked away to eat some dinner and when I came back I saw that some relays started getting overwhelmed and were dropping connections. Others had implemented security controls such as authorization, address whitelisting for publishing, IP address rate limiting, proof-of-work, and other novel systems involving challenges. While this experiment underscores the inherent vulnerabilities in social media networks and the ease with which some of these systems can be exploited, it also highlights positive security controls that are being utilized by some nostr relay operators today.  
 
-Out of the 300 relays I used in my final list, **175 relays (58.33%)** were either using protection mechanisms or were not resolvable publically. This indicates a strong trend towards enhancing the security and privacy of relay communications.
+Out of the 300 relays I used in my final list, **175 relays (58.33%)** were either using protection mechanisms or were not resolvable publicly. This indicates a strong trend towards enhancing the security and privacy of relay communications.
 
 On the other hand, **125 relays (41.67%)** were found to be active and accessible without any additional protection. While these relays are operational, the absence of protective measures may leave them vulnerable to potential security threats, downtime, or future spam or storage attacks. Nostr relay spam filtering seems to be specific to general event types and posts and not the more esoteric or later introduced event types.
 
@@ -77,25 +77,20 @@ While my script only ran for a few hours, it highlighted a potential vulnerabili
 ### Charts and Stats
 Thank you to [https://stats.nostr.band](https://stats.nostr.band) for providing the following charts and statistics. 
 
-<p align="center">
-  ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-daily-new-users.png)
-  *Daily New Users*
-</p>
+![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-daily-new-users.png)
+*Daily New Users*
 
-<p align="center">
-  ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-total-users.png)
-  *Total Nostr Users*
-</p>
 
-<p align="center">
-  ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-total-profile-events.png)
-  *Daily New Users*
-</p>
+![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-total-users.png)
+*Total Nostr Users*
 
-<p align="center">
-  ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-events-published.png)
-  *Events Published*
-</p>
+
+![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-total-profile-events.png)
+*Daily New Users*
+
+
+![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-events-published.png)
+*Events Published*
 
 ### Challenges and Fixes
 
@@ -111,20 +106,16 @@ Despite initial success, several challenges did occur:
 In addition, the Nostr network should consider implementing:
 
 - **Honey Pot Relays**: Honeypots could help detect and alert on attacks in real time. 
-- **Nostr Security Operatons**: A dedicated security and monitioring team would help relay operators respond to attacks.
+- **Nostr Security Operations**: A dedicated security and monitoring team would help relay operators respond to attacks.
 - **Alerting and Monitoring**: As with any large corporation or product, monitoring and alerting is essential.
-- **Relay Health Report**: Additional metrics such as free disk space, spam mitigation, and overall health would help identify weakpoints in the network. 
+- **Relay Health Report**: Additional metrics such as free disk space, spam mitigation, and overall health would help identify weak points in the network. 
 - **Spam Filters**: Spam filtering technology should be applied for *most* event types rather than just a few. 
 
 It is suggested that relay operators look into the above as mitigation controls for their relays and the overall health of the Nostr network. This may not be applicable in all scenarios and clients though. 
 
 ## Conclusion
 
-
-<p align="center">
-  ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-4million.png)
-</p>
-
+![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-4million.png)
 
 This experiment revealed just how artificial social media can be. The ease with which follower counts and engagement metrics can be manipulated calls into question the authenticity of online personas and the credibility of social media as a whole.
 
