@@ -20,7 +20,8 @@ Nostr is an innovative alternative to traditional social media platforms. In cen
 
 Nostr uses public and private key pairs for identity, digital signing, and account authorization. This method is known as a cryptographic "something you have" in security. Your private key (think of a key to a lock or even your password) remains confidential and in your control, while your public key (the lock or similarly your email address) can be shared for others to interact with you securely. Cryptographic processes and math help to hash, digitally sign, and encode your messages. This means that others cannot tamper with them or impersonate you as easily. 
 
-For those interested in the technical details, each Nostr event consists of a series of JSON-formatted values. These include information about the post's metadata, its content, and a Schnorr digital signature. You can read more about it at https://github.com/nostr-protocol/nips/blob/master/01.md.
+For those interested in the technical details, each Nostr event consists of a series of JSON-formatted values. These include information about the post's metadata, its content, and a Schnorr digital signature. You can read more about it at [https://github.com/nostr-protocol/nips/blob/master/01.md](https://github.com/nostr-protocol/nips/blob/master/01.md) 
+.
 
 ### Sybil Attack
 
@@ -30,7 +31,7 @@ In the same way, during a Sybil attack a person creates many fake identities on 
 
 ### The Approach
 
-I like taking advantages of existing features in products. I've always been keen on using the system functionality against itself. While what I did was nothing novel, it was achievable none-the-less. I knew from other scripts I worked on prior that generating over 1 million keypairs locally on a CPU and broadcasting them into the Nostr network was both cheap and easy, but would take some time to broadcast follow events. In a world of cheap, easy, and fast you only get two out of the three. 
+I like taking advantages of existing features in products. I've always been keen on using the system functionality against itself. While what I did was nothing novel, it was achievable none-the-less. I knew from other scripts I worked on prior that generating over 1 million keypairs locally on a CPU and broadcasting them into the Nostr network was both cheap and easy, but would take some time to broadcast the follow event payload. In a world of cheap, easy, and fast you only get two out of the three. 
 
 The exercise was accomplished with less than 200 lines of code. However, I won't share that here as I don't want others to replicate my actions.
 
@@ -86,7 +87,7 @@ Thank you to [https://stats.nostr.band](https://stats.nostr.band) for providing 
 
 
 ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-total-profile-events.png)
-*Daily New Users*
+*Total Profile Events Published*
 
 
 ![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-events-published.png)
