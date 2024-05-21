@@ -27,7 +27,7 @@ For those interested in the technical details, each Nostr event consists of a se
 
 A Sybil attack is like a sneaky trick where someone pretends to be many different people on the internet in order to cause trouble. Imagine you're playing a game with your friends and one of the players secretly makes a lot of fake accounts to join the game. They use these fake accounts to cheat, make unfair rules, or mess up the game for everyone else. 
 
-In the same way, during a Sybil attack a person creates many fake identities on the internet to try to take control or disrupt things. It's not a nice thing to do and it can make it hard for people to trust what they see and hear on the internet. So that's exactly what we're going to do.
+In the same way, during a Sybil attack a person creates many fake identities on the internet to try to take control or disrupt things. It's not a nice thing to do and it can make it hard for people to trust what they see and hear on the internet. **So that's exactly what we're going to do.**
 
 ### The Approach
 
@@ -50,7 +50,7 @@ Initially this worked well - but wasn't as fast as I wanted. I knew we could do 
 
 Total new followers per hour = 13 * 60 * 60 ≈ 46,800
 
-To hit 1 million followers in 24 hours: 1,000,000 / 46,800 ≈ 21.37 hours
+To hit 1 million followers in 24 hours: **1,000,000 / 46,800 ≈ 21.37 hours**
 
 One can see that under perfect network conditions, this feat could be achieved in under 24 hours - but I wanted more speed. I curated the relay list based on Nostr event responses I was receiving (both good and bad) and introduced multithreading into my script. It was now hitting over 100 "follow" requests per second and the overall time needed would be reduced.
 
@@ -60,7 +60,7 @@ One can see that under perfect network conditions, this feat could be achieved i
 
 Total new followers per hour = 100 * 60 * 60 = 360,000
 
-To hit 1 million followers in 24 hours: 1,000,000 / 360,000 ≈ 2.78 hours
+To hit 1 million followers in 24 hours: **1,000,000 / 360,000 ≈ 2.78 hours**
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-stats.gif)
 *It's alive and working*
@@ -118,7 +118,7 @@ It is suggested that relay operators look into the above as mitigation controls 
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-4million.png)
 
-This experiment revealed just how artificial social media can be. The ease with which follower counts and engagement metrics can be manipulated calls into question the authenticity of online personas and the credibility of social media as a whole.
+This experiment revealed just how artificial social media can be. **The ease with which follower counts and engagement metrics can be manipulated calls into question the authenticity of online personas and the credibility of social media as a whole.**
 
 Nostr's decentralized approach offers robust features, but even it is not immune to exploitation without proper safeguards. Implementing fixes such as authentication, whitelisting, rate limiting, monitoring, alerting, and proof of work can significantly enhance the network's integrity. This is a task for relay operators and Nostr protocol and client developers to tackle after reviewing and evaluating the pros and cons of each potential fix. 
 
