@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2024-05-20 00:00 -0700
-title:  "How I Gained 1 Million Followers in 24 Hours"
+title:  "I Gained 1 Million Followers in 24 Hours"
 description: "Gaming the social media follower count"
 image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-number1.png"
 ---
