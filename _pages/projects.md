@@ -9,7 +9,7 @@ permalink: /projects/
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nes-nesume/main/images/nesume-stoner-4.png" title="NESume" image_link="https://github.com/ronaldstoner/nes-nesume" description="The world's first resume built into a playable Nintendo NES game" %}
 
 
-{% include module.html image_path="https://pypi.org/static/images/logo-small.2a411bc6.svg" title="SelfHash" image_link="https://pypi.org/project/selfhash/" description="Self-hashing python module" %}
+{% include module.html image_path="https://github.com/ronaldstoner/ron/raw/gh-pages/images/python.png" title="SelfHash" image_link="https://pypi.org/project/selfhash/" description="Self-hashing python module" %}
 
 
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/Bitcoin-PAL/main/frontend/src/owl.png" title="Bitcoin-PAL" image_link="https://github.com/ronaldstoner/Bitcoin-PAL/tree/main" description="Bitcoin based LLM education tool" %}
