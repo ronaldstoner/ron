@@ -1,0 +1,327 @@
+<html><head><base href="https://expressive-3d-vector-head-responsive.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byte - Biometric Yet Expressive</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #0f0;
+  }
+  #head-container {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 20px;
+    perspective: 2000px;
+    cursor: pointer;
+  }
+  #textInput {
+    width: 100%;
+    max-width: 300px;
+    height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #0f0;
+    background-color: #000;
+    color: #0f0;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  #speakButton {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #speakButton:hover {
+    background-color: #00ff00;
+  }
+  @media (max-width: 600px) {
+    #head-container {
+      max-width: 90vw;
+    }
+    #textInput, #speakButton {
+      max-width: 90vw;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="head-container"></div>
+<textarea id="textInput" placeholder="Type your text here..."></textarea>
+<button id="speakButton">Speak</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+let scene, camera, renderer, head, mouth, leftEyebrow, rightEyebrow, leftEye, rightEye;
+let isIdling = true;
+let isSpeaking = false;
+let currentExpression = 'neutral';
+const expressions = ['neutral', 'happy', 'sad', 'angry', 'surprised', 'confused', 'sleepy'];
+let clickReactionTimeout;
+let headMaterial;
+let lastExpressionChangeTime = 0;
+
+function init() {
+  scene = new THREE.Scene();
+  const aspect = window.innerWidth / window.innerHeight;
+  camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 2000);
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  
+  const container = document.getElementById('head-container');
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  container.appendChild(renderer.domElement);
+
+  camera.position.z = 10;
+
+  headMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
+
+  // Create head shape
+  const headGeometry = new THREE.SphereGeometry(4, 32, 32);
+  head = new THREE.LineSegments(new THREE.WireframeGeometry(headGeometry), headMaterial);
+  scene.add(head);
+
+  // Create eyes
+  const eyeGeometry = new THREE.SphereGeometry(0.4, 16, 16);
+  leftEye = new THREE.LineSegments(new THREE.WireframeGeometry(eyeGeometry), headMaterial);
+  leftEye.position.set(-1.4, 1, 3);
+  rightEye = new THREE.LineSegments(new THREE.WireframeGeometry(eyeGeometry), headMaterial);
+  rightEye.position.set(1.4, 1, 3);
+  head.add(leftEye, rightEye);
+
+  // Create mouth
+  mouth = new THREE.Group();
+  const mouthGeometry = new THREE.TorusGeometry(1, 0.2, 16, 32, Math.PI);
+  const mouthLine = new THREE.LineSegments(new THREE.WireframeGeometry(mouthGeometry), headMaterial);
+  mouthLine.rotation.x = Math.PI / 2;
+  mouth.add(mouthLine);
+  mouth.position.set(0, -1, 3);
+  head.add(mouth);
+
+  // Create eyebrows
+  const eyebrowGeometry = new THREE.BoxGeometry(1, 0.2, 0.2);
+  leftEyebrow = new THREE.LineSegments(new THREE.WireframeGeometry(eyebrowGeometry), headMaterial);
+  leftEyebrow.position.set(-1.4, 1.8, 3);
+  rightEyebrow = new THREE.LineSegments(new THREE.WireframeGeometry(eyebrowGeometry), headMaterial);
+  rightEyebrow.position.set(1.4, 1.8, 3);
+  head.add(leftEyebrow, rightEyebrow);
+
+  window.addEventListener('resize', onWindowResize, false);
+  animate();
+}
+
+function onWindowResize() {
+  const container = document.getElementById('head-container');
+  const aspect = container.clientWidth / container.clientHeight;
+  camera.aspect = aspect;
+  camera.updateProjectionMatrix();
+  renderer.setSize(container.clientWidth, container.clientHeight);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (isIdling) {
+    idleAnimation();
+  }
+  renderer.render(scene, camera);
+}
+
+function idleAnimation() {
+  const time = Date.now() * 0.001;
+  head.rotation.x = Math.sin(time * 0.5) * 0.1;
+  head.rotation.y = Math.cos(time * 0.3) * 0.2;
+  
+  // Randomly change expression while idling
+  if (Date.now() - lastExpressionChangeTime > 5000) { // Change expression every 5 seconds
+    const newExpression = expressions[Math.floor(Math.random() * expressions.length)];
+    setExpressionSmooth(newExpression);
+    lastExpressionChangeTime = Date.now();
+  }
+}
+
+function smoothTransition(startRotation, endRotation, duration) {
+  gsap.to(head.rotation, {
+    x: endRotation.x,
+    y: endRotation.y,
+    z: endRotation.z,
+    duration: duration / 1000,
+    ease: "power2.inOut",
+    onComplete: () => {
+      if (!isSpeaking) {
+        isIdling = true;
+      }
+    }
+  });
+}
+
+function centerHead() {
+  isIdling = false;
+  const startRotation = head.rotation.clone();
+  const endRotation = new THREE.Euler(0, 0, 0);
+  smoothTransition(startRotation, endRotation, 1000);
+}
+
+function setExpressionSmooth(expression) {
+  const duration = 0.5; // Duration of the transition in seconds
+
+  switch (expression) {
+    case 'happy':
+      gsap.to(mouth.rotation, { x: -Math.PI / 8, duration, ease: "power2.inOut" });
+      gsap.to(leftEyebrow.rotation, { z: Math.PI / 12, duration, ease: "power2.inOut" });
+      gsap.to(rightEyebrow.rotation, { z: -Math.PI / 12, duration, ease: "power2.inOut" });
+      gsap.to([leftEye.scale, rightEye.scale], { x: 1, y: 1, z: 1, duration, ease: "power2.inOut" });
+      break;
+    case 'sad':
+      gsap.to(mouth.rotation, { x: Math.PI / 8, duration, ease: "power2.inOut" });
+      gsap.to(leftEyebrow.rotation, { z: -Math.PI / 12, duration, ease: "power2.inOut" });
+      gsap.to(rightEyebrow.rotation, { z: Math.PI / 12, duration, ease: "power2.inOut" });
+      gsap.to([leftEye.scale, rightEye.scale], { x: 1, y: 1, z: 1, duration, ease: "power2.inOut" });
+      break;
+    case 'angry':
+      gsap.to(mouth.rotation, { x: Math.PI / 6, duration, ease: "power2.inOut" });
+      gsap.to(leftEyebrow.rotation, { z: -Math.PI / 6, duration, ease: "power2.inOut" });
+      gsap.to(rightEyebrow.rotation, { z: Math.PI / 6, duration, ease: "power2.inOut" });
+      gsap.to([leftEyebrow.position, rightEyebrow.position], { y: 2, duration, ease: "power2.inOut" });
+      gsap.to([leftEye.scale, rightEye.scale], { x: 1, y: 0.5, z: 1, duration, ease: "power2.inOut" });
+      break;
+    case 'surprised':
+      gsap.to(mouth.scale, { x: 1.2, y: 1.2, z: 1.2, duration, ease: "power2.inOut" });
+      gsap.to([leftEyebrow.position, rightEyebrow.position], { y: 2.2, duration, ease: "power2.inOut" });
+      gsap.to([leftEye.scale, rightEye.scale], { x: 1.2, y: 1.2, z: 1.2, duration, ease: "power2.inOut" });
+      break;
+    case 'confused':
+      gsap.to(leftEyebrow.rotation, { z: Math.PI / 12, duration, ease: "power2.inOut" });
+      gsap.to(rightEyebrow.rotation, { z: -Math.PI / 6, duration, ease: "power2.inOut" });
+      gsap.to(mouth.position, { x: 0.3, duration, ease: "power2.inOut" });
+      break;
+    case 'sleepy':
+      gsap.to([leftEye.scale, rightEye.scale], { x: 1, y: 0.3, z: 1, duration, ease: "power2.inOut" });
+      gsap.to(mouth.scale, { x: 0.8, y: 0.8, z: 0.8, duration, ease: "power2.inOut" });
+      gsap.to([leftEyebrow.position, rightEyebrow.position], { y: 1.6, duration, ease: "power2.inOut" });
+      break;
+    case 'neutral':
+    default:
+      gsap.to(mouth.rotation, { x: 0, duration, ease: "power2.inOut" });
+      gsap.to([leftEyebrow.rotation, rightEyebrow.rotation], { z: 0, duration, ease: "power2.inOut" });
+      gsap.to([leftEyebrow.position, rightEyebrow.position], { y: 1.8, duration, ease: "power2.inOut" });
+      gsap.to([leftEye.scale, rightEye.scale], { x: 1, y: 1, z: 1, duration, ease: "power2.inOut" });
+      gsap.to(mouth.scale, { x: 1, y: 1, z: 1, duration, ease: "power2.inOut" });
+      gsap.to(mouth.position, { x: 0, duration, ease: "power2.inOut" });
+      break;
+  }
+
+  currentExpression = expression;
+}
+
+init();
+
+const textInput = document.getElementById('textInput');
+const speakButton = document.getElementById('speakButton');
+
+function updateMouthAndExpressionBasedOnSpeech() {
+  if (!isSpeaking) return;
+
+  // Simulate audio analysis
+  const time = Date.now() * 0.01;
+  const simulatedVolume = (Math.sin(time) + 1) / 2; // Value between 0 and 1
+
+  gsap.to(mouth.scale, { y: 1 + simulatedVolume * 0.5, duration: 0.1 });
+
+  // Change expression every 2-4 seconds while speaking
+  if (Date.now() - lastExpressionChangeTime > 2000 + Math.random() * 2000) {
+    const newExpression = expressions[Math.floor(Math.random() * expressions.length)];
+    setExpressionSmooth(newExpression);
+    lastExpressionChangeTime = Date.now();
+  }
+
+  // Sync eyebrows with simulated audio
+  const eyebrowLift = simulatedVolume * 0.4;
+  gsap.to([leftEyebrow.position, rightEyebrow.position], { y: 1.8 + eyebrowLift, duration: 0.1 });
+
+  requestAnimationFrame(updateMouthAndExpressionBasedOnSpeech);
+}
+
+speakButton.addEventListener('click', () => {
+  const text = textInput.value;
+  if (text.trim() === '' || isSpeaking) return;
+
+  centerHead();
+  isSpeaking = true;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  
+  utterance.onstart = () => {
+    updateMouthAndExpressionBasedOnSpeech();
+  };
+
+  utterance.onend = () => {
+    isSpeaking = false;
+    setExpressionSmooth('neutral');
+    // Smooth transition back to idle movement
+    const startRotation = head.rotation.clone();
+    const endRotation = new THREE.Euler(
+      Math.random() * 0.2 - 0.1,
+      Math.random() * 0.4 - 0.2,
+      0
+    );
+    smoothTransition(startRotation, endRotation, 1000);
+  };
+
+  // Cancel any ongoing speech synthesis
+  speechSynthesis.cancel();
+
+  // Speak the new utterance
+  speechSynthesis.speak(utterance);
+});
+
+// Add click event listener to the head container
+document.getElementById('head-container').addEventListener('click', () => {
+  // Clear any existing timeout
+  if (clickReactionTimeout) {
+    clearTimeout(clickReactionTimeout);
+  }
+
+  // Set angry expression and change color to red
+  setExpressionSmooth('angry');
+  gsap.to(headMaterial.color, {
+    r: 1,
+    g: 0,
+    b: 0,
+    duration: 0.3
+  });
+
+  // Reset to neutral and change color back to green after 3 seconds
+  clickReactionTimeout = setTimeout(() => {
+    setExpressionSmooth('neutral');
+    gsap.to(headMaterial.color, {
+      r: 0,
+      g: 1,
+      b: 0,
+      duration: 0.3
+    });
+  }, 3000);
+});
+
+// Add touch event listeners for mobile devices
+document.getElementById('head-container').addEventListener('touchstart', (event) => {
+  event.preventDefault(); // Prevent default touch behavior
+  document.getElementById('head-container').click(); // Trigger the click event
+});
+</script>
+</body></html>
