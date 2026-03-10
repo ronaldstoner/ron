@@ -21,9 +21,8 @@ The domain stoner.com first appeared in internet registry records in 1993, makin
 
  - Google wouldn't exist for another five years 
  - Altavista and Dogpile were the search engines that actually gave decent results
- - Amazon was only selling books 
- - Netscape Navigator was the browser of the future
- - Everyone got a free webpage through providers like Geocities and Lycos
+ - Amazon wouldn't start selling books for another year
+ - Mosaic and Netscape Navigator was the browser of the future
 
 This was the internet I cut my teeth on and remember fondly. Plaintext webpages, web rings, animated GIFs, guestbooks, and so many sites "under construction". Hours lost browsing "random sites" to see what one could find, learn, and participate in.
 
