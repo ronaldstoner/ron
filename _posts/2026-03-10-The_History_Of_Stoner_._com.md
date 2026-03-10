@@ -1,10 +1,11 @@
 ---
 layout: post
 date: 2025-03-10 00:00 -0700
-title:  "The History of Stoner.com: From Pipeline Simulators to Self-Sovereignty"
+title:  "The History of Stoner.com"
 description: "A 30+ year journey through the life of a domain name"
 image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/oct-1997.png"
 ---
+##  From Pipeline Simulators to Self-Sovereignty
 
 Every domain name has a story and most of those stories have been lost. 
 Domains from the past that were registered, parked, and since forgotten. 
@@ -18,11 +19,11 @@ This is the history of **stoner.com**. A domain that has been alive since the ea
 
 The domain stoner.com first appeared in internet registry records in 1993, making it **older than most of the world wide web** as we know it. 
 
- - Google wouldn't exist for another five years. 
- - Altavista and Dogpile were the search engines that actually gave decent results.
- - Amazon was only selling books. 
- - Netscape Navigator was the browser of the future.
- - Everyone got a free webpage through providers like Geocities, Lycos, and others. 
+ - Google wouldn't exist for another five years 
+ - Altavista and Dogpile were the search engines that actually gave decent results
+ - Amazon was only selling books 
+ - Netscape Navigator was the browser of the future
+ - Everyone got a free webpage through providers like Geocities and Lycos
 
 This was the internet I cut my teeth on and remember fondly. Plaintext webpages, web rings, animated GIFs, guestbooks, and so many sites "under construction". Hours lost browsing "random sites" to see what one could find, learn, and participate in.
 
