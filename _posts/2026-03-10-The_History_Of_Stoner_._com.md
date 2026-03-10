@@ -208,6 +208,7 @@ A domain name is just a string of characters pointing at an IP address. But ston
  - It's been a resource for oil and pipeline engineers 
  - It's been a corporate asset traded between companies on three continents 
  - It's been abandoned behind firewall errors and merger redirects
+ - It's witnessed various browser, coding, and protocol changes
  - And now it's a personal site run by a security engineer who wouldn't stop sending LinkedIn messages until someone sold it to him
 
 From Donald Schroeder's PSIG treasurer listing in **1997**, to my "hello world!" in **December 2022** and onward. 
