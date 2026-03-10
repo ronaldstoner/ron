@@ -20,9 +20,9 @@ This is the history of **stoner.com**. A domain that has been alive since the ea
 The domain stoner.com first appeared in internet registry records in 1993, making it **older than most of the world wide web** as we know it. 
 
  - Google wouldn't exist for another five years 
- - Altavista and Dogpile were the search engines that actually gave decent results
+ - Altavista was the search engine that actually gave decent results
  - Amazon wouldn't start selling books for another year
- - Mosaic and Netscape Navigator was the browser of the future
+ - Mosaic and Netscape Navigator was the browsers of the future
 
 This was the internet I cut my teeth on and remember fondly. Plaintext webpages, web rings, animated GIFs, guestbooks, and so many sites "under construction". Hours lost browsing "random sites" to see what one could find, learn, and participate in.
 
