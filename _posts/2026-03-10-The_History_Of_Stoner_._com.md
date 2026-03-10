@@ -153,11 +153,11 @@ By **October 2021**, even the merger message was gone now replaced by a generic 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2021-oct.png)
 *"Error. Page cannot be displayed. Please contact your service provider for more details. (17)"*
 
-This was not looking good though I persisted. In **August 2022** I still had not made any progress on contact. While I was able to speak directly over the phone with some of the DNV GL IT Team and Executives earlier that year, no sale was offered, I was told to go away, and communication went quiet. 
+This was not looking good, though I persisted. In **August 2022** I still had not made any progress on aquiring the domain. While I was able to make contact and speak directly over the phone with some of the DNV GL IT Team and Executives earlier that year, no sale was offered, I was told to go away, and communication went quiet. 
 
-My search was dead in the water. 
+My search was effectively dead in the water. The seller didn't want to make a sale and wasn't interested in releasing control. 
 
-Then...by some stroke of luck the site had updated and a generic contact form appeared!
+Then...after some time and by some stroke of luck the site had updated and a generic contact form appeared!
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2022-aug.png)
 *A New Contact Form Appears - circa late 2022* 
