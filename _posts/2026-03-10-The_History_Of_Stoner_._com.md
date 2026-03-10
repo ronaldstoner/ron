@@ -17,7 +17,7 @@ This is the history of **stoner.com**. A domain that has been alive since the ea
 
 ## 1993–1997: The Pipeline Era
 
-The domain stoner.com first appeared in internet registry records in 1993, making it **older than most of the world wide web** as we know it. 
+The domain stoner.com first appeared in internet registry records in **1993**, making it **older than most of the world wide web** as we know it. 
 
  - Google wouldn't exist for another five years 
  - Altavista was the search engine that actually gave decent results
@@ -26,18 +26,18 @@ The domain stoner.com first appeared in internet registry records in 1993, makin
 
 This was the internet I cut my teeth on and remember fondly. Plaintext webpages, web rings, animated GIFs, guestbooks, and so many sites "under construction". Hours lost browsing "random sites" to see what one could find, learn, and participate in.
 
-The domain in those early days belonged to **Stoner Associates, Inc. (SAI)**, a software company based in Carlisle, Pennsylvania. Stoner Associates had nothing to do with cannabis culture to the surprise of many. They built pipeline simulation and network modeling software for the natural gas, water, electric, and petroleum industries. The company had been around since at least the mid 1980s, steadily acquiring smaller firms and building out an enterprise software suite used by utilities around the world.
+The domain in those early days belonged to **Stoner Associates, Inc. (SAI)**, a software company based in Carlisle, Pennsylvania. Stoner Associates had nothing to do with cannabis culture or firearms to the surprise of many. They built pipeline simulation and network modeling software for the natural gas, water, electric, and petroleum industries. The company had been around since at least the mid **1980s**, steadily acquiring smaller firms and building out an enterprise software suite used by utilities around the world.
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/stoner_sps1.png)
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/stoner_sps2.png)
 *Stoner Pipeline Simulator*
 
-The first Wayback Machine snapshot of the site dates to **July 22, 1997**. At the time, Stoner Associates was hosting the **Pipeline Simulation Interest Group (PSIG)** homepage on the domain. PSIG was a niche professional organization founded in 1969, dedicated to ***exciting*** things like advancing pipeline modeling and simulation. Their annual meetings drew about 130 attendees comprised of gas company engineers, oil industry consultants, and academics from around the globe. Their agenda was to discuss transient flow dynamics, two-phase flow, optimization techniques in a characteristically "unstructured, informal manner", and all things gas and pipelines.
+The first Wayback Machine snapshot of the site dates to **July 22, 1997**. At the time, Stoner Associates was hosting the **Pipeline Simulation Interest Group (PSIG)** homepage on the domain. PSIG was a niche professional organization founded in **1969**, dedicated to ***exciting*** things like advancing pipeline modeling and simulation. Their annual meetings drew about 130 attendees comprised of gas company engineers, oil industry consultants, and academics from around the globe. Their agenda was to discuss transient flow dynamics, two-phase flow, optimization techniques in a characteristically "unstructured, informal manner", and all things gas and pipelines.
  
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1997-jul.png)
 *stoner.com circa 1997*
 
-The page was pure early 1990s web with plain HTML, no CSS to speak of, a long list of hyperlinks to organizations like the American Gas Association, Chevron Pipeline Company, the Office of Pipeline Safety, and a contact directory. The treasurer's contact was listed at the bottom — Donald W. Schroeder Jr., Stoner Associates, Inc., P.O. Box 86, Carlisle, PA 17013 with his email at `schroed@stoner.com`.
+The page was pure early **1990s** web with plain HTML, no CSS to speak of, a long list of hyperlinks to organizations like the American Gas Association, Chevron Pipeline Company, the Office of Pipeline Safety, and a contact directory. The treasurer's contact was listed at the bottom — Donald W. Schroeder Jr., Stoner Associates, Inc., P.O. Box 86, Carlisle, PA 17013 with his email at `schroed@stoner.com`.
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1997-treasurer.png)
 
@@ -48,7 +48,7 @@ It was a simpler time and a simpler internet. Some would say, a better and more 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1997-dec.png)
 *Severn Trent - 1997*
 
-By the end of 1997, the site transitioned to showcase the **Severn Trent Systems** group of companies. Severn Trent, a UK-based utility conglomerate, had absorbed Stoner Associates as one of three business units alongside Severn Trent Systems (US) and STS (UK).
+By the end of **1997**, the site transitioned to showcase the **Severn Trent Systems** group of companies. Severn Trent, a UK-based utility conglomerate, had absorbed Stoner Associates as one of three business units alongside Severn Trent Systems (US) and STS (UK).
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1998-dec.png)
 *Severn Trent - 1999*
@@ -59,12 +59,12 @@ By 1999 the site had received fresh branding and added a fifth office in Swindon
 
 ## 2000–2003: Rebrands on Rebrands
 
-The early 2000s brought the kind of corporate identity churn that defined the era. The site went through multiple rebrands while still under the Severn Trent umbrella. It had a refreshed look in 2000 and another in 2001. 
+The early 2000s brought the kind of corporate identity churn that defined the era. The site went through multiple rebrands while still under the Severn Trent umbrella. It had a refreshed look in **2000** and another in **2001**. 
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2002-apr.png)
 *Advantica Stoner - circa Late 2001/2002*
 
-In **2001** Stoner Associates was acquired by Advantica, creating **Advantica Stoner**. The company moved its Pennsylvania office to Mechanicsburg later on in 2006. This will be important later in my story.
+In **2001** Stoner Associates was acquired by Advantica, creating **Advantica Stoner**. The company moved its Pennsylvania office to Mechanicsburg later on in **2006**. This will be important later in my story.
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2002-advantica1.png)
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2002-advantica2.png)
@@ -88,15 +88,15 @@ Then came the firewall errors. In **March 2004**, the site went down with a "FW-
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2006-jan.png)
 *stoner.com - circa 2005/2006*
 
-The problem was Flash was a resource hog, a security nightmare, and completely invisible to search engines. It didn't work on mobile when smartphones started taking off, and Apple's decision to block Flash on the iPhone in 2010 was the beginning of the end. Steve Jobs publicly called it out for its poor performance and security vulnerabilities, which was the opposite take of most at the time. HTML5 and other technologies eventually replaced everything Flash could do natively in the browser with no plugins required. Adobe officially killed Flash somewhere around 2020. So stoner.com was moving in the right direction by stripping Flash out. 
+The problem was Flash was a resource hog, a security nightmare, and completely invisible to search engines. It didn't work on mobile when smartphones started taking off, and Apple's decision to block Flash on the iPhone in **2010** was the beginning of the end. Steve Jobs publicly called it out for its poor performance and security vulnerabilities, which was the opposite take of most at the time. HTML5 and other technologies eventually replaced everything Flash could do natively in the browser with no plugins required. Adobe officially killed Flash somewhere around **2020**. So stoner.com was moving in the right direction by stripping Flash out. 
 
 The site's footer proudly declared:
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2006-jun.png)
 *"This website is best viewed in Internet Explorer version 6."*
 
-This was a timestamp of a different era entirely. Microsoft Internet Explorer dominated the web browser market for years. At its peak in the early 2000s it held over 90% of the market share. It came bundled with the Windows operating system and for most people this *was* the internet. That started changing when Mozilla Firefox showed up and gave people a real alternative with features like tabbed browsing, better standards, and extensions. By the time Microsoft finally put IE out of its misery in 2022, it was a joke (and had been for some time). But back then in 2005, optimizing your site for IE6 was how it was done.
+This was a timestamp of a different era entirely. Microsoft Internet Explorer dominated the web browser market for years. At its peak in the early **2000s** it held over 90% of the market share. It came bundled with the Windows operating system and for most people this *was* the internet. That started changing when Mozilla Firefox showed up and gave people a real alternative with features like tabbed browsing, better standards, and extensions. By the time Microsoft finally put IE out of its misery in **2022**, it was a joke (and had been for some time). But back then in **2005**, optimizing your site for IE6 was how it was done.
 
-From **2007 through 2010**, the site was essentially dormant. Two minor content updates in 2007, two in 2008, and then nothing at all in 2009 and 2010. The domain was alive, but just barely. It is unknown if the domain was owned by Advantica at this time, or if a new owner had taken over (it looks like an acquisition happened sometime in 2007).
+From **2007 through 2010**, the site was essentially dormant. Two minor content updates in **2007**, two in **2008**, and then nothing at all in **2009** and **2010**. The domain was alive, but just barely. It is unknown if the domain was owned by Advantica at this time, or if a new owner had taken over (it looks like an acquisition happened sometime in **2007**).
 
 ## 2011–2013: GL Noble Denton
 
@@ -112,7 +112,7 @@ GL Noble Denton positioned themselves as offering "a comprehensive portfolio of 
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2013-may.png)
 
-By **2013**, any mention of "Stoner" had been scrubbed from the site entirely. The pipeline simulation legacy of Stoner Associates was fading into corporate archaeology. This is also around the time I started monitoring the site and checking in regularly with the owners to see if they would be interested in a potential sale. No luck on that front in 2013.
+By **2013**, any mention of "Stoner" had been scrubbed from the site entirely. The pipeline simulation legacy of Stoner Associates was fading into corporate archaeology. This is also around the time I started monitoring the site and checking in regularly with the owners to see if they would be interested in a potential sale. No luck on that front in **2013**.
 
 ## 2014–2017: DNV GL and the Merger Void
 
@@ -137,13 +137,13 @@ That was it. The 24-year history of stoner.com as a utility software domain was 
 
 This is where I started to get ruthlessly aggressive.
 
-I'd been watching stoner.com since around 2013. I tried unsuccessfully using domain backfill services, negotiation services and agents, and spoke to resellers in the space about my approach. 
+I'd been watching stoner.com since around **2013**. I tried unsuccessfully using domain backfill services, negotiation services and agents, and spoke to resellers in the space about my approach. 
 
-The DNV GL merger left the domain displaying nothing but a plaintext redirect message and I knew this was my chance. There was just one problem. How would I get a massive multinational corporation to sell me a six letter .com 1993 domain? 
+The DNV GL merger left the domain displaying nothing but a plaintext redirect message and I knew this was my chance. There was just one problem. How would I get a massive multinational corporation to sell me a six letter .com **1993** domain? 
 
 I looked up WHOIS records. I drove hours to physical addresses listed in registration data (including the old Carlisle and Mechanicsburg PA office locations). I sent LinkedIn messages. I stalked DNV GL executives on Twitter and blew up their emails and DMs (sorry). I did everything short of showing up at their Oslo headquarters with a suitcase full of money (though I did consider it and was pricing out plane tickets). The domain name was perfect. It was *my name*. And I was not going to let it rot as a dead plaintext redirect...
 
-Through 2018 and 2019, the same merger message sat on the site. No updates. No response to my inquiries. I was slowly losing my mind and my window was closing.
+Through **2018** and **2019**, the same merger message sat on the site. No updates. No response to my inquiries. I was slowly losing my mind and my window was closing.
 
 The WHOIS records at this time still showed the domain registered to **Advantica, Inc.** (the old owner) with nameservers at Windstream Hosting and an admin email at `dnsadmin@stoner.com`. The domain was technically active, but completely abandoned in practice with no response from any of the contact addresses. Cobwebs were forming around its digital corpse.
 
@@ -210,8 +210,12 @@ A domain name is just a string of characters pointing at an IP address. But ston
  - It's been abandoned behind firewall errors and merger redirects
  - And now it's a personal site run by a security engineer who wouldn't stop sending LinkedIn messages until someone sold it to him
 
-From Donald Schroeder's PSIG treasurer listing in 1997, to my "hello world!" in December 2022 and onward. 
+From Donald Schroeder's PSIG treasurer listing in **1997**, to my "hello world!" in **December 2022** and onward. 
 
 **If you own a domain or are in a similar situation, please consider doing the same style of documentation and history before it's lost forever**
 
 ***-Ron***
+
+## References
+Wayback Machine - https://web.archive.org/web/19990427111041/http://www.stoner.com/
+50 Years of Pipeline Excellence - https://www.dnv.com/software/campaigns-2020/pipeline-50-years-of-excellence/
