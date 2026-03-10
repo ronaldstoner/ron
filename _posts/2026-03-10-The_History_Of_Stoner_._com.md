@@ -206,10 +206,10 @@ Today, stoner.com is my home where I write about and host my projects related to
 
 A domain name is just a string of characters pointing at an IP address. But stoner.com has had a life and a story, as did many domain names. 
 
- - It's been a resource for oil and pipeline engineers. 
- - It's been a corporate asset traded between companies on three continents. 
- - It's been abandoned behind firewall errors and merger redirects. 
- - And now it's a personal blog run by a security engineer who wouldn't stop sending LinkedIn messages until someone sold it to him.
+ - It's been a resource for oil and pipeline engineers 
+ - It's been a corporate asset traded between companies on three continents 
+ - It's been abandoned behind firewall errors and merger redirects
+ - And now it's a personal site run by a security engineer who wouldn't stop sending LinkedIn messages until someone sold it to him
 
 From Donald Schroeder's PSIG treasurer listing in 1997, to my "hello world!" in December 2022 and onward. 
 
