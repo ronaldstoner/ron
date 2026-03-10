@@ -38,7 +38,7 @@ The first Wayback Machine snapshot of the site dates to **July 22, 1997**. At th
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1997-jul.png)
 *stoner.com circa 1997*
 
-The page was pure early 1990s web with plain HTML, no CSS to speak of, a long list of hyperlinks to organizations like the American Gas Association, Chevron Pipeline Company, and the Office of Pipeline Safety and a contact directory. The treasurer's contact was listed at the bottom — Donald W. Schroeder Jr., Stoner Associates, Inc., P.O. Box 86, Carlisle, PA 17013 — with his email at `schroed@stoner.com`.
+The page was pure early 1990s web with plain HTML, no CSS to speak of, a long list of hyperlinks to organizations like the American Gas Association, Chevron Pipeline Company, the Office of Pipeline Safety, and a contact directory. The treasurer's contact was listed at the bottom — Donald W. Schroeder Jr., Stoner Associates, Inc., P.O. Box 86, Carlisle, PA 17013 with his email at `schroed@stoner.com`.
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1997-treasurer.png)
 
@@ -52,7 +52,7 @@ It was a simpler time and a simpler internet. Some would say, a better and more 
 By the end of 1997, the site transitioned to showcase the **Severn Trent Systems** group of companies. Severn Trent, a UK-based utility conglomerate, had absorbed Stoner Associates as one of three business units alongside Severn Trent Systems (US) and STS (UK).
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1998-dec.png)
-*Severn Trent - 1998*
+*Severn Trent - 1999*
 
 The site described over 500 employees across offices in Houston, Carlisle, Phoenix, and Birmingham, England. The messaging was enterprise software through and through with taglines such as "SolutionSuite," "world-class customer information systems," and "network modeling products." A timeline of acquisitions painted the picture of a company growing through consolidation.
 
