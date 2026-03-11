@@ -22,7 +22,7 @@ The domain stoner.com first appeared in internet registry records in **1993**, m
  - Google wouldn't exist for another five years 
  - Altavista was the search engine that actually gave decent results
  - Amazon wouldn't start selling books for another year
- - Mosaic and Netscape Navigator was the browsers of the future
+ - Mosaic and Netscape Navigator were the browsers of the future
 
 This was the internet I cut my teeth on and remember fondly. Plaintext webpages, web rings, animated GIFs, guestbooks, and so many sites "under construction". Hours lost browsing "random sites" to see what one could find, learn, and participate in.
 
@@ -218,5 +218,6 @@ From Donald Schroeder's PSIG treasurer listing in **1997**, to my "hello world!"
 ***-Ron***
 
 ## References
-Wayback Machine - https://web.archive.org/web/19990427111041/http://www.stoner.com/
-50 Years of Pipeline Excellence - https://www.dnv.com/software/campaigns-2020/pipeline-50-years-of-excellence/
+
+- [Wayback Machine](https://web.archive.org/web/19990427111041/http://www.stoner.com/)
+- [50 Years of Pipeline Excellence](https://www.dnv.com/software/campaigns-2020/pipeline-50-years-of-excellence/)
