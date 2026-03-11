@@ -154,7 +154,7 @@ By **October 2021**, even the merger message was gone now replaced by a generic 
 
 This was not looking good, though I persisted. In **August 2022** I still had not made any progress on aquiring the domain. While I was able to make contact and speak directly over the phone with some of the DNV GL IT Team and Executives earlier that year, no sale was offered, I was told to go away, and communication went quiet. 
 
-My search was effectively dead in the water. The seller didn't want to make a sale and wasn't interested in releasing control. 
+My search was effectively dead in the water. The owner didn't want to make a sale and wasn't interested in releasing control. 
 
 Then...after some time and by some stroke of luck the site had updated and a generic contact form appeared!
 
