@@ -16,6 +16,8 @@
             --bg-card-hover: #1a1a26;
             --purple-glow: #836EF9;
             --purple-dim: #5a4ab5;
+            --purple-light: #a78bfa;
+            --purple-mid: #9370f9;
             --green: #00f5a0;
             --red: #ff3b5c;
             --yellow: #ffd700;
@@ -103,24 +105,24 @@
             border-color: rgba(131, 110, 249, 0.3);
         }
 
-        /* Click target button */
+        /* Click target button — base (used by go/early states) */
         .click-target {
             position: absolute;
-            width: 80px;
-            height: 80px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             z-index: 3;
-            transition: transform 0.1s, box-shadow 0.1s;
+            transition: transform 0.15s, box-shadow 0.15s;
             outline: none;
         }
 
@@ -132,22 +134,52 @@
             transform: scale(0.95);
         }
 
+        /* Start button — large, inviting, centered */
         .click-target.target-start {
+            width: 120px;
+            height: 120px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
             background: linear-gradient(135deg, var(--purple-glow), #b86eff);
             color: #fff;
-            box-shadow: 0 0 20px rgba(131, 110, 249, 0.4);
+            box-shadow: 0 0 30px rgba(131, 110, 249, 0.4), 0 0 80px rgba(131, 110, 249, 0.15);
+            animation: startPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes startPulse {
+            from { box-shadow: 0 0 30px rgba(131, 110, 249, 0.4), 0 0 80px rgba(131, 110, 249, 0.15); }
+            to { box-shadow: 0 0 40px rgba(131, 110, 249, 0.6), 0 0 100px rgba(131, 110, 249, 0.25); }
         }
 
         .click-target.target-go {
             background: linear-gradient(135deg, var(--green), #00c97f);
             color: #000;
             box-shadow: 0 0 30px rgba(0, 245, 160, 0.5);
-            animation: targetPulse 0.6s ease-in-out infinite alternate;
+            animation: targetPulse 0.6s ease-in-out infinite alternate, targetDrift 2.5s ease-in-out infinite;
+            transition: none;
+        }
+
+        .click-target.target-go:hover {
+            transform: none;
+        }
+
+        .click-target.target-go:active {
+            transform: none;
         }
 
         @keyframes targetPulse {
             from { box-shadow: 0 0 20px rgba(0, 245, 160, 0.4); }
             to { box-shadow: 0 0 40px rgba(0, 245, 160, 0.7); }
+        }
+
+        @keyframes targetDrift {
+            0%   { translate: 0 0; }
+            20%  { translate: 10px -7px; }
+            40%  { translate: -8px 12px; }
+            60%  { translate: 14px 5px; }
+            80%  { translate: -12px -9px; }
+            100% { translate: 0 0; }
         }
 
         .click-target.target-result {
@@ -158,17 +190,29 @@
             height: auto;
             padding: 12px 32px;
             border-radius: 12px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             left: 50% !important;
             bottom: 56px !important;
             top: auto !important;
             transform: translateX(-50%) !important;
+            animation: none;
         }
 
         .click-target.target-early {
+            width: 120px;
+            height: 120px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
             background: linear-gradient(135deg, var(--red), #cc2040);
             color: #fff;
-            box-shadow: 0 0 20px rgba(255, 59, 92, 0.4);
+            box-shadow: 0 0 30px rgba(255, 59, 92, 0.4), 0 0 80px rgba(255, 59, 92, 0.15);
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            animation: none;
         }
 
         .game-status {
@@ -182,7 +226,9 @@
         }
 
         .game-status .status-text {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
+            font-weight: 500;
             color: var(--text-dim);
         }
 
@@ -193,6 +239,21 @@
         .game-area.state-ready {
             background: linear-gradient(135deg, #1a0a0a, #2a0a0a);
             border-color: rgba(255, 59, 92, 0.3);
+        }
+
+        .game-area.state-ready .game-status {
+            bottom: auto;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .game-area.state-ready .status-text {
+            animation: waitPulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes waitPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.25; }
         }
 
         .game-area.state-go {
@@ -271,12 +332,12 @@
             to { transform: scale(4); opacity: 0; }
         }
 
-        /* Chain comparison section */
-        .chains-section {
+        /* Pipeline section */
+        .pipeline-section {
             margin-bottom: 32px;
         }
 
-        .chains-section h2 {
+        .pipeline-section h2 {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-secondary);
@@ -285,19 +346,20 @@
             margin-bottom: 16px;
         }
 
-        .chain-bars {
+        .pipeline-bars {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            padding-top: 20px; /* room for block tick labels above You bar */
         }
 
-        .chain-row {
+        .pipeline-row {
             display: flex;
             align-items: center;
             gap: 16px;
         }
 
-        .chain-label {
+        .pipeline-label {
             width: 100px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -309,7 +371,7 @@
             gap: 8px;
         }
 
-        .chain-logo {
+        .pipeline-logo {
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -321,7 +383,7 @@
             flex-shrink: 0;
         }
 
-        .chain-bar-container {
+        .pipeline-bar-container {
             flex: 1;
             height: 40px;
             background: rgba(255, 255, 255, 0.03);
@@ -330,7 +392,7 @@
             overflow: visible;
         }
 
-        .chain-bar {
+        .pipeline-bar {
             height: 100%;
             border-radius: 8px;
             position: relative;
@@ -340,7 +402,7 @@
             width: 0%;
         }
 
-        .chain-bar-time {
+        .pipeline-bar-time {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
             font-weight: 600;
@@ -352,89 +414,65 @@
         }
 
         /* When bar is wide enough, put label inside */
-        .chain-bar-time.inside {
+        .pipeline-bar-time.inside {
             right: 10px;
             transform: none;
             color: var(--text-primary);
         }
 
-        .chain-bar.monad { background: linear-gradient(90deg, rgba(131, 110, 249, 0.4), rgba(131, 110, 249, 0.7)); }
-        .chain-bar.you { background: linear-gradient(90deg, rgba(0, 245, 160, 0.4), rgba(0, 245, 160, 0.7)); }
-        .chain-bar.solana { background: linear-gradient(90deg, rgba(0, 212, 255, 0.3), rgba(0, 212, 255, 0.6)); }
-        .chain-bar.ethereum {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4));
-            border-radius: 8px 0 0 8px;
-        }
-        .chain-bar.bitcoin {
-            background: linear-gradient(90deg, rgba(255, 140, 0, 0.3), rgba(255, 140, 0, 0.6));
-            border-radius: 8px 0 0 8px;
-        }
+        .pipeline-bar.you { background: linear-gradient(90deg, rgba(0, 245, 160, 0.4), rgba(0, 245, 160, 0.7)); }
+        .pipeline-bar.proposed { background: linear-gradient(90deg, rgba(167, 139, 250, 0.3), rgba(167, 139, 250, 0.6)); }
+        .pipeline-bar.voted { background: linear-gradient(90deg, rgba(147, 112, 249, 0.3), rgba(147, 112, 249, 0.6)); }
+        .pipeline-bar.finalized { background: linear-gradient(90deg, rgba(131, 110, 249, 0.4), rgba(131, 110, 249, 0.7)); }
 
-        /* Overflow chains — scaled */
-        .chain-bar.overflow {
-            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-            background-repeat: no-repeat;
+        .pipeline-bars-wrapper {
             position: relative;
-            border-radius: 8px 0 0 8px;
         }
 
-        .chain-bar.overflow::after {
-            content: '';
+        /* Pipeline tick marks on the You bar */
+        .pipeline-tick {
             position: absolute;
-            right: 0;
             top: 0;
             bottom: 0;
-            width: 40px;
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 4px,
-                rgba(255,255,255,0.06) 4px,
-                rgba(255,255,255,0.06) 8px
-            );
-            border-radius: 0;
+            width: 1px;
+            z-index: 4;
+            pointer-events: none;
         }
 
-        /* Outside time label for overflow chains */
-        .chain-time-outside {
+        .pipeline-tick.tick-proposed {
+            background: rgba(167, 139, 250, 0.25);
+        }
+
+        .pipeline-tick.tick-voted {
+            background: rgba(147, 112, 249, 0.35);
+        }
+
+        .pipeline-tick.tick-finalized {
+            background: rgba(131, 110, 249, 0.6);
+            width: 2px;
+        }
+
+        .pipeline-tick-label {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.55rem;
+            font-weight: 700;
             white-space: nowrap;
-            margin-left: 10px;
-            flex-shrink: 0;
-            color: var(--text-secondary);
+            pointer-events: none;
         }
 
-        .chain-time-outside .mult {
+        .pipeline-tick.tick-finalized .pipeline-tick-label {
+            color: var(--purple-glow);
+        }
+
+        .pipeline-tick.tick-proposed .pipeline-tick-label,
+        .pipeline-tick.tick-voted .pipeline-tick-label {
             color: var(--text-dim);
             font-weight: 500;
         }
-
-        .you-marker {
-            position: absolute;
-            top: -8px;
-            bottom: -8px;
-            width: 2px;
-            background: var(--green);
-            box-shadow: 0 0 8px var(--green);
-            z-index: 5;
-            transition: left 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-            left: 0%;
-        }
-
-        .you-marker::after {
-            content: 'YOU';
-            position: absolute;
-            top: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.65rem;
-            font-weight: 800;
-            color: var(--green);
-            letter-spacing: 0.1em;
-        }
-
 
         /* Stats strip */
         .stats-strip {
@@ -521,7 +559,7 @@
         }
 
         .monad-line::after {
-            content: 'MONAD 400ms';
+            content: 'PROPOSED 400ms';
             position: absolute;
             right: 0;
             bottom: 2px;
@@ -529,6 +567,42 @@
             font-weight: 600;
             color: var(--purple-dim);
             letter-spacing: 0.05em;
+        }
+
+        .finalized-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-bottom: 1px dashed rgba(131, 110, 249, 0.25);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .finalized-line::after {
+            content: 'FINALIZED 1200ms';
+            position: absolute;
+            right: 0;
+            bottom: 2px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: var(--purple-dim);
+            letter-spacing: 0.05em;
+            opacity: 0.7;
+        }
+
+        .disclaimer {
+            margin-top: 32px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(131, 110, 249, 0.1);
+            background: var(--bg-card);
+        }
+
+        .disclaimer p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--text-dim);
         }
 
         .hidden { display: none !important; }
@@ -572,24 +646,25 @@
             .game-area { height: 300px; }
             .result-overlay .reaction-time { font-size: 3.2rem; }
             .result-overlay .verdict { font-size: 1rem; }
-            .click-target { width: 70px; height: 70px; font-size: 0.65rem; }
+            .click-target { width: 48px; height: 48px; font-size: 0.5rem; }
+            .click-target.target-start, .click-target.target-early { width: 100px; height: 100px; font-size: 0.8rem; }
             .click-target.target-result { padding: 10px 24px; }
             .stats-strip { grid-template-columns: repeat(2, 1fr); }
             .stat-card .stat-value { font-size: 1.2rem; }
-            .chain-label { width: 36px; font-size: 0; gap: 0; }
-            .chain-label span { display: none; }
-            .chain-logo { width: 24px; height: 24px; font-size: 10px; }
-            .chain-row { gap: 8px; }
-            .chain-bar-time { font-size: 0.6rem; padding: 0 6px; }
-            .chain-bar-container { height: 34px; }
-            .chains-section { margin-bottom: 24px; }
+            .pipeline-label { width: 72px; font-size: 0.7rem; gap: 4px; }
+            .pipeline-logo { width: 24px; height: 24px; font-size: 10px; }
+            .pipeline-row { gap: 8px; }
+            .pipeline-bar-time { font-size: 0.6rem; padding: 0 6px; }
+            .pipeline-bar-container { height: 34px; }
+            .pipeline-section { margin-bottom: 24px; }
             .history-bars { height: 60px; }
         }
 
         @media (max-width: 380px) {
             .header h1 { font-size: 1.7rem; }
             .result-overlay .reaction-time { font-size: 2.6rem; }
-            .click-target { width: 64px; height: 64px; }
+            .click-target { width: 44px; height: 44px; }
+            .click-target.target-start, .click-target.target-early { width: 88px; height: 88px; font-size: 0.75rem; }
             .stat-card { padding: 12px 8px; }
             .stat-card .stat-value { font-size: 1rem; }
         }
@@ -612,66 +687,62 @@
         /* Hide cursor on game area during ready state */
         .game-area.state-ready { cursor: default; }
         .game-area.state-go { cursor: default; }
-
-        .chain-bars-wrapper {
-            position: relative;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>How Fast Is <span class="accent">400ms</span>?</h1>
-            <p>Can you react faster than Monad finalizes a block?</p>
+            <p>Can you react faster than Monad proposes a block?</p>
         </div>
 
         <div class="game-area state-waiting" id="gameArea">
             <button class="click-target target-start" id="clickTarget" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">START</button>
             <div class="result-overlay hidden" id="resultOverlay"></div>
             <div class="game-status" id="gameStatus">
-                <span class="status-text">Click the button to test your reaction time</span>
+                <span class="status-text" style="font-size: 0.9rem;">Test your reaction time</span>
             </div>
         </div>
 
-        <!-- Chain comparison bars (hidden until first result) -->
-        <div class="chains-section hidden" id="chainsSection">
-            <h2>Finality Race</h2>
-            <div class="chain-bars-wrapper">
-                <div class="chain-bars" id="chainBars">
-                    <div class="chain-row">
-                        <div class="chain-label">
+        <!-- Monad consensus pipeline (hidden until first result) -->
+        <div class="pipeline-section hidden" id="pipelineSection">
+            <h2>Monad Consensus Pipeline</h2>
+            <div class="pipeline-bars-wrapper">
+                <div class="pipeline-bars" id="pipelineBars">
+                    <div class="pipeline-row">
+                        <div class="pipeline-label">
                             <span style="color: var(--green)">You</span>
-                            <div class="chain-logo" style="background: var(--green); color: #000;">Y</div>
+                            <div class="pipeline-logo" style="background: var(--green); color: #000;">Y</div>
                         </div>
-                        <div class="chain-bar-container">
-                            <div class="chain-bar you" id="barYou"></div>
-                        </div>
-                    </div>
-                    <div class="chain-row">
-                        <div class="chain-label">
-                            <span style="color: var(--purple-glow)">Monad</span>
-                            <div class="chain-logo" style="background: var(--purple-glow); color: #fff;">M</div>
-                        </div>
-                        <div class="chain-bar-container">
-                            <div class="chain-bar monad" id="barMonad"></div>
+                        <div class="pipeline-bar-container" id="youBarContainer">
+                            <div class="pipeline-bar you" id="barYou"></div>
                         </div>
                     </div>
-                    <div class="chain-row">
-                        <div class="chain-label">
-                            <span style="color: var(--cyan)">Solana</span>
-                            <div class="chain-logo" style="background: var(--cyan); color: #000;">S</div>
+                    <div class="pipeline-row">
+                        <div class="pipeline-label">
+                            <span style="color: var(--purple-light)">Proposed</span>
+                            <div class="pipeline-logo" style="background: var(--purple-light); color: #fff;">P</div>
                         </div>
-                        <div class="chain-bar-container">
-                            <div class="chain-bar solana" id="barSolana"></div>
+                        <div class="pipeline-bar-container">
+                            <div class="pipeline-bar proposed" id="barProposed"></div>
                         </div>
                     </div>
-                    <div class="chain-row">
-                        <div class="chain-label">
-                            <span style="color: var(--text-primary)">Ethereum</span>
-                            <div class="chain-logo" style="background: #fff; color: #000;">E</div>
+                    <div class="pipeline-row">
+                        <div class="pipeline-label">
+                            <span style="color: var(--purple-mid)">Voted</span>
+                            <div class="pipeline-logo" style="background: var(--purple-mid); color: #fff;">V</div>
                         </div>
-                        <div class="chain-bar-container">
-                            <div class="chain-bar ethereum overflow" id="barEthereum"></div>
+                        <div class="pipeline-bar-container">
+                            <div class="pipeline-bar voted" id="barVoted"></div>
+                        </div>
+                    </div>
+                    <div class="pipeline-row">
+                        <div class="pipeline-label">
+                            <span style="color: var(--purple-glow)">Finalized</span>
+                            <div class="pipeline-logo" style="background: var(--purple-glow); color: #fff;">F</div>
+                        </div>
+                        <div class="pipeline-bar-container">
+                            <div class="pipeline-bar finalized" id="barFinalized"></div>
                         </div>
                     </div>
                 </div>
@@ -695,7 +766,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="statBeats">0</div>
-                <div class="stat-label">Beat Monad</div>
+                <div class="stat-label">Beat Proposed</div>
             </div>
         </div>
 
@@ -705,31 +776,39 @@
             <div style="position: relative;">
                 <div class="history-bars" id="historyBars"></div>
                 <div class="monad-line" id="monadLine" style="display:none;"></div>
+                <div class="finalized-line" id="finalizedLine" style="display:none;"></div>
             </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer hidden" id="disclaimer">
+            <p>This is a simulation based on Monad's target consensus timing under ideal conditions. Real-world performance depends on network propagation, validator uptime, and other factors. Block proposals may not always finalize.</p>
         </div>
     </div>
 
     <script>
-        const CHAINS = {
-            monad:    { time: 400,      label: 'Monad',    color: '#836EF9' },
-            solana:   { time: 12800,    label: 'Solana',   color: '#00d4ff' },
-            ethereum: { time: 384000,   label: 'Ethereum', color: '#ffffff' },
-            bitcoin:  { time: 600000,   label: 'Bitcoin',  color: '#ff8c00' },
+        // Monad consensus pipeline stages
+        const PIPELINE = {
+            proposed:  { time: 400,  label: 'Proposed',  color: '#a78bfa' },
+            voted:     { time: 800,  label: 'Voted',     color: '#9370f9' },
+            finalized: { time: 1200, label: 'Finalized', color: '#836EF9' },
         };
 
-        const MAX_DISPLAY_MS = 600000;
-        const TARGET_SIZE = 80;
+        const TARGET_SIZES = [40, 52, 64]; // small, medium, large
 
         let state = 'waiting'; // waiting | ready | go | result | early
         let goTimestamp = 0;
         let timeoutId = null;
+        let jumpIntervalId = null;
+        let roundTimeoutId = null;
+        const ROUND_TIME_LIMIT = 12000; // 12s ≈ 10 blocks
         let results = [];
 
         const gameArea = document.getElementById('gameArea');
         const clickTarget = document.getElementById('clickTarget');
         const resultOverlay = document.getElementById('resultOverlay');
         const gameStatus = document.getElementById('gameStatus');
-        const chainsSection = document.getElementById('chainsSection');
+        const pipelineSection = document.getElementById('pipelineSection');
         const historySection = document.getElementById('historySection');
 
         function setState(newState) {
@@ -737,11 +816,17 @@
             gameArea.className = 'game-area state-' + newState;
         }
 
-        function randomizeTargetPosition() {
+        function randomizeTargetPosition(randomizeSize) {
             const area = gameArea.getBoundingClientRect();
-            // Get actual rendered size of target (varies on mobile)
-            const targetW = clickTarget.offsetWidth || TARGET_SIZE;
-            const targetH = clickTarget.offsetHeight || TARGET_SIZE;
+
+            if (randomizeSize) {
+                const size = TARGET_SIZES[Math.floor(Math.random() * TARGET_SIZES.length)];
+                clickTarget.style.width = size + 'px';
+                clickTarget.style.height = size + 'px';
+            }
+
+            const targetW = clickTarget.offsetWidth || 56;
+            const targetH = clickTarget.offsetHeight || 56;
             const pad = 12;
             const maxX = area.width - targetW - pad * 2;
             const maxY = area.height - targetH - pad * 2 - 40; // leave room for status
@@ -750,6 +835,22 @@
             clickTarget.style.left = x + 'px';
             clickTarget.style.top = y + 'px';
             clickTarget.style.transform = 'none';
+        }
+
+        function startJumping() {
+            stopJumping();
+            jumpIntervalId = setInterval(() => {
+                if (state === 'go') {
+                    randomizeTargetPosition(true);
+                }
+            }, 600 + Math.random() * 400);
+        }
+
+        function stopJumping() {
+            if (jumpIntervalId) {
+                clearInterval(jumpIntervalId);
+                jumpIntervalId = null;
+            }
         }
 
         // Only the button is clickable — no keyboard, no clicking the background
@@ -777,24 +878,29 @@
 
         function startRound() {
             if (timeoutId) clearTimeout(timeoutId);
+            if (roundTimeoutId) clearTimeout(roundTimeoutId);
             setState('ready');
             resultOverlay.classList.add('hidden');
 
             // Hide the target during the wait phase
             clickTarget.style.display = 'none';
-            gameStatus.innerHTML = '<span class="status-text" style="color: var(--red);">Wait for it...</span>';
+            gameStatus.innerHTML = '<span class="status-text" style="color: var(--red); font-size: 1.1rem; font-weight: 700;">Wait for it\u2026</span>';
 
             const delay = 1500 + Math.random() * 3500;
             timeoutId = setTimeout(() => {
                 setState('go');
                 goTimestamp = performance.now();
 
-                // Show target at random position
-                randomizeTargetPosition();
+                // Show target at random position and size
+                randomizeTargetPosition(true);
                 clickTarget.style.display = 'flex';
                 clickTarget.className = 'click-target target-go';
                 clickTarget.textContent = 'CLICK!';
-                gameStatus.innerHTML = '<span class="status-text" style="color: var(--green);">NOW! Hit the button!</span>';
+                gameStatus.innerHTML = '<span class="status-text" style="color: var(--green); font-size: 1.2rem; font-weight: 800;">NOW!</span>';
+                startJumping();
+
+                // Auto-end round after 12s
+                roundTimeoutId = setTimeout(timeUp, ROUND_TIME_LIMIT);
             }, delay);
         }
 
@@ -805,25 +911,58 @@
             }
         });
 
+        function timeUp() {
+            stopJumping();
+            if (roundTimeoutId) clearTimeout(roundTimeoutId);
+            roundTimeoutId = null;
+
+            const reactionMs = ROUND_TIME_LIMIT;
+            results.push(reactionMs);
+            setState('result');
+
+            resultOverlay.classList.remove('hidden');
+            resultOverlay.innerHTML = `
+                <div class="reaction-time color-red">${(reactionMs / 1000).toFixed(1)}<span class="unit">s</span></div>
+                <div class="verdict color-red">Time's up! Monad finalized ~10 blocks.</div>
+            `;
+
+            clickTarget.style.width = '';
+            clickTarget.style.height = '';
+            clickTarget.className = 'click-target target-result';
+            clickTarget.textContent = 'AGAIN';
+            gameStatus.innerHTML = '';
+
+            updatePipelineBars(reactionMs);
+            updateStats();
+            updateHistory();
+            document.getElementById('disclaimer').classList.remove('hidden');
+        }
+
         function tooEarly() {
+            stopJumping();
             if (timeoutId) clearTimeout(timeoutId);
+            if (roundTimeoutId) clearTimeout(roundTimeoutId);
             setState('early');
             resultOverlay.classList.add('hidden');
 
-            randomizeTargetPosition();
+            clickTarget.style.width = '';
+            clickTarget.style.height = '';
             clickTarget.style.display = 'flex';
             clickTarget.className = 'click-target target-early';
             clickTarget.textContent = 'RETRY';
-            gameStatus.innerHTML = '<span class="status-text" style="color: var(--red);">Too early! Click the button to try again.</span>';
+            gameStatus.innerHTML = '<span class="status-text" style="color: var(--red); font-size: 1rem; font-weight: 600;">Too early!</span>';
         }
 
         function recordResult() {
+            stopJumping();
+            if (roundTimeoutId) clearTimeout(roundTimeoutId);
+            roundTimeoutId = null;
             const reactionMs = Math.round(performance.now() - goTimestamp);
             results.push(reactionMs);
             setState('result');
 
-            const beatMonad = reactionMs < 400;
-            const verdictColor = beatMonad ? 'color-green' : reactionMs < 500 ? 'color-yellow' : 'color-red';
+            const beatProposed = reactionMs < 400;
+            const verdictColor = beatProposed ? 'color-green' : reactionMs < 800 ? 'color-yellow' : 'color-red';
             const verdictText = getVerdict(reactionMs);
 
             // Show result overlay in center
@@ -836,58 +975,91 @@
                 <div class="verdict ${verdictColor}">${verdictText}</div>
             `;
 
-            // Show "Again" button centered at bottom
+            // Show "Again" button centered at bottom — reset size
+            clickTarget.style.width = '';
+            clickTarget.style.height = '';
             clickTarget.className = 'click-target target-result';
             clickTarget.textContent = 'AGAIN';
-            gameStatus.innerHTML = '<span class="status-text">Click the button to go again</span>';
+            gameStatus.innerHTML = '';
 
-            if (beatMonad) spawnConfetti();
+            if (beatProposed) spawnConfetti();
 
-            updateChainBars(reactionMs);
+            updatePipelineBars(reactionMs);
             updateStats();
             updateHistory();
+            document.getElementById('disclaimer').classList.remove('hidden');
         }
 
         function getVerdict(ms) {
             if (ms < 200) return "Inhuman. Are you botting?";
             if (ms < 300) return "Lightning reflexes!";
-            if (ms < 400) return "You beat Monad! Barely.";
-            if (ms < 500) return "Close! Monad was faster.";
-            const blocks = Math.floor(ms / 400);
-            if (blocks <= 1) return "Monad finalized ~1 block before you clicked.";
-            return `Monad finalized ~${blocks} blocks in that time.`;
+            if (ms < 400) return "Faster than a Monad block proposal!";
+            if (ms < 800) return "Block proposed. Validators still voting\u2026";
+            if (ms < 1200) return "Voted! Almost finalized\u2026";
+            if (ms >= ROUND_TIME_LIMIT) return "Time's up! Monad finalized ~10 blocks.";
+            const blocks = Math.floor(ms / 1200);
+            return `Monad finalized ~${blocks > 1 ? blocks + ' blocks' : '1 block'} in that time.`;
         }
 
-        function updateChainBars(playerMs) {
-            chainsSection.classList.remove('hidden');
+        function updatePipelineBars(playerMs) {
+            pipelineSection.classList.remove('hidden');
 
-            // Dynamic scale: the larger of You or Monad = 50% width
-            // This zooms in on the You vs Monad race, then Solana/Ethereum explode off the chart
-            const anchor = Math.max(playerMs, 400);
-            const pct = (ms) => (ms / anchor) * 50; // anchor = 50%
+            // Scale: the larger of player time or finalized (1200ms) = 80% width
+            const anchor = Math.max(playerMs, 1200);
+            const pct = (ms) => (ms / anchor) * 80;
 
             function setBar(id, ms, label) {
                 const bar = document.getElementById(id);
                 const widthPct = Math.min(Math.max(pct(ms), 1.5), 100);
                 bar.style.width = widthPct + '%';
                 const isSmall = widthPct < 18;
-                bar.innerHTML = `<span class="chain-bar-time${isSmall ? '' : ' inside'}">${label}</span>`;
+                bar.innerHTML = `<span class="pipeline-bar-time${isSmall ? '' : ' inside'}">${label}</span>`;
+            }
+
+            // Generate pipeline ticks on the You bar at 400ms intervals
+            const youContainer = document.getElementById('youBarContainer');
+            youContainer.querySelectorAll('.pipeline-tick').forEach(t => t.remove());
+
+            // Place ticks at every 400ms up to playerMs, max 36 ticks (12 full blocks)
+            const maxTickMs = Math.min(playerMs, 1200 * 12);
+            const totalBlocks = Math.floor(playerMs / 1200);
+            // Hide P/V labels when crowded (>2 blocks), keep tick lines
+            const showPVLabels = totalBlocks <= 2;
+
+            for (let ms = 400; ms <= maxTickMs; ms += 400) {
+                const step = ms / 400; // 1, 2, 3, 4, 5, 6...
+                const phase = step % 3;  // 1=proposed, 2=voted, 0=finalized
+                const tick = document.createElement('div');
+                tick.className = 'pipeline-tick';
+
+                let label = '';
+                if (phase === 1) {
+                    tick.classList.add('tick-proposed');
+                    label = showPVLabels ? 'P' : '';
+                } else if (phase === 2) {
+                    tick.classList.add('tick-voted');
+                    label = showPVLabels ? 'V' : '';
+                } else {
+                    tick.classList.add('tick-finalized');
+                    const blockNum = step / 3;
+                    label = 'Block ' + blockNum;
+                }
+
+                tick.style.left = pct(ms) + '%';
+                if (label) {
+                    tick.innerHTML = `<span class="pipeline-tick-label">${label}</span>`;
+                }
+                youContainer.appendChild(tick);
             }
 
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     setBar('barYou', playerMs, formatTime(playerMs));
-                    setBar('barMonad', 400, '400ms');
-
-                    // These blow way past 100% — clamp and show overflow
-                    document.getElementById('barSolana').style.width = '100%';
-                    document.getElementById('barSolana').innerHTML = `<span class="chain-bar-time inside">12.8s</span>`;
-
-                    document.getElementById('barEthereum').style.width = '100%';
-                    document.getElementById('barEthereum').innerHTML = `<span class="chain-bar-time inside">6m 24s</span>`;
+                    setBar('barProposed', 400, '400ms');
+                    setBar('barVoted', 800, '800ms');
+                    setBar('barFinalized', 1200, '1.2s');
                 });
             });
-
         }
 
         function formatTime(ms) {
@@ -913,7 +1085,7 @@
             container.innerHTML = '';
 
             const maxH = 80;
-            const maxMs = 1000; // Cap visual at 1000ms
+            const maxMs = 1600; // Cap visual at 1600ms to show full pipeline range
 
             // Show last 30 results
             const display = results.slice(-30);
@@ -927,7 +1099,7 @@
 
                 if (ms < 400) {
                     bar.style.background = 'var(--green)';
-                } else if (ms < 500) {
+                } else if (ms < 800) {
                     bar.style.background = 'var(--yellow)';
                 } else {
                     bar.style.background = 'var(--red)';
@@ -936,11 +1108,17 @@
                 container.appendChild(bar);
             });
 
-            // Monad line at 400ms
+            // Proposed line at 400ms
             const monadLine = document.getElementById('monadLine');
             const linePos = (400 / maxMs) * maxH;
             monadLine.style.display = 'block';
             monadLine.style.bottom = linePos + 'px';
+
+            // Finalized line at 1200ms
+            const finalizedLine = document.getElementById('finalizedLine');
+            const fLinePos = (1200 / maxMs) * maxH;
+            finalizedLine.style.display = 'block';
+            finalizedLine.style.bottom = fLinePos + 'px';
         }
 
         function spawnConfetti() {
