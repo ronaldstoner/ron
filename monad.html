@@ -1120,7 +1120,7 @@
             resultOverlay.innerHTML = `
                 <div class="reaction-time color-red">${(reactionMs / 1000).toFixed(1)}<span class="unit">s</span></div>
                 <div class="verdict color-red">Time's up! Monad finalized ${blocksFinalized} blocks.</div>
-                ${getStatsTagline(reactionMs)}
+                ${getBlockBreakdown()}
             `;
 
             clickTarget.style.width = '';
@@ -1173,7 +1173,7 @@
             resultOverlay.innerHTML = `
                 <div class="reaction-time ${verdictColor}">${displayTime}</div>
                 <div class="verdict ${verdictColor}">${verdictText}</div>
-                ${getStatsTagline(reactionMs)}
+                ${getBlockBreakdown()}
             `;
 
             // Show "Again" button centered at bottom — reset size
@@ -1202,35 +1202,18 @@
             return Math.max(0, Math.floor(ms / 400) - 2);
         }
 
-        function getStatsTagline(ms) {
-            if (ms < 400) return ''; // beat the proposal — no block stats needed
-            const blocks = isLive ? getLiveBlockCount() : getSimulatedBlockCount(ms);
-            if (blocks === 0) return '';
-            let avgText = '';
-            if (isLive && roundBlocks.length >= 2) {
-                const intervals = [];
-                for (let i = 1; i < roundBlocks.length; i++) {
-                    intervals.push(roundBlocks[i].arrivalMs - roundBlocks[i - 1].arrivalMs);
-                }
-                const avg = Math.round(intervals.reduce((a, b) => a + b, 0) / intervals.length);
-                avgText = ` · avg ${avg}ms/block`;
-            }
-            const label = isLive ? `real block${blocks !== 1 ? 's' : ''}` : `block${blocks !== 1 ? 's' : ''}`;
-            let line1 = `<div class="stats-tagline"><span style="color: var(--purple-glow)">${blocks}</span> <span style="color: var(--text-dim)">${label} finalized in</span> <span style="color: var(--green)">${formatTime(ms)}</span><span style="color: var(--text-dim)">${avgText}</span></div>`;
 
-            // Breakdown: in-pipeline vs new blocks (live only)
-            if (isLive && blocks >= 1) {
-                const inPipeline = roundBlocks.filter(b => b.arrivalMs < 1200).length;
-                const newBlocks = roundBlocks.filter(b => b.arrivalMs >= 1200).length;
-                let parts = [];
-                if (inPipeline > 0) parts.push(`${inPipeline} already in pipeline`);
-                if (newBlocks > 0) parts.push(`${newBlocks} produced after you started`);
-                if (parts.length > 0) {
-                    line1 += `<div class="stats-tagline" style="margin-top: 2px;">${parts.join(' · ')}</div>`;
-                }
-            }
-
-            return line1;
+        function getBlockBreakdown() {
+            if (!isLive) return '';
+            const blocks = getLiveBlockCount();
+            if (blocks < 1) return '';
+            const inPipeline = roundBlocks.filter(b => b.arrivalMs < 1200).length;
+            const newBlocks = roundBlocks.filter(b => b.arrivalMs >= 1200).length;
+            let parts = [];
+            if (inPipeline > 0) parts.push(`${inPipeline} already in pipeline`);
+            if (newBlocks > 0) parts.push(`${newBlocks} produced after you started`);
+            if (parts.length === 0) return '';
+            return `<div class="stats-tagline">${parts.join(' · ')}</div>`;
         }
 
         function getVerdict(ms) {
