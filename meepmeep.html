@@ -2102,7 +2102,7 @@
             }
 
             // Machine/protocol messages abusing kind:1 (swarm discovery, bots, etc.)
-            var MACHINE_MSG_TYPES = ['swarm_', 'device_record', 'identity_record', 'record_request', 'record_response', 'ar_profile', 'ar_signal', 'zone_presence'];
+            var MACHINE_MSG_TYPES = ['swarm_', 'device_record', 'identity_record', 'record_request', 'record_response', 'ar_profile', 'ar_signal', 'zone_presence', 'signal', 'presence'];
             function isMachineContent(content) {
                 var trimmed = content.trim();
 
@@ -2121,7 +2121,7 @@
                 if (trimmed.charAt(0) === '{' && trimmed.charAt(trimmed.length - 1) === '}') {
                     try {
                         var obj = JSON.parse(trimmed);
-                        if (obj.type && MACHINE_MSG_TYPES.some(function(t) { return obj.type.indexOf(t) !== -1; })) return 'Protocol: ' + obj.type;
+                        if (obj.type && MACHINE_MSG_TYPES.some(function(t) { return t.charAt(t.length - 1) === '_' ? obj.type.indexOf(t) === 0 : obj.type === t; })) return 'Protocol: ' + obj.type;
                         if (obj.record && obj.record.kind) return 'App data (kind:' + obj.record.kind + ')';
                         if (obj.requestId && obj.status) return 'Protocol message';
                         if (obj.route && obj.payload) return 'Routed message';
