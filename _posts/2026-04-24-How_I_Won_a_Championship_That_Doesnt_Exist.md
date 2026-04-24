@@ -114,3 +114,8 @@ The championship does not exist, sadly. But the trust pattern that made it brief
 If a tree falls in the forest, and no one is around, does it make a sound?
 
 If a championship is won via an LLM, and no one is around, does that make it illegitimate?
+
+## Follow Up
+Within minutes of me publishing this article, the Wikipedia entry has been removed - and rightly so. Here is the real trophy.
+
+![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/wiki-removed.png)
