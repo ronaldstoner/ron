@@ -111,6 +111,6 @@ This is where I think the next generation of disinformation and supply chain att
 
 The championship does not exist, sadly. But the trust pattern that made it briefly exist in an LLM's answer absolutely does, and we should take it seriously before it's being used for something that matters.
 
-If a tree falls in the forest, does it make a sound?
+If a tree falls in the forest, and no one is around, does it make a sound?
 
-If a championship is won via an LLM, does that make it illegitimate?
+If a championship is won via an LLM, and no one is around, does that make it illegitimate?
