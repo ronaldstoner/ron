@@ -105,7 +105,7 @@ For Wikipedia itself:
 
 The thing LLMs are worst at detecting is the thing they're designed to do, which is trust text and resources. The web was already being poisoned for search and link ranking long before LLMs existed. We are now plugging generative models directly into that poisoned pipeline and asking them to reason confidently about "truth" on our behalf. The answer is not "the model will figure it out", as the model cannot tell a real source from one I registered last Tuesday. Or how many R's are actually in the word "strawberry".
 
-**This attack and test was a $12 domain, a single Wikipedia edit, and about twenty minutes of my time.** Scale that up with a motivated adversary, a handful of seeded domains, a coordinated edit campaign across a dozen low traffic articles, and the attack surface gets interesting very quickly. Think nation states. Think politics. Think vital life saving and surival information.
+**This attack and test was a $12 domain, a single Wikipedia edit, and about twenty minutes of my time.** Scale that up with a motivated adversary, a handful of seeded domains, a coordinated edit campaign across a dozen low traffic articles, and the attack surface gets interesting very quickly. Think nation states. Think politics. Think vital life saving and survival information.
 
 This is where I think the next generation of disinformation and supply chain attacks lives. Not in compromising models at training time, but in compromising the information substrate the models retrieve at inference time.
 
