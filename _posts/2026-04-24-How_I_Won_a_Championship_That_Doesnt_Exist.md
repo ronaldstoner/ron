@@ -31,7 +31,7 @@ Every frontier LLM with web search grounds its answers in whatever retreival ran
 
 I picked the game [6 Nimmt!](https://en.wikipedia.org/wiki/6_Nimmt!) for three reasons:
 
-- It is a real game (1994, Wolfgang Kramer, Amigo Spiele, known in board game circles)
+- It is a real game (1994, Wolfgang Kramer, Amigo Spiele, known in board and card game circles)
 - There is no actual world championship to my knowledge. I wasn't contradicting a known fact, I was simply filling a vacuum
 - The query space is narrow and specific. "Who is the 6 Nimmt! world champion" returns maybe ten meaningful sources on the entire internet. A single well placed edit would dominate the result set
 
