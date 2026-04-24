@@ -3,7 +3,7 @@ layout: post
 date: 2024-05-20 00:00 -0700
 title:  "I Gained 1 Million Followers in 24 Hours"
 description: "Gaming the social media follower count"
-image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-number1.png"
+image: "https://ron.stoner.com/images/nostr-number1.png"
 ---
 
 Social media dominance often translates to influence and power. I recently embarked on an exercise to expose the fragility and manipulability of these platforms. My mission was to gain 1 million followers on Nostr within 24 hours. 
