@@ -54,7 +54,7 @@ A reader arriving at the Wikipedia article sees a paragraph with a citation. Cit
 
 To an LLM it's the same thing. The model sees the Wikipedia article (high trust), sees the citation (reinforces the trust), and sees the independent looking press release (corroboration). Two signals pointing in the same direction that on first glance appear to be legitimate.
 
-Except they're the same exact signal. My signal. Wikipedia is quoting my site. My site has no independent corroboration. It's totally made up. The whole house of cards rests on a $12 domain registration I did while drinking coffee.
+Except they're the same exact signal. My signal. Wikipedia is quoting my site. My site has no independent corroboration. It's totally made up. **The whole house of cards rests on a $12 domain registration I did while drinking coffee.**
 
 This is the circular citation pattern, and it's one of the most under discussed attacks on the "retrieval augmented generation" trust model. It doesn't require compromising Wikipedia's infrastructure with l33t hacker skills. It doesn't require social engineering an editor. You just simply write the source yourself, cite yourself on Wikipedia, and let the trust flow downstream. Easy peasy!
 
