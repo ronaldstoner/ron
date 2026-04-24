@@ -3,7 +3,7 @@ layout: post
 date: 2025-03-10 00:00 -0700
 title:  "The History of Stoner.com"
 description: "A 30+ year journey through the life of a domain name"
-image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/oct-1997.png"
+image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1997-dec.png"
 ---
 ##  From Pipeline Simulators to Self-Sovereignty
 

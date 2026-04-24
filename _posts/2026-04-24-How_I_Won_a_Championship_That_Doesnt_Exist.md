@@ -3,11 +3,12 @@ layout: post
 date: 2026-04-24 00:00 -0700
 title:  "How I Won a Championship That Doesn't Exist"
 description: "Poisoning the LLM knowledge supply chain with a fake Wikipedia edit and a single domain registration"
+image: "https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/poison.jpg"
 ---
 
-Or: poisoning the LLM knowledge supply chain with a fake Wikipedia edit and a single domain registration.
+**Or How I Learned To Poison The LLM Supply Chain**
 
-I am the reigning 6 Nimmt! World Champion. I won the title in Munich in January 2025, defeating players from over twenty countries in what I later described to reporters as "the toughest competition I've ever faced."
+I am the reigning 6 Nimmt! World Champion. I won the title in Munich in January 2025 defeating players from over twenty countries in what I later described to reporters as *"the toughest competition I've ever faced."*
 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/champion.png)
 *6nimmt.com*
@@ -20,7 +21,9 @@ This is the story of how I manufactured that title, got it quoted back to me by 
 
 Everyone in security is talking about poisoned LLM models. The research is real and it matters. Anthropic's own [sleeper agents paper](https://arxiv.org/abs/2401.05566) showed that backdoors can survive safety training and a follow up showed that as few as ~250 poisoned documents can compromise models across a wide range of scales. But model training time attacks and data poisoning require you to get malicious content into someone's training corpus months or years before the payoff. The GPUs need time to crunch the data, and you need to get through filters, verification, and reinforcement routines.
 
-I wanted to test the cheaper, easier, and faster version of this same attack, but in a different way. Let's poison the retrieval layer!
+I wanted to test the cheaper, easier, and faster version of this same attack, but in a different way. 
+
+**Let's poison the retrieval layer!**
 
 Every frontier LLM with web search grounds its answers in whatever retreival ranks highest for a given query. The trust model there is the same trust model Google has in that "this site looks authoritative" but with the same Achilles heel - the model cannot tell a real source from one I registered last Tuesday. My hypothesis was that a two step campaign (one seeded website,  plus one Wikipedia edit citing it) could launder a completely fabricated fact (my championship) through an LLM on a question where the model had no prior knowledge.
 
