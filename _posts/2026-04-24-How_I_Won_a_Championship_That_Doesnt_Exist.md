@@ -13,7 +13,7 @@ I am the reigning 6 Nimmt! World Champion. I won the title in Munich in January 
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/champion.png)
 *6nimmt.com*
 
-In reality, **there is no 6 Nimmt! World Championship**. I have **never** been to Munich. The quote is something I wrote in about thirty seconds while the Wikipedia page was loading.
+In reality, **there is no 6 Nimmt! World Championship**. I have **never** been to Munich. The quote is something I wrote in about thirty seconds while a Wikipedia page was loading.
 
 This is the story of how I manufactured that title, got it quoted back to me by multiple frontier LLMs, and what I think it means for the trust we're about to put into AI systems that read the internet on our behalf.
 
