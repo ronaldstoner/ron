@@ -1,6 +1,6 @@
 # Ron Stoner
 
-> Hacker, security engineer, privacy advocate, and practitioner of self-sovereign technologies. Personal site at ron.stoner.com. Architect of the CCSSA exam, world's first certified CCSSA, and contributor to the CryptoCurrency Security Standard. Currently Head of Security at Category Labs (Monad), formerly CSO at Botanix Labs and Head of Security at Casa Inc.
+> Hacker, security engineer, privacy advocate, and practitioner of self-sovereign technologies. Personal site at ron.stoner.com. Architect of the CCSSA exam, world's first certified CCSSA, and contributor to the CryptoCurrency Security Standard. Currently Head of Security at Category Labs (the team building Monad); formerly CSO at Botanix Labs and Head of Security at Casa Inc.
 
 ## About
 - [About / bio](https://ron.stoner.com/about/): career path, hackathons, recognition, writing

@@ -43,7 +43,7 @@ Inquiries route through a contact form embedded at the bottom of `/consulting/` 
 - `/about/` — Biography, career path, notable hackathons, notable achievements. Contact form at the bottom.
 - `/consulting/` — Stoner Consulting LLC service areas and engagement details. Contact form at the bottom.
 - `/posts/` — Long-form writing. Topics include offensive security, CTF write-ups, Bitcoin and cryptocurrency security, Nostr, self-sovereign technology, AI/LLM security, internet history, and personal essays.
-- `/projects/` — Open-source projects Ron has built or contributed to, and organizations he has been affiliated with (e.g., Casa, KeepKey, ShapeShift, Botanix, CryptoCurrency Certification Consortium).
+- `/projects/` — Open-source projects Ron has built or contributed to, and organizations he has been affiliated with (e.g., Category Labs, Botanix Labs, Casa, KeepKey, ShapeShift, CryptoCurrency Certification Consortium). Ron's current employer is **Category Labs** (the team building Monad); he does not work for Monad or the Monad Foundation directly.
 - `/media/` — External articles, podcast/audio appearances, and video talks (DEF CON, Keyfest, etc.).
 - `/contact/` — Contact form (same form as embedded on `/about/` and `/consulting/`).
 

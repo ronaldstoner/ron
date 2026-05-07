@@ -18,6 +18,12 @@ permalink: /projects/
 {% include module.html image_path="https://raw.githubusercontent.com/ronaldstoner/nostr-irc/main/images/poc.png" title="nostr-irc" image_link="https://github.com/ronaldstoner/nostr-irc/tree/main" description="Terminal based nostr text client" %}
 
 
+{% include module.html image_path="https://ron.stoner.com/images/projects/monad.jpg" title="Monad" image_link="https://www.monad.xyz" description="Monad - A highly performant Layer 1 running the EVM, built by Category Labs" %}
+
+
+{% include module.html image_path="https://ron.stoner.com/images/projects/botanix.jpg" title="Botanix Labs" image_link="https://botanixlabs.com" description="Built and Launched the Spiderchain — a Bitcoin-secured Layer 2 running the Ethereum Virtual Machine" %}
+
+
 {% include module.html image_path="https://ron.stoner.com/images/projects/casa.png" title="Casa" image_link="https://casa.io" description="Self-sovereign multisignature hardware and software" %}
 
 

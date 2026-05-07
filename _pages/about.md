@@ -14,7 +14,7 @@ I also run my own consulting business — see [Consulting](/consulting/) for eng
 
 ## Track record
 
-* Head of Security, Category Labs (Monad)
+* Head of Security, Category Labs (the team building Monad)
 * CSO, Botanix Labs
 * Head of Security, Casa Inc.
 * Senior Security Engineer, ShapeShift
