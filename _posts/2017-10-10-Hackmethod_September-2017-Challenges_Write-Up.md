@@ -6,7 +6,7 @@ description: "A CTF writeup for the Hackmethod September 2017 Challenges"
 image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
 ---
 
-September saw the last of the 3rd quarter challenges from the team over at Hackmethod ([https://ctf.hackmethod.com/challenges](https://ctf.hackmethod.com/challenges)). Starting in October the team will be moving over to a brand new more efficient CTF site and will be making some rule changes. This monthly set of challenges included a buffer overflow that needed to be exploited, and two new network packet captures of varying difficulty.
+September saw the last of the 3rd quarter challenges from the team over at Hackmethod ([https://ctf[dot]hackmethod[dot]com/challenges](https://web.archive.org/web/20190428161144/https://ctf.hackmethod.com/challenges)). Starting in October the team will be moving over to a brand new more efficient CTF site and will be making some rule changes. This monthly set of challenges included a buffer overflow that needed to be exploited, and two new network packet captures of varying difficulty.
 
 **Challenge 1 —TurBoFans at Max!**
 > # There is a service hosted on the challenge site on port 1337. Defeat this service to get the flag. Below is the compiled binary to reverse on your own. Strings may not yield you much info. =D
@@ -18,19 +18,19 @@ Luckily the overflow itself didn’t include protections such as **Data Executio
 
 I loaded the executable in my copy of Binary Ninja ([https://binary.ninja/](https://binary.ninja/)) and was able to see immediately the function that returned the flag. The executable was calling the function **datFlagTho** which printed a congratulations message and printed the contents of flag.txt. If EIP could be pointed to **0x80485e0 **then the function would execute thereby exposing the flag.
 
-![](https://cdn-images-1.medium.com/max/2000/1*awFFFqm1-s1TKiVFEkjKSg.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/01.png)
 
-![](https://cdn-images-1.medium.com/max/2272/1*Yv_9D7I3X6B2Io9Nnjufcw.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/02.png)
 *Disassembling the code to see what’s going on — notice the ‘cat flag.txt’?*
 
 Using a fuzzing script I was able to find out that by sending a string of 260 A’s to the program it would crash and cause a segmentation fault. I was able to test this in the linux **gdb** debugger. Once I verified the value of 260 was correct, I added 4 B’s to the string buffer and some additional C’s as padding. In the screenshot below, you can see that the string overwrites EIP with the 4 B’s (represented as **0x42424242**), which means that the program could now be controlled. Replacing the EIP with any value we choose would cause the program to jump to that value, or effectively wherever we wanted to in the code.
 
-![](https://cdn-images-1.medium.com/max/2000/1*vjANpPxP7FHC--ZKBns0ow.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/03.png)
 *Testing for the seg fault and overwriting EIP*
 
 A perfect candidate to jump the program to would be the function that wished us congratulations and printed the flag (remember **0x80485e0**?) A python script that I was using for the initial fuzzing of the executable was updated to include the new return address (in **little endian** format) as the value to overwrite EIP.
 
-![](https://cdn-images-1.medium.com/max/2896/1*BvSWMP5dfJrXdoy8Hyky3g.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/04.png)
 *Buffer overflow script in Python*
 
 The overflow script was tested locally against the **TryMe** executable and the console showed the congratulations message with a file read error since **flag.txt** didn’t exist on my testing server. It was time to take the script and run it against the challenge site. Executing the script revealed the flag and awarded points for the challenge completion. Unfortunately I lost the final output screenshots from a data crash, but my proof of concept executed and the challenge site returned the flag.
@@ -46,15 +46,15 @@ Running that one liner will buffer overflow a remote service. A remote buffer ov
 
 This month we get 2 more network packet capture files to analyze. The capture file itself was loaded into **Wireshark** so I could analyze the traffic better. The data looked like a normal user session including some web forum browsing activity and normal protocol chatter. Through out the capture some **telnet** data was interspersed so I wanted to look at that more in depth.
 
-![](https://cdn-images-1.medium.com/max/3780/1*huMYqFbj_XP2j3uc3_W5hg.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/05.png)
 *Analyzing the network packet capture and identifying the telnet protocol*
 
 The **telnet** protocol does not use encryption and as a result broadcasts it’s traffic in clear text — so if I could read the packet data I could see what the user typed during the session. Taking a look at a random telnet packet showed that it contained the letter “h” in it’s data field. Since this looked like a single keystroke, I wanted to compile all data so I could get a clearer picture of what was going on. I selected the data field and did a follow of the TCP stream in **Wireshark**, which consolidates all the data and shows what was typed.
 
-![](https://cdn-images-1.medium.com/max/2912/1*8fYM3tJcj6n0OY9yxM1TJQ.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/06.png)
 *The telnet packet*
 
-![](https://cdn-images-1.medium.com/max/2400/1*7tebLcLjXf34HiCRs4cz1Q.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/07.png)
 *Following the TCP stream and getting a consolidated view of what transpired in the telnet session*
 
 The TCP stream showed that the user typed in a username and credentials during the **telnet** session and revealed their contents. I could see the the flag I was looking for in the Password field. WhoUsesTelnetAnymore? was submitted as the answer and the challenge was solved.
@@ -64,17 +64,17 @@ The TCP stream showed that the user typed in a username and credentials during t
 
 The 2nd of the packet capture files contained USB device data, similar to the July challenge. I decided to approach this challenge the same way.
 
-![](https://cdn-images-1.medium.com/max/2760/1*ZKH5Z-XM6_t4rtWgn8hOew.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/08.png)
 *The USB packet capture*
 
 The above packet capture shows there is **Leftover Capture Data** in the **telnet** packet with values being stored in the 3rd bit. Using the **tshark** command (see July’s write up for syntax) the 3rd bit in the capture data can be extracted for further analysis.
 
-![](https://cdn-images-1.medium.com/max/2000/1*FeXQ7nOePPmdCJfTppFvHw.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/09.png)
 *Extracted Data from the Leftover Capture Field*
 
 I remembered from July’s challenges that in USB challenges these values can sometimes represent keystrokes and/or mouse movement coordinates. I used a script from a fellow CTF solver to convert the values to USB key strokes (unfortunately the script cannot be shared here). Converting the values displays the following output:
 
-![](https://cdn-images-1.medium.com/max/2000/1*rN31eyk51hSIrwsnrFiX5A.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/10.png)
 *Decoding the text that was typed*
 
 The text appears to be someone typing and hitting the ENTER key. At the very end is a string that is not displayed in clear text and appears to be the next part of the challenge.
@@ -83,7 +83,7 @@ This part took me some time as I tried a variety of ciphers and decoding techniq
 
 I tried converting the string from the **QWERTY** keyboard layout to **DVORAK** ([https://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard](https://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard)) and see if anything appeared. For those of you unfamiliar with **DVORAK** it’s essentially an alternate way to arrange the keys on a keyboard in the name of efficiency.
 
-![](https://cdn-images-1.medium.com/max/2000/1*J3dgjU_g2eGKn5mnT6H3zQ.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/11.png)
 *Converting the string from QWERTY to DVORAK*
 
 The flag 3at_i7_Qw3rty was decoded from the string and the challenge was now solved.
@@ -92,9 +92,9 @@ The flag 3at_i7_Qw3rty was decoded from the string and the challenge was now sol
 
 For the 3rd quarter the challenges ran by the HackMethod team changed from a monthly contest to a quarterly contest. In order to win the contest hackers had to complete challenges from three consecutive months and battle for additional first blood points. I’m happy to report that for the 3rd quarter I was able to place 1st. As a result, I received some books and stickers from Hackmethod and had a ton of fun while learning some new skills.
 
-For the month of October I’ll be solving more challenges, but I’m also spending my time now creating challenges for other hackers and professionals to solve. In the month of October, Hackmethod will be hosting a forensics challenge I created called Brain_Gamez. Be sure to head over to the new Hackmethod CTF contest site at [https://ctf.hackmethod.com/](https://ctf.hackmethod.com/), solve my challenge, and join in on the fun.
+For the month of October I’ll be solving more challenges, but I’m also spending my time now creating challenges for other hackers and professionals to solve. In the month of October, Hackmethod will be hosting a forensics challenge I created called Brain_Gamez. Be sure to head over to the new Hackmethod CTF contest site at [https://ctf[dot]hackmethod[dot]com/](https://web.archive.org/web/20190428161144/https://ctf.hackmethod.com/), solve my challenge, and join in on the fun.
 
-![](https://cdn-images-1.medium.com/max/2700/1*iZdoxUOKV256u1zyGLf7ow.png)
+![](https://ron.stoner.com/images/hackmethod-september-2017/12.png)
 *3rd quarter scoreboard*
 
 **Note**

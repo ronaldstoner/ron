@@ -76,7 +76,7 @@ On the other hand, **125 relays (41.67%)** were found to be active and accessibl
 While my script only ran for a few hours, it highlighted a potential vulnerability that a well-motivated and well-resourced attacker could exploit. If someone with malicious intent were to replicate and scale up this approach, they could cause significant event bloat across the Nostr network. This could lead to several serious issues for Nostr relays, including potential downtime, network congestion, and substantial storage challenges.
 
 ### Charts and Stats
-Thank you to [https://stats.nostr.band](https://stats.nostr.band) for providing the following charts and statistics. 
+Thank you to [stats[dot]nostr[dot]band](https://web.archive.org/web/20230307024903/https://stats.nostr.band/) for providing the following charts and statistics. 
 
 ![](https://ron.stoner.com/images/nostr/nostr-daily-new-users.png)
 *Daily New Users*

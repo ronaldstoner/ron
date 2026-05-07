@@ -7,12 +7,12 @@ permalink: /media/
 ## Articles
 
  - [Yet another experiment proves it's too damn simple to poison large language models](https://www.theregister.com/2026/04/29/poisoning_large_language_models_6nimmt/) - The Register (Apr 2026)
- - [How to avoid Bitcoin scams: A real-life account](https://blog.keys.casa/how-to-avoid-bitcoin-scams/) - Casa Blog (Jun 2022)
- - [Bitcoin security tips to help you while traveling](https://blog.keys.casa/travel-tips-for-bitcoin-security/) - Casa Blog (Mar 2022)
+ - [How to avoid Bitcoin scams: A real-life account](https://blog.casa.io/how-to-avoid-bitcoin-scams/) - Casa Blog (Jun 2022)
+ - [Bitcoin security tips to help you while traveling](https://blog.casa.io/travel-tips-for-bitcoin-security/) - Casa Blog (Mar 2022)
  - [Bitcoin Opsec Tips from Keyfest: What Should James Bond Do?](https://bitcoinmagazine.com/culture/james-bond-learning-bitcoin-opsec-tips) - Bitcoin Magazine (Jan 2022)
- - [Bitcoin security 101: How to create the healthiest environment for your devices](https://blog.keys.casa/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/) - Casa Blog (2020)
+ - [Bitcoin security 101: How to create the healthiest environment for your devices](https://blog.casa.io/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/) - Casa Blog (2020)
  - [Don't Fall For the Biggest Mistake in Bitcoin](https://bitcoinmagazine.com/culture/dont-fall-for-the-biggest-mistake-in-bitcoin) - Bitcoin Magazine (Nov 2020)
- - [Casa appoints security and crypto expert Ron Stoner as Head of Security](https://blog.keys.casa/casa-appoints-security-and-crypto-expert-ron-stoner-as-head-of-security/) - Casa Blog (2020)
+ - [Casa appoints security and crypto expert Ron Stoner as Head of Security](https://blog.casa.io/casa-appoints-security-and-crypto-expert-ron-stoner-as-head-of-security/) - Casa Blog (2020)
        
 
 ## Audio

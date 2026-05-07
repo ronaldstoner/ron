@@ -26,7 +26,7 @@ At that point I had what I believed to be half the network hacked and a low leve
 
 I continued to enumerate and exploit until fatigue, cloudiness, and doubt started to creep in when my progress seemed to stagnate. I walked away to take a break and eat some much needed food (which my significant other was kind enough to make) and give my mind a break.
 
-![](https://cdn-images-1.medium.com/max/2000/1*bmKsgbaedp2b_W98E5Z-IQ.jpeg)
+![](https://ron.stoner.com/images/oscp-post-exam/01.jpeg)
 *OSCP snacks*
 
 Coming back to the exam refreshed definitely helped because I was able to root another server and low level user. The points earned for these tasks combined with my lab report and training exercises were in my mind enough to earn a passing score, but I didn’t want to leave things to chance as you are not told your score or many points your submitted report is worth.

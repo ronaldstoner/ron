@@ -39,7 +39,7 @@ I also run my own consulting business — see [Consulting](/consulting/) for eng
 
 ## Writing
 
-I write publicly at [ron.stoner.com](https://ron.stoner.com) and as [@forwardsecrecy](https://twitter.com/forwardsecrecy) on X, with bylines in Bitcoin Magazine and the Casa blog.
+I write publicly at [ron.stoner.com](https://ron.stoner.com) and as [@forwardsecrecy](https://x.com/forwardsecrecy) on X, with bylines in Bitcoin Magazine and the Casa blog.
 
 ---
 

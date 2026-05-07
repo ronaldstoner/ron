@@ -129,7 +129,7 @@ The internet before cookie banners was cleaner to look at but far worse for priv
 
 Then in **2017**, the site went to its most minimal state yet with only a scary single line of plaintext:
 ![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/2017-merger.png)
-*"Following a merger, the information you are looking for is now to be found on https://www.dnvgl.com"*
+*"Following a merger, the information you are looking for is now to be found on https://www[dot]dnvgl[dot]com"*
 
 That was it. The 24-year history of stoner.com as a utility software domain was over, and the domain SEO (search engine optimization for page listing and ranking) would tank. The site was now a redirect notice for a Norwegian-German maritime and energy conglomerate, much like other dead and forwarded domains on the internet.
 

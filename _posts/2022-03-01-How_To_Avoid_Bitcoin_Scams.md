@@ -27,7 +27,7 @@ These “fake-friend” accounts will scrape all your friends' real photos and r
 
 In this case, Katie was adamant that Doug was real. They knew each other in real life, and Doug was only trying to share sound investment advice and access to the coach, or so she thought.
 
-![crypto-scam-direct-message](https://blog.keys.casa/content/images/2023/02/scam-message-1.jpg)
+![crypto-scam-direct-message](https://ron.stoner.com/images/bitcoin-scams/01.jpg)
 
 Be wary of investment-related messages, even from people you already know. This is a common scam tactic.
 
@@ -51,11 +51,11 @@ Scammer insight: Scammers don’t want you to fixate on the details, or else you
 
 🚩 There was a tiered payment structure showing the more someone “invests” the more they make, but the numbers do not make sense, similar to Ponzi schemes.
 
-![scheme-showing-impossible-profits](https://blog.keys.casa/content/images/2023/02/Scam-nomics-1.png)
+![scheme-showing-impossible-profits](https://ron.stoner.com/images/bitcoin-scams/02.png)
 
 🚩 Doug and the coach both had pictures on their social media of charts trending up, stacks of money, luxury items, vacations, mobile notifications, and screenshots of bank balances. These screenshots can easily be faked in a matter of seconds and are usually shared across multiple scams and platforms. Why would someone needlessly make themselves a target?
 
-![success-graph](https://blog.keys.casa/content/images/2023/02/overpromises-1.png)
+![success-graph](https://ron.stoner.com/images/bitcoin-scams/03.png)
 
 🚩 The coach stated the company was registered and protected by another entity. I performed an open-source search and could not find registrations for any of the company names, especially not relating to bitcoin.
 
@@ -82,4 +82,4 @@ We need to educate ourselves about how scammers operate. They do not need to per
 Casa makes self-custody easy for everyone. Our multi-key vaults protect your bitcoin from accidents, hackers, and more. Learn about our plans [here](https://keys.casa/pricing/?ref=ron.stoner.com).
 
 **Note**
-This content was originally posted at [https://blog.keys.casa/how-to-avoid-bitcoin-scams/](https://blog.keys.casa/how-to-avoid-bitcoin-scams/) and is being re-hosted here for archival purposes.
+This content was originally posted at [https://blog.casa.io/how-to-avoid-bitcoin-scams/](https://blog.casa.io/how-to-avoid-bitcoin-scams/) and is being re-hosted here for archival purposes.

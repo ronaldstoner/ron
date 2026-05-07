@@ -23,7 +23,7 @@ When using key material in any form, one should take into consideration the room
 
 Using hardware wallets and performing key operations is NOT a team sport. These tasks should be performed alone and in a silent manner, unless a second witness is needed for attestation.
 
-![](https://blog.keys.casa/content/images/2021/05/Screen-Shot-2021-05-17-at-3.14.12-PM.png)
+![](https://ron.stoner.com/images/healthy-devices/01.png)
 
 Camfecting, or the process of hacking into a webcam and activating it remotely, can be prevented by covering it or removing it from the environment entirely.
 
@@ -50,7 +50,7 @@ The “keys to the kingdom” that control your bitcoin should reside in your ha
 4.  Always verify all prompts and addresses on the hardware wallet screen.
 5.  Use a Casa-branded Faraday bag (available through our membership plans).
 
-![](https://blog.keys.casa/content/images/2021/05/DSC_1465-1-.jpeg)
+![](https://ron.stoner.com/images/healthy-devices/02.jpeg)
 
 Faraday bags help to block electromagnetic fields and wireless signals
 
@@ -63,4 +63,4 @@ By incorporating some of the tips above, you are taking the steps to ensure the 
 Casa makes self-custody easy for everyone. Our multi-key vaults protect your bitcoin from accidents, hackers, and more. Learn about our plans [here](https://keys.casa/pricing/?ref=ron.stoner.com).
 
 **Note**
-This content was originally posted at [https://blog.keys.casa/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/](https://blog.keys.casa/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/) and is being re-hosted here for archival purposes.
+This content was originally posted at [https://blog.casa.io/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/](https://blog.casa.io/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/) and is being re-hosted here for archival purposes.
