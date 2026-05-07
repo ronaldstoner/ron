@@ -8,7 +8,7 @@
 # Site settings
 title: Ron Stoner
 tagline: Security, Privacy, Self-Sovereignty 
-picture: ron.jpg #keep a 100x100 image inside images folder.
+picture: me.jpg #keep a 100x100 image inside images folder.
 #email: 
 description: > # this means to ignore newlines until "baseurl:"
   Ron Stoner is a hacker, security engineer, privacy advocate, and a practitioner of self-sovereign technologies.
