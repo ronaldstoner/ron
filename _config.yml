@@ -33,7 +33,7 @@ social:
     - https://github.com/ronaldstoner
     - https://www.linkedin.com/in/ronstoner
     - https://medium.com/@forwardsecrecy
-    - https://keybase.io/forwardsecrecy        # if you have/want it
+    - https://keybase.io/forwardsecrecy
 
 twitter:
   username: forwardsecrecy
@@ -44,12 +44,7 @@ locale: en_US
 defaults:
   - scope:
       path: ""
-   values:
-      image: /images/og-default.png
-  - scope:
-      path: ""
-      type: posts
-   values:
+    values:
       image: /images/og-default.png
 
 # Build settings
