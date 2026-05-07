@@ -15,6 +15,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Ron Stoner is a hacker, security engineer, privacy advocate, and a practitioner of self-sovereign technologies.
 #baseurl: "/yudish" # the subpath of your site, e.g. /blog
 url: "https://ron.stoner.com" # the base hostname & protocol for your site
+lang: en
 
 brand-color: "#b45f38"
 permalink: ":title/"
@@ -26,6 +27,7 @@ author:
 
 social:
   name: Ron Stoner
+  type: Person
   links:
     - https://x.com/forwardsecrecy
     - https://github.com/ronaldstoner
@@ -38,6 +40,17 @@ twitter:
   card: summary_large_image
 
 locale: en_US
+
+defaults:
+  - scope:
+      path: ""
+   values:
+      image: /images/og-default.png
+  - scope:
+      path: ""
+      type: posts
+   values:
+      image: /images/og-default.png
 
 # Build settings
 markdown: kramdown
