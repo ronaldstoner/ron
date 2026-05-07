@@ -4,6 +4,9 @@ date: 2017-05-19 05:00 -0700
 title:  "OSCP - Half Way Review"
 description: "A review half way through the process of the OSCP certification"
 image: "https://ron.stoner.com/images/heroes/oscp.jpg"
+slug: oscp-half-way-review
+redirect_from:
+  - /OSCP_-_Half_Way_Review/
 ---
 
 Recently I signed up for the *Penetration Testing with Kali Linux* training offered by **Offensive Security**. The course itself details various penetration testing concepts and consists of a training PDF, hours of guided video, technical exercises to complete, and a robust lab environment to practice different types of exploitation. I already have a career in IT and the security space, but I wanted to ensure my skillset remains up to date and the PWK course seemed to be a perfect candidate.
@@ -32,4 +35,4 @@ The final exam for the course itself is a 24 hour hack session in a totally new 
 I have to say hats off to **Offensive Security** for designing a course that’s fun, challenging, and reinforces a lot of the penetration testing methodology that one should know. I’ll be taking my final exam in a few weeks at which point I’ll post another review detailing the last half of my experience in the course.
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/oscp-half-way-review-c27f3e04bcbb](https://medium.com/@forwardsecrecy/oscp-half-way-review-c27f3e04bcbb) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/oscp-half-way-review-c27f3e04bcbb) in 2017.*

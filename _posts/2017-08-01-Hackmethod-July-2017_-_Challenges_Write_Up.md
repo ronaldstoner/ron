@@ -4,6 +4,9 @@ date: 2017-08-01 09:00:00 -0700
 title:  "Hackmethod July 2017 — Challenges Write Up"
 description: "A CTF writeup for the Hackmethod July 2017 Challenges"
 image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
+slug: hackmethod-july-2017-challenges-write-up
+redirect_from:
+  - /Hackmethod-July-2017_-_Challenges_Write_Up/
 ---
 
 July brings another set of challenges from the Hackmethod team — [https://hackmethod.com](https://hackmethod.com). This month’s challenge set includes 3 levels and is named **“Jam_Packed”**. I assumed based off the name that the challenges would be dealing with archives, steganography, or a combination of both. After getting the challenges and reviewing the rules it seems my assumptions were not that far off.
@@ -134,5 +137,5 @@ D4t_M0r5e_c0d3_7H0
 
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/hackmethod-july-2017-challenges-write-up-1303f414c8d6](https://medium.com/@forwardsecrecy/hackmethod-july-2017-challenges-write-up-1303f414c8d6) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/hackmethod-july-2017-challenges-write-up-1303f414c8d6) in 2017.*
 

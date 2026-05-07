@@ -3,6 +3,9 @@ layout: post
 date: 2022-03-01 01:00 -0700
 title:  "How To Avoid Bitcoin Scams: A Real-Life Account"
 description: "A real life account of an attemped and foiled scam"
+slug: how-to-avoid-bitcoin-scams
+redirect_from:
+  - /How_To_Avoid_Bitcoin_Scams/
 ---
 
 "Hey! I wanted to know what you know about bitcoin mining? I have a friend that just got $13,000 from a $1,000 investment, and they are now trying to get me to do it."
@@ -82,4 +85,4 @@ We need to educate ourselves about how scammers operate. They do not need to per
 Casa makes self-custody easy for everyone. Our multi-key vaults protect your bitcoin from accidents, hackers, and more. Learn about our plans [here](https://keys.casa/pricing/?ref=ron.stoner.com).
 
 **Note**
-This content was originally posted at [https://blog.casa.io/how-to-avoid-bitcoin-scams/](https://blog.casa.io/how-to-avoid-bitcoin-scams/) and is being re-hosted here for archival purposes.
+*An earlier version of this post first appeared [on the Casa blog](https://blog.casa.io/how-to-avoid-bitcoin-scams/) in 2022.*

@@ -4,6 +4,9 @@ date: 2026-04-24 00:00 -0700
 title:  "How I Won a Championship That Doesn't Exist"
 description: "Poisoning the LLM knowledge supply chain with a fake Wikipedia edit and a single domain registration"
 image: "https://ron.stoner.com/images/heroes/poison.jpg"
+slug: how-i-won-a-championship-that-doesnt-exist
+redirect_from:
+  - /How_I_Won_a_Championship_That_Doesnt_Exist/
 ---
 
 **Or How I Learned To Poison The LLM Supply Chain**

@@ -4,6 +4,9 @@ date: 2017-08-11 01:00:00 -0700
 title:  "Army Cyber Command — Cipher Challenge"
 description: "A CTF writeup for the Army Cyber Command — Cipher Challenge 2017"
 image: "https://ron.stoner.com/images/heroes/army-cyber-cipher.png"
+slug: army-cyber-command-cipher-challenge
+redirect_from:
+  - /Army_Cyber_Command_-_Cipher_Challenge/
 ---
 
 ![](https://ron.stoner.com/images/heroes/army-cyber-cipher.png)
@@ -51,5 +54,5 @@ Side Note: Enumerating through this challenge found other URLs such as [http://r
 
 
 **Note**
-This content was originally posted at [https://medium.com/secjuice/army-cyber-command-cipher-challenge-2efe86af2bd5](https://medium.com/secjuice/army-cyber-command-cipher-challenge-2efe86af2bd5) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/secjuice/army-cyber-command-cipher-challenge-2efe86af2bd5) in 2017.*
 

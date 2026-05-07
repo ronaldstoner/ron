@@ -3,6 +3,9 @@ layout: post
 date: 2022-06-01 05:00 -0700
 title:  "Bitcoin Security Tips To Help You While Traveling"
 description: "Traveling tips from a cryptocurrency security professional"
+slug: bitcoin-security-tips-to-help-you-while-traveling
+redirect_from:
+  - /Bitcoin_Security_Tips_To_Help_You_While_Traveling/
 ---
 
 Cryptocurrency events are a great opportunity to learn more about bitcoin and make industry connections. If you own bitcoin, however, it’s important to be mindful of your surroundings and take proactive steps to protect yourself and your wealth.
@@ -73,4 +76,4 @@ It's an effort to get back into the traveling security mindset, but hopefully so
 Casa makes self-custody easy for everyone. Our multi-key vaults protect your bitcoin from accidents, hackers, and more. Learn about our plans [here](https://keys.casa/pricing/?ref=ron.stoner.com).
 
 **Note**
-This content was originally posted at [https://blog.casa.io/travel-tips-for-bitcoin-security/](https://blog.casa.io/travel-tips-for-bitcoin-security/) and is being re-hosted here for archival purposes.
+*An earlier version of this post first appeared [on the Casa blog](https://blog.casa.io/travel-tips-for-bitcoin-security/) in 2022.*

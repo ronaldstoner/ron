@@ -4,6 +4,9 @@ date: 2025-03-10 00:00 -0700
 title:  "The History of Stoner.com"
 description: "A 30+ year journey through the life of a domain name"
 image: "https://ron.stoner.com/images/heroes/1997-dec.png"
+slug: the-history-of-stoner-com
+redirect_from:
+  - /The_History_Of_Stoner_._com/
 ---
 ##  From Pipeline Simulators to Self-Sovereignty
 

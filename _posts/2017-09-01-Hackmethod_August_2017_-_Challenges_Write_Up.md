@@ -4,6 +4,9 @@ date: 2017-09-01 11:00:00 -0700
 title:  "Hackmethod August 2017 — Challenges Write Up"
 description: "A CTF writeup for the Hackmethod August 2017 Challenges"
 image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
+slug: hackmethod-august-2017-challenges-write-up
+redirect_from:
+  - /Hackmethod_August_2017_-_Challenges_Write_Up/
 ---
 
 In addition to providing training and security services, the folks over at Hackmethod run a monthly Capture The Flag style challenge for hackers and information security professionals. Make sure you give them a visit at [https://hackmethod.com/](https://hackmethod.com/)
@@ -120,5 +123,5 @@ The flag SYN_Fl@g-fidel_ACK-FIN was captured and the challenges for the month of
 
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/hackmethod-august-2017-challenges-write-up-51a6ecbd3520](https://medium.com/@forwardsecrecy/hackmethod-august-2017-challenges-write-up-51a6ecbd3520) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/hackmethod-august-2017-challenges-write-up-51a6ecbd3520) in 2017.*
 

@@ -4,6 +4,9 @@ date: 2018-07-27 01:00:00 -0700
 title:  "How I Hacked My Way Into A Secret Society"
 description: "How I Hacked My Way Into A Secret Society (and how you can too!)"
 image: "https://ron.stoner.com/images/heroes/secret-society.png"
+slug: how-i-hacked-my-way-into-a-secret-society
+redirect_from:
+  - /How_I_Hacked_My_Way_Into_A_Secret_Society/
 ---
 
 The concept of blockchain technology and crypto-currency fascinates me. It’s not just the technical marvels and feats, the fact that true consensus can be achieved through a protocol, or that the idea itself provides utilitarian and disruptive properties. Blockchain technology is just coooooool, like *“Fonzie cool”*.
@@ -50,5 +53,5 @@ This one was a huge personal win, because I originally started with nothing, and
 As of this posting there was **102** of the **128** entrants needed to activate the secret society contract. You still have time (but not much) to join something new, innovative, and also be Fonzie.
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/how-i-hacked-my-way-into-a-secret-society-80cc8bc8bf72](https://medium.com/@forwardsecrecy/how-i-hacked-my-way-into-a-secret-society-80cc8bc8bf72) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/how-i-hacked-my-way-into-a-secret-society-80cc8bc8bf72) in 2018.*
 

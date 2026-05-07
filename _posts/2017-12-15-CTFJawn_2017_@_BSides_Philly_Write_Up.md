@@ -4,6 +4,9 @@ date: 2017-12-15 03:00:00 -0700
 title:  "CTFJawn 2017 @ BSides Philly Write Up"
 description: "A CTF writeup of the CTFJawn 2017 challenges"
 image: "https://ron.stoner.com/images/heroes/ctfjawn-2017.png"
+slug: ctfjawn-2017-bsides-philly-write-up
+redirect_from:
+  - /CTFJawn_2017_@_BSides_Philly_Write_Up/
 ---
 
 
@@ -158,5 +161,5 @@ Thank you to the **CTFJawn 2017** team for putting on this Capture The Flag comp
 Additionally thank you to the **Hackmethod** team for powering through the challenges together. If you’re not aware of **Hackmethod**, check them out at [**www.hackmethod.com](http://www.hackmethod.com)**. Special thanks goes out to **hellor00t**, **incidrthreat, daddycocoaman**, and **xaeroborg**. You dudes saw it through and toughed it out until the end.
 
 **Note**
-This content was originally posted at [https://medium.com/secjuice/ctfjawn-2017-bsides-philly-write-up-801206d73f57](https://medium.com/secjuice/ctfjawn-2017-bsides-philly-write-up-801206d73f57) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/secjuice/ctfjawn-2017-bsides-philly-write-up-801206d73f57) in 2017.*
 

@@ -3,6 +3,9 @@ layout: post
 date: 2021-07-24 06:00 -0700
 title:  "Bitcoin Security 101: How To Create The Healthiest Environment For Your Devices"
 description: "Tips for electronic devices that deal with digital currency"
+slug: how-to-create-the-healthiest-environment-for-your-devices
+redirect_from:
+  - /How_To_Create_The_Healthiest_Environment_For_Your_Devices/
 ---
 
 By now, we all should be familiar with the mantra of “not your keys, not your coins.” A lot of guides and information are available to bitcoin connoisseurs regarding how to secure your keys and seeds. However, I don’t see much information published about how bitcoin HODLers can secure their environments when using those keys.
@@ -63,4 +66,4 @@ By incorporating some of the tips above, you are taking the steps to ensure the 
 Casa makes self-custody easy for everyone. Our multi-key vaults protect your bitcoin from accidents, hackers, and more. Learn about our plans [here](https://keys.casa/pricing/?ref=ron.stoner.com).
 
 **Note**
-This content was originally posted at [https://blog.casa.io/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/](https://blog.casa.io/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/) and is being re-hosted here for archival purposes.
+*An earlier version of this post first appeared [on the Casa blog](https://blog.casa.io/bitcoin-security-101-how-to-create-the-healthiest-environment-for-your-devices/) in 2021.*

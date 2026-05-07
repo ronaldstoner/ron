@@ -4,6 +4,9 @@ date: 2019-06-02 02:00:00 -0700
 title:  "The Next Electric Scooter You Ride Could Be Hacked"
 description: "The Next Electric Scooter You Ride Could Be Hacked"
 image: "https://ron.stoner.com/images/heroes/electric-scooter.jpg"
+slug: the-next-electric-scooter-you-ride-could-be-hacked
+redirect_from:
+  - /The_Next_Electric_Scooter_You_Ride_Could_Be_Hacked/
 ---
 
 ![](https://ron.stoner.com/images/electric-scooter/01.jpeg)
@@ -55,5 +58,5 @@ Since the first draft of this article, various upgraded scooter models and firmw
 Personal transport devices will continue to permeate our lives and security mindset should be permeating it as well. I’m hopeful that as the momentum grows so will the security model for these important pieces of tech in our lives. Cars, scooters, electric skateboards, powered unicycles, hover shoes, and even drones are all at risk and need to be looked at with a malicious eye. We need to do better. Would you trust your life to a scooter at 18 miles per hour if you knew I was controlling it all the time on my phone?
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/the-next-electric-scooter-you-ride-could-be-hacked-7cba3dcc64a4](https://medium.com/@forwardsecrecy/the-next-electric-scooter-you-ride-could-be-hacked-7cba3dcc64a4) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/the-next-electric-scooter-you-ride-could-be-hacked-7cba3dcc64a4) in 2019.*
 

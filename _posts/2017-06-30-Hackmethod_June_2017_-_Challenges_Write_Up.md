@@ -4,6 +4,9 @@ date: 2017-06-30 07:00:00 -0700
 title:  "Hackmethod June 2017 - Challenges Write Up"
 description: "A CTF writeup for the Hackmethod June 2017 Challenges"
 image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
+slug: hackmethod-june-2017-challenges-write-up
+redirect_from:
+  - /Hackmethod_June_2017_-_Challenges_Write_Up/
 ---
 
 Part of the computer security business is keeping your skills sharp and up to date. Especially within the realm of technical knowledge, sometimes knowing is not enough. Getting that raw feeling of interaction with a live system can bring things full circle, and further help to bridge that gap between knowing something and applying something. Capture The Flag (CTF) challenges in virtual server lab environments are a perfect example of maintaining while also increasing security skill sets.
@@ -28,7 +31,7 @@ The rules were as follows:
 
 ### Challenge 1 — Website Password
 > # *SHA1 the clear-text password to login to:*
-> # *http://[website]:8080/*
+> # `http://<challenge-host>:8080/`
 > # *Example: HM-Chall{P@ssw0rd}*
 
 Navigating to the website linked in the challenge description came up with a HTTP login form. Per the website, there was no need to dirbust or SQL inject, so a different way was needed to complete this challenge.
@@ -59,7 +62,7 @@ The password **S7up!d_Curly!** is captured and the user can be authenticated thr
 
 ### Challenge 2 — Web Flag
 > # Get the flag hosted on the website located here:
-> # [http://[website]:8080/](http://[website]:8080/)
+> # `http://<challenge-host>:8080/`
 
 Per the last step in challenge 1 the goal is now to login as the **admin** user instead of **larry**. Since I had access to login as a user, I wanted to check further into how the cookies and sessions for the web server were handled. Running the **tamper_data** plugin I could tamper cookie data passed to the web server when logged in a user. The variable **admin_access **was present in the cookie, and set to **no**. Changing this value to **yes** allowed me to login as the admin user.
 
@@ -143,5 +146,5 @@ The string located in **REALFLAG.txt** appears to be what is needed to complete 
 
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/hackmethod-june-2017-challenges-write-up-a92b4fcb656](https://medium.com/@forwardsecrecy/hackmethod-june-2017-challenges-write-up-a92b4fcb656) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/hackmethod-june-2017-challenges-write-up-a92b4fcb656) in 2017.*
 

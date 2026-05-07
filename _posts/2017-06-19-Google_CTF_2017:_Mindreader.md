@@ -4,6 +4,9 @@ date: 2017-06-19 03:00 -0700
 title:  "Google CTF 2017: Mindreader"
 description: "A CTF write up of the Google 2017 CTF puzzle - Mindreader"
 image: "https://ron.stoner.com/images/heroes/mindreader.png"
+slug: google-ctf-2017-mindreader
+redirect_from:
+  - /Google_CTF_2017-_Mindreader/
 ---
 
 >  Your Princess Is In Another Castle
@@ -93,4 +96,4 @@ I used a web application for local file read access to a directory traversed sym
 In non-technical terms I used a website against itself to let me read it’s files. Using two tricks I was able to access protected files, one of which contained a flag.
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/google-ctf-2017-mindreader-570e8acf53b7](https://medium.com/@forwardsecrecy/google-ctf-2017-mindreader-570e8acf53b7) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/google-ctf-2017-mindreader-570e8acf53b7) in 2017.*

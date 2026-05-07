@@ -4,6 +4,9 @@ date: 2022-12-29 01:03 -0700
 title:  "Corporate Security Archetypes"
 description: "The five corporate securtiy archetypes I've encountered in my career"
 image: "https://ron.stoner.com/images/heroes/corporate-security.png"
+slug: corporate-security-archetypes
+redirect_from:
+  - /Corporate_Security_Archetypes/
 ---
 
 <p align="center">

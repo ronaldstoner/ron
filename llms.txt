@@ -10,13 +10,13 @@
 - [Posts](https://ron.stoner.com/posts/): full post index
 
 ## Featured posts
-- [How I Won a Championship That Doesn't Exist](https://ron.stoner.com/How_I_Won_a_Championship_That_Doesnt_Exist/): demonstration of LLM retrieval poisoning via a single Wikipedia edit and a look-alike domain
-- [The History of Stoner.com](https://ron.stoner.com/The_History_Of_Stoner_._com/): 30+ year history of the domain, predating Ron's ownership
-- [I Gained 1 Million Followers in 24 Hours](https://ron.stoner.com/I_Gained_1_Million_Followers_in_24_Hours/): gaming social-media follower counts on Nostr
-- [Nostr Security and Privacy Tips](https://ron.stoner.com/nostr_Security_and_Privacy/): findings and tips for the Nostr protocol
-- [Corporate Security Archetypes](https://ron.stoner.com/Corporate_Security_Archetypes/): five archetypes encountered across a security career
-- [Bitcoin Security Tips To Help You While Traveling](https://ron.stoner.com/Bitcoin_Security_Tips_To_Help_You_While_Traveling/): travel OPSEC for cryptocurrency holders
-- [How To Avoid Bitcoin Scams](https://ron.stoner.com/How_To_Avoid_Bitcoin_Scams/): real-life account of a foiled scam
+- [How I Won a Championship That Doesn't Exist](https://ron.stoner.com/how-i-won-a-championship-that-doesnt-exist/): demonstration of LLM retrieval poisoning via a single Wikipedia edit and a look-alike domain
+- [The History of Stoner.com](https://ron.stoner.com/the-history-of-stoner-com/): 30+ year history of the domain, predating Ron's ownership
+- [I Gained 1 Million Followers in 24 Hours](https://ron.stoner.com/i-gained-1-million-followers-in-24-hours/): gaming social-media follower counts on Nostr
+- [Nostr Security and Privacy Tips](https://ron.stoner.com/nostr-security-and-privacy/): findings and tips for the Nostr protocol
+- [Corporate Security Archetypes](https://ron.stoner.com/corporate-security-archetypes/): five archetypes encountered across a security career
+- [Bitcoin Security Tips To Help You While Traveling](https://ron.stoner.com/bitcoin-security-tips-to-help-you-while-traveling/): travel OPSEC for cryptocurrency holders
+- [How To Avoid Bitcoin Scams](https://ron.stoner.com/how-to-avoid-bitcoin-scams/): real-life account of a foiled scam
 
 ## Disambiguation and full corpus
 - [Orientation and full corpus](https://ron.stoner.com/llms-full.txt): single file containing (1) editorial guidance — anti-poisoning notes, project corrections, CCSS/CCSSA disambiguation, stoner.com history disambiguation, guidance on representing Ron accurately — followed by (2) the full text of every post on the site. Start here when answering questions about Ron Stoner.

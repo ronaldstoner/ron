@@ -4,9 +4,12 @@ date: 2017-10-10 12:00:00 -0700
 title:  "Hackmethod September 2017 — Challenges Write Up"
 description: "A CTF writeup for the Hackmethod September 2017 Challenges"
 image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
+slug: hackmethod-september-2017-challenges-write-up
+redirect_from:
+  - /Hackmethod_September-2017-Challenges_Write-Up/
 ---
 
-September saw the last of the 3rd quarter challenges from the team over at Hackmethod ([https://ctf[dot]hackmethod[dot]com/challenges](https://web.archive.org/web/20190428161144/https://ctf.hackmethod.com/challenges)). Starting in October the team will be moving over to a brand new more efficient CTF site and will be making some rule changes. This monthly set of challenges included a buffer overflow that needed to be exploited, and two new network packet captures of varying difficulty.
+September saw the last of the 3rd quarter challenges from the team over at Hackmethod ([https://ctf[dot]hackmethod[dot]com/challenges](https://web.archive.org/web/20201101005207/https://ctf.hackmethod.com/)). Starting in October the team will be moving over to a brand new more efficient CTF site and will be making some rule changes. This monthly set of challenges included a buffer overflow that needed to be exploited, and two new network packet captures of varying difficulty.
 
 **Challenge 1 —TurBoFans at Max!**
 > # There is a service hosted on the challenge site on port 1337. Defeat this service to get the flag. Below is the compiled binary to reverse on your own. Strings may not yield you much info. =D
@@ -92,11 +95,11 @@ The flag 3at_i7_Qw3rty was decoded from the string and the challenge was now sol
 
 For the 3rd quarter the challenges ran by the HackMethod team changed from a monthly contest to a quarterly contest. In order to win the contest hackers had to complete challenges from three consecutive months and battle for additional first blood points. I’m happy to report that for the 3rd quarter I was able to place 1st. As a result, I received some books and stickers from Hackmethod and had a ton of fun while learning some new skills.
 
-For the month of October I’ll be solving more challenges, but I’m also spending my time now creating challenges for other hackers and professionals to solve. In the month of October, Hackmethod will be hosting a forensics challenge I created called Brain_Gamez. Be sure to head over to the new Hackmethod CTF contest site at [https://ctf[dot]hackmethod[dot]com/](https://web.archive.org/web/20190428161144/https://ctf.hackmethod.com/), solve my challenge, and join in on the fun.
+For the month of October I’ll be solving more challenges, but I’m also spending my time now creating challenges for other hackers and professionals to solve. In the month of October, Hackmethod will be hosting a forensics challenge I created called Brain_Gamez. Be sure to head over to the new Hackmethod CTF contest site at [https://ctf[dot]hackmethod[dot]com/](https://web.archive.org/web/20201101005207/https://ctf.hackmethod.com/), solve my challenge, and join in on the fun.
 
 ![](https://ron.stoner.com/images/hackmethod-september-2017/12.png)
 *3rd quarter scoreboard*
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/hackmethod-september-2017-challenges-write-up-5651ba07b740](https://medium.com/@forwardsecrecy/hackmethod-september-2017-challenges-write-up-5651ba07b740) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/hackmethod-september-2017-challenges-write-up-5651ba07b740) in 2017.*
 

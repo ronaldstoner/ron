@@ -4,6 +4,9 @@ date: 2019-12-26 04:00:00 -0700
 title:  "OverTheWire Advent Bonanza 2019"
 description: "A CTF write up for the OverTheWire Advent Bonanza 2019 CTF"
 image: "https://ron.stoner.com/images/heroes/overthewire-advent-2019.jpg"
+slug: overthewire-advent-bonanza-2019-ctf-write-up
+redirect_from:
+  - /OverTheWire_Advent_Bonanza_2019_CTF_Write_Up/
 ---
 
 This write up is a culmination of articles from a Capture The Flag competition and are all being concatenated here. You can see other challenge write ups on the main post [here](https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641).
@@ -91,7 +94,7 @@ Combining both parts yields us the completed and final flag.
 
 ## Challenge Zero
 
-Prior to the start of OverTheWire Advent Bonanza 2019, the creators released a “Challenge Zero” for teams to work on. The challenge was located at [https://advent2019[dot]overthewire[dot]org/challenge-zero](https://web.archive.org/web/2019/https://advent2019.overthewire.org/challenge-zero) *(archived — event server is no longer online)*, which showed a web page with an animated GIF of fire burning with the following message:
+Prior to the start of OverTheWire Advent Bonanza 2019, the creators released a “Challenge Zero” for teams to work on. The challenge was located at [https://advent2019[dot]overthewire[dot]org/challenge-zero](https://web.archive.org/web/20191209211831/https://advent2019.overthewire.org/dashboard/information/) *(archived dashboard — event server is no longer online; the exact challenge URL was never archived)*, which showed a web page with an animated GIF of fire burning with the following message:
 
 ![](https://ron.stoner.com/images/overthewire-advent-2019/10.gif)
 
@@ -401,5 +404,5 @@ After running the script for some time, a final Sudoku solution that meets the l
 Per the challenge description, the 32 found numbers are compiled into a single string for a final flag of **AOTW{86472953189247356794813521457639}**.
 
 **Note**
-This content was originally posted at [https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641](https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641) in 2019.*
 

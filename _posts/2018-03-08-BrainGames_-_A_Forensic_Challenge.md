@@ -4,12 +4,15 @@ date: 2018-03-08 00:59:08 -0700
 title:  "Brain_Gamez — A Forensic Challenge"
 description: "A write up for Brain_Gamez my own personal CTF challenge"
 image: "https://ron.stoner.com/images/heroes/braingames.jpg"
+slug: braingames-a-forensic-challenge
+redirect_from:
+  - /BrainGames_-_A_Forensic_Challenge/
 ---
 
 ![](https://ron.stoner.com/images/braingames/01.gif)
 *Brain Leaking by [Nick Staab](https://web.archive.org/web/20180717010336/https://dribbble.com/staabo)*
 
-Back in October I created a forensic challenge called Brain_Gamez, which was hosted on the Hackmethod Monthly CTF site ([https://ctf[dot]hackmethod[dot]com](https://web.archive.org/web/20190428161144/https://ctf.hackmethod.com/)). Brain_Gamez is a 32 KB JPG image file, which contains a mix of steganography and obfuscation techniques. It was up to the CTF hackers to figure out what to do with the image, and piece together a solution to find the final flag. What follows is the steps taken needed to solve the challenge.
+Back in October I created a forensic challenge called Brain_Gamez, which was hosted on the Hackmethod Monthly CTF site ([https://ctf[dot]hackmethod[dot]com](https://web.archive.org/web/20201101005207/https://ctf.hackmethod.com/)). Brain_Gamez is a 32 KB JPG image file, which contains a mix of steganography and obfuscation techniques. It was up to the CTF hackers to figure out what to do with the image, and piece together a solution to find the final flag. What follows is the steps taken needed to solve the challenge.
 
 The challenge starts below:
 > # “Our former employee Kevin is a pretty BRAINy guy. We found this image on his employee laptop. We think there’s something there. Can you help us figure out if our suspicions are correct?”
@@ -79,5 +82,5 @@ Executing the code listed in Kevin’s message reveals the final flag, HMCTF{Br4
 **Fun Fact:** The real life Kevin M. never worked with a hacker named “Condor”. He actually used the name “Condor” as one of his handles.
 
 **Note**
-This content was originally posted at [https://medium.com/secjuice/brain-gamez-a-forensic-challenge-dea4ac30b389](https://medium.com/secjuice/brain-gamez-a-forensic-challenge-dea4ac30b389) and is being re-hosted here for archival purposes.
+*An earlier version of this writeup first appeared [on Medium](https://medium.com/secjuice/brain-gamez-a-forensic-challenge-dea4ac30b389) in 2018.*
 
