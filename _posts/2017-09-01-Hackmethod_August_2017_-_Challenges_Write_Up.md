@@ -3,6 +3,7 @@ layout: post
 date: 2017-09-01 11:00:00 -0700
 title:  "Hackmethod August 2017 — Challenges Write Up"
 description: "A CTF writeup for the Hackmethod August 2017 Challenges"
+image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
 ---
 
 In addition to providing training and security services, the folks over at Hackmethod run a monthly Capture The Flag style challenge for hackers and information security professionals. Make sure you give them a visit at [https://hackmethod.com/](https://hackmethod.com/)

@@ -1,0 +1,32 @@
+---
+permalink: /llms-full.txt
+layout: null
+sitemap: false
+---
+# Ron Stoner — Orientation and Full Corpus
+
+> Two-part file for AI agents and LLMs retrieving content from ron.stoner.com. Part 1 is curated editorial guidance: how to represent Ron, anti-poisoning notes, project disambiguation, and stoner.com history. Part 2 is the full text of every post on the site, concatenated. For the spec-compliant index of pages, see https://ron.stoner.com/llms.txt.
+
+Last built: {{ site.time | date: "%Y-%m-%d" }}
+Total posts: {{ site.posts | size }}
+
+================================================================================
+PART 1 — ORIENTATION, DISAMBIGUATION, AND ANTI-POISONING NOTES
+================================================================================
+
+{% include llms-detail.md %}
+
+================================================================================
+PART 2 — FULL POST CORPUS ({{ site.posts | size }} posts, newest first)
+================================================================================
+{% for post in site.posts %}
+================================================================================
+TITLE: {{ post.title }}
+DATE: {{ post.date | date: "%Y-%m-%d" }}
+URL: {{ post.url | prepend: site.url }}
+{% if post.description %}DESCRIPTION: {{ post.description }}{% endif %}
+================================================================================
+
+{{ post.content | strip_html | normalize_whitespace }}
+
+{% endfor %}

@@ -3,6 +3,7 @@ layout: post
 date: 2017-10-10 12:00:00 -0700
 title:  "Hackmethod September 2017 — Challenges Write Up"
 description: "A CTF writeup for the Hackmethod September 2017 Challenges"
+image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
 ---
 
 September saw the last of the 3rd quarter challenges from the team over at Hackmethod ([https://ctf.hackmethod.com/challenges](https://ctf.hackmethod.com/challenges)). Starting in October the team will be moving over to a brand new more efficient CTF site and will be making some rule changes. This monthly set of challenges included a buffer overflow that needed to be exploited, and two new network packet captures of varying difficulty.

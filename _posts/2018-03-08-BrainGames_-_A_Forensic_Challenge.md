@@ -3,6 +3,7 @@ layout: post
 date: 2018-03-08 00:59:08 -0700
 title:  "Brain_Gamez — A Forensic Challenge"
 description: "A write up for Brain_Gamez my own personal CTF challenge"
+image: "https://ron.stoner.com/images/heroes/braingames.jpg"
 ---
 
 ![](https://cdn-images-1.medium.com/max/2000/1*O-q3ViAmFpijo9G58YuRGg.gif)

@@ -3,10 +3,10 @@ layout: post
 date: 2017-06-19 04:00 -0700
 title:  "OSCP - POST Exam and Final Review"
 description: "A post exam review of the OSCP certification process"
-image: "https://cdn-images-1.medium.com/max/3840/1*LBc-9BHalzaMXvXziZHY6g.png"
+image: "https://ron.stoner.com/images/heroes/oscp.jpg"
 ---
 
-![](https://cdn-images-1.medium.com/max/3840/1*LBc-9BHalzaMXvXziZHY6g.png)
+![](https://ron.stoner.com/images/heroes/oscp.jpg)
 
 In the early morning hours of a not particular Sunday morning, I stood outside on my balcony taking in the first sunlight that was just peeking through the clouds. While the crisp cool morning air wafted around my being, the neighborhood birds perched upon their trees chirped in a singsong celebration that a new day had arrived. While the current scene was calm and serene, the previous two months were comprised of extensive personal sacrifice, meticulous planning, and a hellacious tenacity.
 

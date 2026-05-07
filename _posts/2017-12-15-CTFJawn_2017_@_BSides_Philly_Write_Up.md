@@ -3,11 +3,11 @@ layout: post
 date: 2017-12-15 03:00:00 -0700
 title:  "CTFJawn 2017 @ BSides Philly Write Up"
 description: "A CTF writeup of the CTFJawn 2017 challenges"
-image: "https://cdn-images-1.medium.com/max/2000/1*ST1-igWFDQUNsnX_RLu1Pg.png"
+image: "https://ron.stoner.com/images/heroes/ctfjawn-2017.png"
 ---
 
 
-![](https://cdn-images-1.medium.com/max/2000/1*ST1-igWFDQUNsnX_RLu1Pg.png)
+![](https://ron.stoner.com/images/heroes/ctfjawn-2017.png)
 *Image by [Tieatie](https://dribbble.com/tieatie)*
 
 ## CTFJawn 2017 @ BSides Philly Write Up

@@ -3,6 +3,7 @@ layout: post
 date: 2017-06-19 03:00 -0700
 title:  "Google CTF 2017: Mindreader"
 description: "A CTF write up of the Google 2017 CTF puzzle - Mindreader"
+image: "https://ron.stoner.com/images/heroes/mindreader.png"
 ---
 
 >  Your Princess Is In Another Castle

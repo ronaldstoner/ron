@@ -3,6 +3,7 @@ layout: post
 date: 2018-07-27 01:00:00 -0700
 title:  "How I Hacked My Way Into A Secret Society"
 description: "How I Hacked My Way Into A Secret Society (and how you can too!)"
+image: "https://ron.stoner.com/images/heroes/secret-society.png"
 ---
 
 The concept of blockchain technology and crypto-currency fascinates me. It’s not just the technical marvels and feats, the fact that true consensus can be achieved through a protocol, or that the idea itself provides utilitarian and disruptive properties. Blockchain technology is just coooooool, like *“Fonzie cool”*.

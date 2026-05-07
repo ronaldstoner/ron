@@ -3,6 +3,7 @@ layout: post
 date: 2019-06-02 02:00:00 -0700
 title:  "The Next Electric Scooter You Ride Could Be Hacked"
 description: "The Next Electric Scooter You Ride Could Be Hacked"
+image: "https://ron.stoner.com/images/heroes/electric-scooter.jpg"
 ---
 
 ![](https://cdn-images-1.medium.com/max/2296/1*8pawO3MwBoN-7m7_tZ2pug.jpeg)

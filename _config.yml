@@ -9,6 +9,7 @@
 title: Ron Stoner
 tagline: Security, Privacy, Self-Sovereignty 
 picture: me.jpg #keep a 100x100 image inside images folder.
+image: /images/og-default.png # default Open Graph / Twitter card image (1200x630)
 #email: 
 description: > # this means to ignore newlines until "baseurl:"
   Ron Stoner is a hacker, security engineer, privacy advocate, and a practitioner of self-sovereign technologies.
@@ -18,7 +19,22 @@ url: "https://ron.stoner.com" # the base hostname & protocol for your site
 brand-color: "#b45f38"
 permalink: ":title/"
 
+author:
+  name: Ron Stoner
+  url: https://ron.stoner.com/
+  twitter: forwardsecrecy
+
+social:
+  name: Ron Stoner
+  links:
+    - https://x.com/forwardsecrecy
+    - https://github.com/ronaldstoner
+    - https://www.linkedin.com/in/ronstoner
+    - https://medium.com/@forwardsecrecy
+    - https://keybase.io/forwardsecrecy        # if you have/want it
+
 twitter:
+  username: forwardsecrecy
   card: summary_large_image
 
 locale: en_US

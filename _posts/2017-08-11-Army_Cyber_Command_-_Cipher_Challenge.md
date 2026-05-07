@@ -3,10 +3,10 @@ layout: post
 date: 2017-08-11 01:00:00 -0700
 title:  "Army Cyber Command — Cipher Challenge"
 description: "A CTF writeup for the Army Cyber Command — Cipher Challenge 2017"
-image: "https://cdn-images-1.medium.com/max/2000/1*a8k8cpExVuJ41SAJJjc4Eg.png"
+image: "https://ron.stoner.com/images/heroes/army-cyber-cipher.png"
 ---
 
-![](https://cdn-images-1.medium.com/max/2000/1*a8k8cpExVuJ41SAJJjc4Eg.png)
+![](https://ron.stoner.com/images/heroes/army-cyber-cipher.png)
 
 Back in 2016 the Cyber Command branch of the United States Army (ARCYBER) released a commercial that lead to an ARG for recruitment of hackers. A YouTube video ([https://www.youtube.com/watch?v=0LZnOorfS_Q)](https://www.youtube.com/watch?v=0LZnOorfS_Q) of the commercial showed the URL [http://recruitahacker.net/](http://recruitahacker.net/) in the console lines displayed in the video. Browsing to this URL opened up puzzles for those willing to test their skills (and possibly set themselves up for recruitment).
 

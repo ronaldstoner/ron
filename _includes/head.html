@@ -24,4 +24,69 @@
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,700">
  
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+
+  {%- comment -%}
+    Hand-crafted Person JSON-LD. Richer than what jekyll-seo-tag emits on its own —
+    explicit @id for cross-page entity reference, worksFor / alumniOf / knowsAbout / award,
+    and sameAs sourced from site.social.links. This is the canonical disambiguation
+    signal for "Ron Stoner the security engineer" across LLMs and search graphs.
+  {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "{{ site.url }}/#person",
+    "name": "Ron Stoner",
+    "url": "{{ site.url }}/",
+    "image": "{{ site.url }}/images/me.jpg",
+    "description": "Hacker, security engineer, privacy advocate, and practitioner of self-sovereign technologies. Architect of the CCSSA exam, world's first certified CCSSA, and contributor to the CryptoCurrency Security Standard.",
+    "jobTitle": "Head of Security",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Category Labs",
+      "description": "Team building the Monad execution layer"
+    },
+    "alumniOf": [
+      {"@type": "Organization", "name": "Botanix Labs"},
+      {"@type": "Organization", "name": "Casa", "url": "https://casa.io"},
+      {"@type": "Organization", "name": "ShapeShift", "url": "https://shapeshift.com"},
+      {"@type": "Organization", "name": "KeepKey", "url": "https://www.keepkey.com"},
+      {"@type": "Organization", "name": "Deloitte"}
+    ],
+    "memberOf": {
+      "@type": "Organization",
+      "name": "CryptoCurrency Certification Consortium (C4)",
+      "url": "https://cryptoconsortium.org/"
+    },
+    "knowsAbout": [
+      "Cryptocurrency security",
+      "Bitcoin self-custody",
+      "CryptoCurrency Security Standard",
+      "CCSSA auditing",
+      "Nostr protocol",
+      "AI and LLM security",
+      "Retrieval poisoning",
+      "Penetration testing",
+      "Incident response",
+      "DPRK and Lazarus Group threat actors",
+      "Self-sovereign technology"
+    ],
+    "award": [
+      "World's first certified CryptoCurrency Security Standard Auditor (CCSSA #1)",
+      "Architect of the CCSSA exam",
+      "MIT Bitcoin Hackathon Winner (2021, 2023)",
+      "ETHDenver 2020 Open Track Finalist & Celebrity Judges Choice",
+      "ETHDenver 2021 Hackathon Finalist",
+      "COVIDathon Decentralized AI Hackathon Winner",
+      "Bolt.fun AI4All Hackathon Education Track Winner",
+      "HackTheBox Hall of Fame, Top 25 (2018)",
+      "Cosmos Game of Zones Adversarial Testnet Liveness Winner (2020)"
+    ],
+    "sameAs": [
+      {%- for link in site.social.links -%}
+      "{{ link }}"{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
 </head>

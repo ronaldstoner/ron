@@ -3,6 +3,7 @@ layout: post
 date: 2019-12-26 04:00:00 -0700
 title:  "OverTheWire Advent Bonanza 2019"
 description: "A CTF write up for the OverTheWire Advent Bonanza 2019 CTF"
+image: "https://ron.stoner.com/images/heroes/overthewire-advent-2019.jpg"
 ---
 
 This write up is a culmination of articles from a Capture The Flag competition and are all being concatenated here. You can see other challenge write ups on the main post [here](https://medium.com/@forwardsecrecy/overthewire-advent-bonanza-2019-capture-the-flag-competition-66c50671c641).

@@ -3,7 +3,7 @@ layout: post
 date: 2025-03-10 00:00 -0700
 title:  "The History of Stoner.com"
 description: "A 30+ year journey through the life of a domain name"
-image: "https://ron.stoner.com/images/stonercom/1997-dec.png"
+image: "https://ron.stoner.com/images/heroes/1997-dec.png"
 ---
 ##  From Pipeline Simulators to Self-Sovereignty
 
@@ -45,7 +45,7 @@ It was a simpler time and a simpler internet. Some would say, a better and more 
 
 ## Late 1997–1999: Severn Trent Takes Over
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/stonercom/1997-dec.png)
+![](https://ron.stoner.com/images/heroes/1997-dec.png)
 *Severn Trent - 1997*
 
 By the end of **1997**, the site transitioned to showcase the **Severn Trent Systems** group of companies. Severn Trent, a UK-based utility conglomerate, had absorbed Stoner Associates as one of three business units alongside Severn Trent Systems (US) and STS (UK).

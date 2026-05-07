@@ -3,11 +3,11 @@ layout: post
 date: 2022-12-29 03:30 -0700
 title:  "Nostr Security and Privacy Tips"
 description: "Security and privacy tips and findings for nostr"
-image: "https://ron.stoner.com/images/nostr-security.png"
+image: "https://ron.stoner.com/images/heroes/nostr-security.png"
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-security.png" alt="Nostr hacker sitting at a laptop" width="300"> 
+  <img src="https://ron.stoner.com/images/heroes/nostr-security.png" alt="Nostr hacker sitting at a laptop" width="300"> 
 </p>
 
 Nostr is the latest in decentralized protocol advancement. By definition nostr is "a decentralized network based on cryptographic keypairs and that is not peer-to-peer, it is super simple and scalable and therefore has a chance of working".

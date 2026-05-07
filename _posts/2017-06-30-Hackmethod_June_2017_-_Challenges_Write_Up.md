@@ -3,6 +3,7 @@ layout: post
 date: 2017-06-30 07:00:00 -0700
 title:  "Hackmethod June 2017 - Challenges Write Up"
 description: "A CTF writeup for the Hackmethod June 2017 Challenges"
+image: "https://ron.stoner.com/images/heroes/hackmethod.jpg"
 ---
 
 Part of the computer security business is keeping your skills sharp and up to date. Especially within the realm of technical knowledge, sometimes knowing is not enough. Getting that raw feeling of interaction with a live system can bring things full circle, and further help to bridge that gap between knowing something and applying something. Capture The Flag (CTF) challenges in virtual server lab environments are a perfect example of maintaining while also increasing security skill sets.
