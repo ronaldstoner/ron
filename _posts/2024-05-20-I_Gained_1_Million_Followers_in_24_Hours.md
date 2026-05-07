@@ -62,7 +62,7 @@ Total new followers per hour = 100 * 60 * 60 = 360,000
 
 To hit 1 million followers in 24 hours: **1,000,000 / 360,000 ≈ 2.78 hours**
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-stats.gif)
+![](https://ron.stoner.com/images/nostr/nostr-stats.gif)
 *It's alive and working*
 
 ### Observations
@@ -78,19 +78,19 @@ While my script only ran for a few hours, it highlighted a potential vulnerabili
 ### Charts and Stats
 Thank you to [https://stats.nostr.band](https://stats.nostr.band) for providing the following charts and statistics. 
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-daily-new-users.png)
+![](https://ron.stoner.com/images/nostr/nostr-daily-new-users.png)
 *Daily New Users*
 
 
-![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-total-users.png)
+![nostr-stats](https://ron.stoner.com/images/nostr/nostr-total-users.png)
 *Total Nostr Users*
 
 
-![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-total-profile-events.png)
+![nostr-stats](https://ron.stoner.com/images/nostr/nostr-total-profile-events.png)
 *Total Profile Events Published*
 
 
-![nostr-stats](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-events-published.png)
+![nostr-stats](https://ron.stoner.com/images/nostr/nostr-events-published.png)
 *Events Published*
 
 ### Challenges and Fixes
@@ -116,7 +116,7 @@ It is suggested that relay operators look into the above as mitigation controls 
 
 ## Conclusion
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/nostr-4million.png)
+![](https://ron.stoner.com/images/nostr/nostr-4million.png)
 
 This experiment revealed just how artificial social media can be. **The ease with which follower counts and engagement metrics can be manipulated calls into question the authenticity of online personas and the credibility of social media as a whole.**
 
