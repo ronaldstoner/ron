@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+description: "About Ron Stoner — Head of Security at Category Labs, formerly CSO at Botanix Labs and Head of Security at Casa Inc. Hacker, security engineer, CCSSA #1, and architect of the CryptoCurrency Security Standard Auditor exam."
 ---
 
 ![Ron, mid-90s](/images/ron-90s.jpg)

@@ -2,6 +2,7 @@
 layout: page
 title: Projects
 permalink: /projects/
+description: Projects Ron Stoner has built, led security for, or contributed to — including Monad, Botanix Labs, Casa, KeepKey, ShapeShift, and the CryptoCurrency Security Standard.
 ---
 
 

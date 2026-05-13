@@ -2,6 +2,7 @@
 layout: page
 title: Contact
 permalink: /contact/
+description: Get in touch with Ron Stoner for consulting engagements, security incident response, speaking, or media inquiries.
 ---
 
 <div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/48706f4facd173d77baaee87f35bd706?embedded=1"></div>

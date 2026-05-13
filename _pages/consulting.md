@@ -2,6 +2,7 @@
 layout: page
 title: Consulting
 permalink: /consulting/
+description: Senior security leadership and incident response for cryptocurrency, blockchain, and Web3 companies. Engagements include nation-state-aware IR, security architecture review, bug bounty program design, and fractional CSO/Head of Security retainers.
 ---
 
 ![Ron Stoner](/images/ron-consulting.jpg)

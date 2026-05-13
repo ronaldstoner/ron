@@ -2,6 +2,7 @@
 layout: page
 title: Media
 permalink: /media/
+description: Articles, podcasts, conference talks, and press features by and about Ron Stoner — covering cryptocurrency security, Bitcoin self-custody, AI/LLM threats, and incident response.
 ---
 
 ## Articles
