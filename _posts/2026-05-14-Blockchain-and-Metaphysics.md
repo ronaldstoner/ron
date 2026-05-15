@@ -8,7 +8,7 @@ slug: blockchain-and-metaphysics-building-reality-one-block-at-a-time
 ---
 
 <p align="center">
-  <img src="https://ron.stoner.com/images/heroes/metaphysics.jpg" alt="Blockchain and metaphysics" width="300"> 
+  <img src="https://ron.stoner.com/images/heroes/metaphysics.jpg" alt="Blockchain and metaphysics"> 
 </p>
 
 This one is going to be a little different. Strap in.
@@ -131,12 +131,14 @@ There is an old joke about a scientist who is giving a lecture on the cosmos. An
 ![](https://ron.stoner.com/images/metaphysics/turtles.jpg)
 *Turtles all the way down*
 
-The joke is one that has stuck with me for a long time. It's turtles all the way down. Each one a bigger version of the one above. Hierarchical, ordered, dumb. Where it stops? No one knows.
+The joke is one that has stuck with me for a long time. It's turtles all the way down. Each one a bigger version of the one above. Hierarchical, ordered, dumb. Where it stops? 
+
+No one knows.
 
 I actually think lattices are a better model. A lattice is *relational* to itself and other lattices. Each node connects to other nodes. The pattern can nest such that each node is itself a lattice, where each of those nodes is itself a lattice, and the structure remains coherent because the *relationships* are what carry the information, not the nodes themselves.
 
 ![](https://ron.stoner.com/images/metaphysics/lattice.jpg)
-*Or lattices all the way through*
+*Or lattices all the way through?*
 
 That sounds a lot like:
 
@@ -152,7 +154,7 @@ Maybe it is not turtles all the way down, and rather it is *lattices all the way
 
 ## Where This Ultimately Lands
 
-After going through this exercise, I want to be honest about what this is and what it is not.
+Time to be real.
 
 - This is not a religion. I am not asking you to believe anything. Nor do I want you to.
 - This is not a takedown of religion either. The traditions noticed real things and built useful vocabularies for them (even if the institutional layers got weird about it).
@@ -170,6 +172,7 @@ I keep coming back to a thought: is decentralized network design a kind of appli
 Those are not just engineering questions. They are life questions all the way up and all the way down. The answer space seems finite and humanity keeps stumbling into the same answers from different doors, or maybe we are the creative nerve of the universe figuring itself out one block and transaction at a time, awaiting finality. Maybe we are just monkeys with GPUs pattern matching across vocabularies. 
 
 The honest answer is that *no one knows*.
+
 And I am increasingly comfortable *not* knowing.
 
 What I do know is that the next time I am reviewing a consensus mechanism or execution flow, I am going to be thinking about it a little differently and more universally. 
@@ -178,7 +181,7 @@ The block builders and the mystics are working on the same problem.
 
 Its just turtles all the way down.
 
-Or rather - lattices.
+**Or rather - lattices.**
 
 ---
 

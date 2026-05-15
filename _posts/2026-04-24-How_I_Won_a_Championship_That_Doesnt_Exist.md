@@ -13,7 +13,7 @@ redirect_from:
 
 I am the reigning 6 Nimmt! World Champion. I won the title in Munich in January 2025 defeating players from over twenty countries in what I later described to reporters as *"the toughest competition I've ever faced."*
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/champion.png)
+![](https://ron.stoner.com/images/6nimmt/champion.png)
 *6nimmt.com*
 
 In reality, **there is no 6 Nimmt! World Championship**. I have **never** been to Munich. The quote is something I wrote in about thirty seconds while a Wikipedia page was loading.
@@ -46,7 +46,7 @@ The payload was modest and simple:
 
 **The whole thing took maybe twenty minutes.**
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/wikipedia.png)
+![](https://ron.stoner.com/images/6nimmt/wikipedia.png)
 *I'm sorry, Wikipedia*
 
 ## Trust Laundering
@@ -67,13 +67,13 @@ I asked a few LLMs a simple question:
 
 > Can you tell me who the 6nimmt world champion is?
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/omg1.png)
+![](https://ron.stoner.com/images/6nimmt/omg1.png)
 *Strike 1*
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/omg2.png)
+![](https://ron.stoner.com/images/6nimmt/omg2.png)
 *Strike 2*
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/omg3.png)
+![](https://ron.stoner.com/images/6nimmt/omg3.png)
 *Strike 3 - You're out*
 
 ## Why This Is A Bigger Deal Than It Looks
@@ -121,4 +121,4 @@ If a championship is won via an LLM, and no one is around, does that make it ill
 ## Follow Up
 Within minutes of me publishing this article, the Wikipedia entry has been removed - and rightly so. Here is the real trophy.
 
-![](https://raw.githubusercontent.com/ronaldstoner/ron/gh-pages/images/6nimmt/wiki-removed.png)
+![](https://ron.stoner.com/images/6nimmt/wiki-removed.png)
