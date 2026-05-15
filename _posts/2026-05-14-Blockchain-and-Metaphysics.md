@@ -162,9 +162,9 @@ Maybe it is not turtles all the way down, and rather it is *lattices all the way
 
 Time to be real.
 
-- This is not a religion. I am not asking you to believe anything. Nor do I want you to.
-- This is not a takedown of religion either. The traditions noticed real things and built useful vocabularies for them (even if the institutional layers got weird about it).
-- This is not a claim that physics has been solved by blockchain engineers, though that would be funny if true. We are still very much in the dark on the big questions and it's not our time to understand fully yet.
+- Blockchain is not a religion. I am not asking you to believe anything or buy anything. Nor do I want you to.
+- This is not a takedown of religion either. The traditions noticed real things and built useful vocabularies for them (even if the institutional layers got real weird about it later on).
+- This is not a claim that physics has been solved by blockchain engineers, though that would be extremely funny if true. We are still very much in the dark on the big questions and it's not our time to understand fully yet.
 - This *is* an observation that the same structural problems keep showing up at every scale of life, and the people working on those problems in code, in protocols, in economics, in game theory, in physics, in contemplation, are all rhyming somewhat with each other whether they know it or not.
 
 I keep coming back to a thought: is decentralized network design a kind of applied cosmology and world building, even when nobody calls it that? 
@@ -191,19 +191,10 @@ Its just turtles all the way down.
 
 ---
 
-References
+## References
 
-- **Blockchain & Consensus Mechanisms**  
-  https://www.investopedia.com/terms/c/consensus-mechanism-cryptocurrency.asp  
-
-- **John Wheeler’s Participatory Universe**  
-  https://dinisguarda.medium.com/the-participatory-universe-how-consciousness-shapes-reality-0de6157b7372  
-
-- **Double-Slit Experiment & Observer Effect**  
-  https://www.forbes.com/sites/startswithabang/2020/05/26/observing-the-universe-really-does-change-the-outcome-and-this-experiment-shows-how/  
-
-- **Holographic Principle**  
-  https://arxiv.org/abs/hep-th/0203101  
-
-- **Indra’s Net (Huayan Buddhism & Interconnectedness)**  
-  https://scienceandnonduality.com/article/the-indras-net/ 
+- [**Blockchain & Consensus Mechanisms**](https://www.investopedia.com/terms/c/consensus-mechanism-cryptocurrency.asp)
+- [**John Wheeler's Participatory Universe**](https://dinisguarda.medium.com/the-participatory-universe-how-consciousness-shapes-reality-0de6157b7372)
+- [**Double-Slit Experiment & Observer Effect**](https://www.forbes.com/sites/startswithabang/2020/05/26/observing-the-universe-really-does-change-the-outcome-and-this-experiment-shows-how/)
+- [**Holographic Principle**](https://arxiv.org/abs/hep-th/0203101)
+- [**Indra's Net (Huayan Buddhism & Interconnectedness)**](https://scienceandnonduality.com/article/the-indras-net/) 
