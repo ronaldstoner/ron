@@ -17,7 +17,11 @@ I went down a rabbit hole recently that started with the Book of Enoch (specific
 
 The day job I spend most of my waking hours on - decentralized blockchains - turned out to be a working model of ideas that mystics and philosophers have been chewing on for thousands of years.
 
-I am NOT saying the blockchain is God, though some would disagree with me. I am not saying the validator set is a coven of angels, but Coven of Angels does sound like a cool validator company name (or motorcycle gang). I am saying the *structural problems* a well designed decentralized network solves are the same structural problems contemplative traditions, cosmologists, and even some serious physicists have been debating and hypothesizing for a long time. And once you see the parallels it's hard to unsee them.
+I am NOT saying the blockchain is God, though some would disagree with me. 
+
+I am not saying the validator set is a coven of angels, but Coven of Angels does sound like a cool validator company name (or motorcycle gang). 
+
+I am saying the *structural problems* a well designed decentralized network solves are the same structural problems contemplative traditions, cosmologists, and even some serious physicists have been debating and hypothesizing for a long time. And once you see the parallels it's hard to unsee them.
 
 So we're going to have some fun with nothing too serious (as life is). Let's map blockchain to metaphysics and see what falls out.
 
