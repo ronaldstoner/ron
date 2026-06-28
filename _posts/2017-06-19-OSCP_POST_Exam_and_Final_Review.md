@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [oscp, pentesting]
 date: 2017-06-19 04:00 -0700
 title:  "OSCP - POST Exam and Final Review"
 description: "A post exam review of the OSCP certification process"

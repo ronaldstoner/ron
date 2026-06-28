@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [ctf]
 date: 2017-08-11 01:00:00 -0700
 title:  "Army Cyber Command — Cipher Challenge"
 description: "A CTF writeup for the Army Cyber Command — Cipher Challenge 2017"

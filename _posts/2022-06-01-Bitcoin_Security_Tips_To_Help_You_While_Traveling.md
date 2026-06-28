@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [bitcoin, self-custody, privacy]
 date: 2022-06-01 05:00 -0700
 title:  "Bitcoin Security Tips To Help You While Traveling"
 description: "Traveling tips from a cryptocurrency security professional"

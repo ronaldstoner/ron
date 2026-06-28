@@ -1,0 +1,32 @@
+{%- comment -%}
+  Related posts, ranked by number of shared tags (3 -> 2 -> 1 overlap), top 3.
+  Pure Liquid, no plugins. Only renders if at least one related post exists.
+{%- endcomment -%}
+{% if page.tags and page.tags != empty %}
+  {% capture related_items %}
+    {% assign shown = 0 %}
+    {% assign thresholds = "3,2,1" | split: "," %}
+    {% for threshold in thresholds %}
+      {% assign t = threshold | plus: 0 %}
+      {% for post in site.posts %}
+        {% if shown < 3 and post.url != page.url %}
+          {% assign shared = 0 %}
+          {% for tag in post.tags %}
+            {% if page.tags contains tag %}{% assign shared = shared | plus: 1 %}{% endif %}
+          {% endfor %}
+          {% if shared == t %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a><span class="related-date">{{ post.date | date: "%b %Y" }}</span></li>
+            {% assign shown = shown | plus: 1 %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endcapture %}
+  {% assign related_items = related_items | strip %}
+  {% if related_items != "" %}
+  <aside class="related-posts">
+    <h2>Related posts</h2>
+    <ul class="related-list">{{ related_items }}</ul>
+  </aside>
+  {% endif %}
+{% endif %}

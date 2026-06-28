@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [ctf]
 date: 2017-12-15 03:00:00 -0700
 title:  "CTFJawn 2017 @ BSides Philly Write Up"
 description: "A CTF writeup of the CTFJawn 2017 challenges"

@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [ctf]
 date: 2019-12-26 04:00:00 -0700
 title:  "OverTheWire Advent Bonanza 2019"
 description: "A CTF write up for the OverTheWire Advent Bonanza 2019 CTF"

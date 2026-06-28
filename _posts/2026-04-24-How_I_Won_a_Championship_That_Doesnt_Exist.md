@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [ai, hacking, security]
 date: 2026-04-24 00:00 -0700
 title:  "How I Won a Championship That Doesn't Exist"
 description: "Poisoning the LLM knowledge supply chain with a fake Wikipedia edit and a single domain registration"

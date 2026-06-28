@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [bitcoin, self-custody, privacy]
 date: 2021-07-24 06:00 -0700
 title:  "Bitcoin Security 101: How To Create The Healthiest Environment For Your Devices"
 description: "Tips for electronic devices that deal with digital currency"

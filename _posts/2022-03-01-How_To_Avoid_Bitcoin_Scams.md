@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [bitcoin, security]
 date: 2022-03-01 01:00 -0700
 title:  "How To Avoid Bitcoin Scams: A Real-Life Account"
 description: "A real life account of an attemped and foiled scam"

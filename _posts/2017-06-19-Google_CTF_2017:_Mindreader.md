@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [ctf]
 date: 2017-06-19 03:00 -0700
 title:  "Google CTF 2017: Mindreader"
 description: "A CTF write up of the Google 2017 CTF puzzle - Mindreader"

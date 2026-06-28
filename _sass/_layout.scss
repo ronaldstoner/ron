@@ -244,3 +244,122 @@ pre {
     font-size: 0.6em;
   }
 }
+
+// --- Tags & related posts ---
+
+%tag-chip {
+  display: inline-block;
+  font-size: 0.75em;
+  line-height: 1;
+  padding: 4px 9px;
+  margin: 0 4px 4px 0;
+  border: 1px solid $brand-color;
+  border-radius: 999px;
+  color: $brand-color;
+  white-space: nowrap;
+  &:hover {
+    color: #fff;
+    background-color: $brand-color;
+  }
+}
+
+// Tag chips under a post title
+.post-tags {
+  list-style: none;
+  margin: 0.5em 0 0 0;
+  padding: 0;
+  li {
+    display: inline;
+  }
+  a {
+    @extend %tag-chip;
+  }
+}
+
+// Inline tag links in the Posts listing
+.post-list-tags a {
+  @extend %tag-chip;
+}
+
+// Related posts block at the bottom of a post
+.related-posts {
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: 1px solid $grey-color-light;
+
+  h2 {
+    font-size: 1.25em;
+  }
+
+  .related-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.4em;
+    }
+  }
+
+  .related-date {
+    margin-left: 0.5em;
+    font-size: 0.8em;
+    color: $grey-color;
+    opacity: 0.7;
+  }
+}
+
+// Tags hub (/tags/)
+.tag-cloud {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    margin: 0 6px 8px 0;
+  }
+
+  a {
+    @extend %tag-chip;
+    font-size: 0.95em;
+    padding: 6px 12px;
+  }
+
+  .tag-count {
+    margin-left: 6px;
+    opacity: 0.7;
+    font-size: 0.85em;
+  }
+}
+
+.tag-intro {
+  color: $grey-color-dark;
+  margin-top: 0.25em;
+}
+
+.back-to-tags {
+  margin-top: 2em;
+}
+
+// Search box on the Posts page
+.post-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  margin-bottom: 1.5em;
+  font-family: $base-font-family;
+  font-size: 1em;
+  color: $text-color;
+  border: 1px solid $brand-color;
+  border-radius: 3px;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+    border-color: $h-color;
+  }
+}
+
+.post-search-empty {
+  color: $grey-color;
+}

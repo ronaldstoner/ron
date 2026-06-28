@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [hacking, personal]
 date: 2018-07-27 01:00:00 -0700
 title:  "How I Hacked My Way Into A Secret Society"
 description: "How I Hacked My Way Into A Secret Society (and how you can too!)"

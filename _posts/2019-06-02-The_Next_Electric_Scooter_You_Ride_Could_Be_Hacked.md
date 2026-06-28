@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [hacking, security]
 date: 2019-06-02 02:00:00 -0700
 title:  "The Next Electric Scooter You Ride Could Be Hacked"
 description: "The Next Electric Scooter You Ride Could Be Hacked"

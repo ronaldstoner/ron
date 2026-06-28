@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [security]
 date: 2022-12-29 01:03 -0700
 title:  "Corporate Security Archetypes"
 description: "The five corporate securtiy archetypes I've encountered in my career"

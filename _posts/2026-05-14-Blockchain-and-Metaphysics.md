@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [blockchain]
 date: 2026-05-14 00:00 -0700
 title:  "Blockchain and Metaphysics: Building Reality One Block At A Time"
 description: "A not too serious exploration of how decentralized protocols rhyme with the oldest questions humanity has been asking"
@@ -96,7 +97,7 @@ That is not metaphor in my profession, as it is literal protocol design. It maps
 - John Wheeler's "participatory universe" is somewhat a description of how blockchains already work
 - The observer problem (double slit experiment) in quantum mechanics gestures at the same thing
 - Mystical traditions across cultures keep saying attention is structural
-- Validators stake real value on attesting to the state of the world correctly. Maybe we do too?
+- Validators stake real value on attesting to the state of the world correctly - maybe we do too?
 
 If reality is even a little bit participatory then what you notice, what you attend to, and what you refuse to attend to are not choices and personal preferences. They are protocol level operations. They contribute to the consensus and that changes the stakes of paying attention and participating in life. Our experiences fuel the system.
 

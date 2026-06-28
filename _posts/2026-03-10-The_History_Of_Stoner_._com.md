@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [personal]
 date: 2025-03-10 00:00 -0700
 title:  "The History of Stoner.com"
 description: "A 30+ year journey through the life of a domain name"

@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [nostr, privacy, security]
 date: 2022-12-29 03:30 -0700
 title:  "Nostr Security and Privacy Tips"
 description: "Security and privacy tips and findings for nostr"

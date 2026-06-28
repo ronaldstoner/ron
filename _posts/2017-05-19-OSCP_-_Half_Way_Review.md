@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [oscp, pentesting]
 date: 2017-05-19 05:00 -0700
 title:  "OSCP - Half Way Review"
 description: "A review half way through the process of the OSCP certification"

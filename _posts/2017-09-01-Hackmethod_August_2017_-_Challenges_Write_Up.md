@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [ctf]
 date: 2017-09-01 11:00:00 -0700
 title:  "Hackmethod August 2017 — Challenges Write Up"
 description: "A CTF writeup for the Hackmethod August 2017 Challenges"
