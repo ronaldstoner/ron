@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import * as SFX from './sounds.js';
 
 // ---------------------------------------------------------------- utils
@@ -18,12 +19,14 @@ function lerpAngle(a, b, t) {
 }
 const V3 = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
 const _v1 = V3(), _v2 = V3(), _v3 = V3();
+const ANIM_STEP = 1 / 32; // skeletal-animation LOD interval (~32fps) for the horse swarm
 
 // ---------------------------------------------------------------- config
 const ARENA_R = 24;
 const params = new URLSearchParams(location.search);
 const AUTO_PICK = params.get('pick'); // deep-link straight into a mode: ?pick=duck | ?pick=horses
 const DEBUG = params.has('debug');    // ?debug exposes test hooks; off in normal use
+const PROF = params.has('prof');      // ?prof shows a per-subsystem frame-time breakdown overlay
 if (params.get('mute')) SFX.setMuted(true);
 
 const CFG = {
@@ -87,9 +90,12 @@ scene.add(new THREE.HemisphereLight(0xcde3ff, 0x5a7a4a, 1.1));
 const sun = new THREE.DirectionalLight(0xfff2d8, 2.4);
 sun.position.set(18, 32, 12);
 sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048);
-sun.shadow.camera.left = -34; sun.shadow.camera.right = 34;
-sun.shadow.camera.top = 34; sun.shadow.camera.bottom = -34;
+// 1024² is plenty for a fast melee (nobody studies shadow edges), and quarters the shadow-pass
+// fragment fill vs 2048². Frustum tightened to just past the arena (R=24) so the smaller map keeps
+// its texel density — crisp shadows, a fraction of the GPU cost.
+sun.shadow.mapSize.set(1024, 1024);
+sun.shadow.camera.left = -30; sun.shadow.camera.right = 30;
+sun.shadow.camera.top = 30; sun.shadow.camera.bottom = -30;
 sun.shadow.camera.far = 90;
 sun.shadow.bias = -0.0005;
 scene.add(sun);
@@ -236,10 +242,11 @@ function spawnParticle({ pos, vel, size = 0.3, color = 0xffffff, life = 1, tex =
   p.mesh.position.copy(pos);
   p.mesh.scale.set(size, sizeY || size, size);
   p.mesh.rotation.set(rand(0, 6), rand(0, 6), rand(0, 6));
-  p.mesh.material.map = tex;
+  // Only toggling the map on/off changes a shader define (USE_MAP); guarding needsUpdate on that
+  // avoids a per-spawn program re-derivation, which is what stuttered on multi-hit/launch frames.
+  if (p.mesh.material.map !== tex) { p.mesh.material.map = tex; p.mesh.material.needsUpdate = true; }
   p.mesh.material.color.set(color);
   p.mesh.material.opacity = 1;
-  p.mesh.material.needsUpdate = true;
 }
 
 function updateParticles(dt) {
@@ -306,10 +313,17 @@ function confettiRain(center) {
 const popups = [];
 let showMarkers = true; // toggle for the floating hit numbers / word labels above heads
 let lastWordPopupAt = -9; // rate-limit word popups (POW/WHACK/…) so they don't stack; numbers are exempt
+// Per-frame popup budget: a spin into a packed swarm can damage 15+ horses in one frame; each popup
+// is a canvas redraw + GPU texture upload, and they just overlap anyway. Cap the redraws per frame.
+const POPUP_BUDGET = 8;
+let _popupFrame = -1, _popupCount = 0;
 const POPUP_SCALE = 0.95;   // every popup (numbers + words) renders at this one size
 const POPUP_OPACITY = 0.78; // translucent so overlapping popups blend instead of occluding each other
 function damagePopup(pos, text, color = '#ffdd44', scale = 1) { // `scale` kept for call sites but normalized below
   if (!showMarkers) return; // hit markers / number labels toggled off
+  if (frameNo !== _popupFrame) { _popupFrame = frameNo; _popupCount = 0; }
+  if (_popupCount >= POPUP_BUDGET) return; // frame budget hit — extra numbers would just overlap
+  _popupCount++;
   let p = popups.find(q => !q.alive);
   if (!p) {
     if (popups.length > 48) { p = popups.reduce((a, b) => (b.t > a.t ? b : a)); } // steal the oldest, not a live one
@@ -334,7 +348,10 @@ function damagePopup(pos, text, color = '#ffdd44', scale = 1) { // `scale` kept 
   // size the canvas to the text so wide words ("WHACK") never get clipped
   const tw = g.measureText(text).width;
   const W = Math.ceil(tw + 44), H = Math.ceil(fontPx + 34);
-  p.cv.width = W; p.cv.height = H;
+  // Reassigning canvas size reallocates + clears the backing store; only pay that when it changed,
+  // otherwise a cheap clearRect is enough to redraw over the previous glyphs.
+  if (p.cv.width !== W || p.cv.height !== H) { p.cv.width = W; p.cv.height = H; }
+  else g.clearRect(0, 0, W, H);
   g.font = `900 ${fontPx}px "Arial Black", sans-serif`;
   g.textAlign = 'center'; g.textBaseline = 'middle';
   g.lineWidth = 11; g.lineJoin = 'round'; g.strokeStyle = 'rgba(0,0,0,.85)';
@@ -516,6 +533,27 @@ function applyNorm(model, dim, h) {
   model.scale.setScalar(s);
   model.position.y = -dim.minY * s;
   return s;
+}
+
+// The horse GLB is one mesh split into 8 primitives = 8 materials = 8 draw calls per horse.
+// Every part gets overridden to a single flat tint at spawn, so the 8 materials are visually
+// redundant — merge their (identical-attribute, shared-skeleton) geometries into ONE SkinnedMesh
+// so each of the 100 horses renders in a single draw call instead of eight. ~8x fewer draws.
+function mergeSkinnedMeshes(root) {
+  const meshes = [];
+  root.traverse(o => { if (o.isSkinnedMesh) meshes.push(o); });
+  if (meshes.length < 2) return; // already single-draw (or not skinned)
+  const first = meshes[0];
+  const merged = mergeGeometries(meshes.map(m => m.geometry), false); // false = no groups → one material
+  if (!merged) { console.warn('mergeSkinnedMeshes: geometry merge failed, keeping split meshes'); return; }
+  const skinned = new THREE.SkinnedMesh(merged, first.material);
+  skinned.name = (first.name || 'mesh') + '_merged';
+  skinned.bind(first.skeleton, first.bindMatrix); // skinIndex already references this shared skeleton
+  first.parent.add(skinned);
+  skinned.position.copy(first.position);
+  skinned.quaternion.copy(first.quaternion);
+  skinned.scale.copy(first.scale);
+  for (const m of meshes) m.parent && m.parent.remove(m); // drop the 8 originals
 }
 
 // ---------------------------------------------------------------- game state
@@ -816,7 +854,6 @@ class Player {
         spawnShockwave(hitPos, 0.2, { damage: false, speed: 5, maxR: 1.3, color: 0xffffff, y: 0.5 });
       }
       if (hits >= 4) damagePopup(_v1.copy(this.root.position).addScaledVector(fwd, 1.5).setY(1.6), pick(['POW!', 'BAM!', 'WHACK!']), '#ffffff', 1.0);
-      if (hits >= 3) hitstopT = 0.05;
       if (hits) registerHits(hits);
     }
     if (hitAny) SFX.hitFlesh(mode === 'duck');
@@ -833,7 +870,7 @@ class Player {
       const d = duck.root.position.distanceTo(this.root.position) - duck.bodyR;
       if (d < 3.2) { duck.hurt(randInt(7, 11), this.root.position); hits++; }
     }
-    if (hits) { SFX.hitFlesh(true); shake(0.15); hitstopT = 0.06; registerHits(hits); }
+    if (hits) { SFX.hitFlesh(true); shake(0.15); registerHits(hits); }
   }
 
   // --------------- AI brains
@@ -1322,7 +1359,6 @@ class Duck {
           this.body.rotation.x = 0;
           SFX.stompQuake();
           shake(0.5);
-          hitstopT = 0.05;
           dustPuff(_v2.copy(p).setY(0.1), 22, 1.4);
           spawnShockwave(p.clone(), this.bodyR + 0.5);
           this.stompCd = rand(10, 16) * cdMul;
@@ -1354,17 +1390,33 @@ class Duck {
 }
 
 // ---------------------------------------------------------------- shockwaves
+// Pooled: one shared ring geometry (all shockwaves are the same shape, only scaled) + reused meshes
+// in a persistent group. Avoids a per-hit geometry/material alloc + GPU buffer churn + dispose that
+// used to hitch exactly when hits landed. Lives outside battleGroup so clearBattle never disposes it.
+const SHOCKWAVE_GEO = new THREE.RingGeometry(0.8, 1.35, 40);
+SHOCKWAVE_GEO.isShared = true;
+const shockwaveGroup = new THREE.Group();
+scene.add(shockwaveGroup);
+const shockwavePool = [];
 function spawnShockwave(pos, startR, opts = {}) {
   const { damage = true, speed = 13, maxR = 9, color = 0xd8c9a0, y = 0.08 } = opts;
-  const m = new THREE.Mesh(
-    new THREE.RingGeometry(0.8, 1.35, 40),
-    new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.85, side: THREE.DoubleSide, depthWrite: false })
-  );
-  m.rotation.x = -Math.PI / 2;
-  m.position.copy(pos).setY(y);
-  m.scale.setScalar(startR);
-  battleGroup.add(m);
-  shockwaves.push({ mesh: m, r: startR, hit: !damage, origin: pos, speed, maxR });
+  let s = shockwavePool.find(q => !q.active);
+  if (!s) {
+    const mesh = new THREE.Mesh(SHOCKWAVE_GEO, new THREE.MeshBasicMaterial({ transparent: true, side: THREE.DoubleSide, depthWrite: false }));
+    mesh.rotation.x = -Math.PI / 2;
+    shockwaveGroup.add(mesh);
+    s = { mesh, active: false, origin: new THREE.Vector3() };
+    shockwavePool.push(s);
+  }
+  s.active = true;
+  s.mesh.visible = true;
+  s.mesh.material.color.set(color);
+  s.mesh.material.opacity = 0.85;
+  s.mesh.position.copy(pos).setY(y);
+  s.mesh.scale.setScalar(startR);
+  s.origin.copy(pos).setY(0); // copy, not reference — callers pass the shared _v1 temp
+  s.r = startR; s.hit = !damage; s.speed = speed; s.maxR = maxR;
+  shockwaves.push(s);
 }
 function updateShockwaves(dt) {
   for (let i = shockwaves.length - 1; i >= 0; i--) {
@@ -1381,9 +1433,7 @@ function updateShockwaves(dt) {
       } else if (d < s.r) s.hit = true; // wave passed while dodging
     }
     if (s.r > s.maxR) {
-      battleGroup.remove(s.mesh);
-      s.mesh.geometry.dispose();
-      s.mesh.material.dispose();
+      s.mesh.visible = false; s.active = false; // return to pool (no dispose)
       shockwaves.splice(i, 1);
     }
   }
@@ -1437,6 +1487,10 @@ class Pony {
     this.cur = null;
     this.setAnim('Gallop', 0);
     this.mixer.update(rand(0, 1)); // desync gallop phases
+    // Animation LOD: advance this rig's skeleton at ~30fps, phase-staggered so the 100 mixers
+    // don't all recompute bone matrices on the same frame. Movement stays full-rate; only the
+    // skeletal pose is throttled, which is imperceptible on a swarm of tiny, fast horses.
+    this._animAcc = rand(0, ANIM_STEP);
 
     this.hp = CFG.pony.hp;
     this.speed = rand(CFG.pony.speed[0], CFG.pony.speed[1]) * (1.2 - this.sizeF * 0.2); // smaller = a touch faster
@@ -1456,6 +1510,13 @@ class Pony {
     this.circleSign = Math.random() < 0.5 ? -1 : 1;
     this.wanderA = rand(0, Math.PI * 2);
     this.biteRest = [0.35, 0.85]; // cooldown between lunges — short so the swarm is visibly attacking
+  }
+
+  // Animation LOD: accumulate frame time and only advance the skeleton once per ANIM_STEP,
+  // passing the whole accumulated delta so the clip still plays at the correct speed.
+  _stepMixer(dt) {
+    this._animAcc += dt;
+    if (this._animAcc >= ANIM_STEP) { this.mixer.update(this._animAcc); this._animAcc = 0; }
   }
 
   setAnim(name, fade = 0.16) {
@@ -1536,7 +1597,7 @@ class Pony {
     const p = this.root.position;
     if (this.dead) {
       this.deadT += dt;
-      this.mixer.update(dt); // let the Death collapse animation play
+      this._stepMixer(dt); // let the Death collapse animation play (throttled)
       const raw = this.model.children[0];
       // squash on ground impacts (set on each bounce)
       if (this.squashT > 0) { this.squashT -= dt; const q = Math.max(this.squashT, 0) / 0.14; raw.scale.set(1 + q * 0.4, 1 - q * 0.45, 1 + q * 0.4); }
@@ -1614,7 +1675,7 @@ class Pony {
       p.addScaledVector(this.vel, dt);
       this.model.rotation.z = (this.getupT / 0.35) * 1.2 * this.downSign; // tips proportional to time left, rocks upright
       if (this.mat && this.mat.emissive) this.mat.emissive.setRGB(0, 0, 0);
-      this.mixer.update(dt);
+      this._stepMixer(dt);
       if (this.getupT <= 0) this.model.rotation.z = 0;
       return;
     }
@@ -1629,7 +1690,7 @@ class Pony {
     const desired = _v2.set(0, 0, 0);
     if (player.dead) {
       // victory lap! circle the fallen
-      const tangent = V3(-toP.z, 0, toP.x).multiplyScalar(this.circleSign);
+      const tangent = _v3.set(-toP.z, 0, toP.x).multiplyScalar(this.circleSign);
       desired.copy(tangent).multiplyScalar(this.speed).addScaledVector(toP, (dist - 3.5) * 0.6);
     } else if (this.state === 'bite') {
       if (this.stateT > 0.26 && !this.bitDone) {
@@ -1647,7 +1708,7 @@ class Pony {
     } else if (this.state === 'circle') {
       if (stampedeT > 0) { this.state = 'seek'; this.stateT = 0; }
       // crowd in close (standoff ~1.1) and keep lunging from here, not just from seek
-      const tangent = V3(-toP.z, 0, toP.x).multiplyScalar(this.circleSign);
+      const tangent = _v3.set(-toP.z, 0, toP.x).multiplyScalar(this.circleSign);
       desired.copy(tangent).multiplyScalar(this.speed * 0.7).addScaledVector(toP, (dist - 1.1) * 2.2);
       if (this.tryBite(dist)) { /* lunged */ }
       else if (this.stateT > rand(0.5, 1.1)) { this.state = 'seek'; this.stateT = 0; }
@@ -1704,7 +1765,7 @@ class Pony {
       this.setAnim(spd > 1.1 ? 'Gallop' : 'Idle');
     }
     if (this.cur === this.actions['Gallop']) this.cur.setEffectiveTimeScale(clamp(spd / 3, 0.5, 1.9));
-    this.mixer.update(dt);
+    this._stepMixer(dt);
   }
 }
 
@@ -1768,6 +1829,7 @@ function clearBattle() {
   duck = null;
   player = null;
   shockwaves = [];
+  for (const s of shockwavePool) { s.active = false; s.mesh.visible = false; } // release pooled shockwaves
   killTimes = [];
   killstreakAnnounced = new Set();
   biteCount = 0;
@@ -1776,6 +1838,7 @@ function clearBattle() {
   stampedeT = 0; stampedeCd = 14; lastStandDone = false;
   stats = { kills: 0, dmgDealt: 0, swings: 0, combo: 0, maxCombo: 0 };
   lastWordPopupAt = -9;
+  _hudPfill = -1; _hudBfill = -1; _hudStats = ''; // force the HUD to redraw on the new battle's first frame
   resetCombo();
   hideCombo();
   battleTime = 0;
@@ -1910,19 +1973,27 @@ function endBattle(victory) {
 }
 
 // ---------------------------------------------------------------- HUD update
+// HUD write-cache: the DOM (style widths + innerHTML) only changes ~once a second, but updateHUD
+// runs every frame. Writing innerHTML every frame forces a parse + style/layout recalc for nothing;
+// guard each write so we only touch the DOM when the value actually changed.
+let _hudPfill = -1, _hudBfill = -1, _hudStats = '';
 function updateHUD() {
   if (!player) return;
-  ui.playerfill.style.width = `${(player.hp / player.maxHp) * 100}%`;
+  const pf = (player.hp / player.maxHp) * 100;
+  if (pf !== _hudPfill) { ui.playerfill.style.width = `${pf}%`; _hudPfill = pf; }
+  let alive = 0;
   if (mode === 'duck' && duck) {
-    ui.bossfill.style.width = `${(duck.hp / duck.maxHp) * 100}%`;
+    const bf = (duck.hp / duck.maxHp) * 100;
+    if (bf !== _hudBfill) { ui.bossfill.style.width = `${bf}%`; _hudBfill = bf; }
   } else if (mode === 'horses') {
-    const alive = ponies.filter(p => !p.dead).length;
-    ui.bossfill.style.width = `${alive}%`;
+    for (const p of ponies) if (!p.dead) alive++; // single scan; reused by line2 below
+    if (alive !== _hudBfill) { ui.bossfill.style.width = `${alive}%`; _hudBfill = alive; }
   }
   const t = Math.floor(battleTime);
   const mm = Math.floor(t / 60), ss = String(t % 60).padStart(2, '0');
-  let line2 = mode === 'horses' ? `🐴 ${ponies.filter(p => !p.dead).length} left` : `💥 ${Math.round(stats.dmgDealt)} dmg`;
-  ui.stats.innerHTML = `⏱ ${mm}:${ss}<br>${line2}<br>👊 ${stats.swings} thrown`;
+  const line2 = mode === 'horses' ? `🐴 ${alive} left` : `💥 ${Math.round(stats.dmgDealt)} dmg`;
+  const s = `⏱ ${mm}:${ss}<br>${line2}<br>👊 ${stats.swings} thrown`;
+  if (s !== _hudStats) { ui.stats.innerHTML = s; _hudStats = s; }
 }
 
 // ---------------------------------------------------------------- input / buttons
@@ -1971,8 +2042,59 @@ addEventListener('keydown', (e) => {
 
 // ---------------------------------------------------------------- main loop
 const clock = new THREE.Clock();
+let frameNo = 0;
+
+// ---- lightweight profiler (enabled with ?prof). Near-zero cost when off: each _prof call is a
+// single boolean test. Accumulates per-phase ms + draw-call/triangle counts and flushes ~2x/sec.
+const _profAcc = {}, _profMax = {};
+let _profN = 0, _profFrameStart = 0, _profLastFlush = 0, _profEl = null;
+function _prof(label, t0) {
+  if (!PROF) return;
+  const d = performance.now() - t0;
+  _profAcc[label] = (_profAcc[label] || 0) + d;
+  if (d > (_profMax[label] || 0)) _profMax[label] = d; // worst single frame in the window
+}
+function _profFrame() {
+  if (!PROF) return;
+  _profAcc.calls = (_profAcc.calls || 0) + renderer.info.render.calls;
+  _profAcc.tris = (_profAcc.tris || 0) + renderer.info.render.triangles;
+  const ft = performance.now() - _profFrameStart;
+  _profAcc.frame = (_profAcc.frame || 0) + ft;
+  if (ft > (_profMax.frame || 0)) _profMax.frame = ft;
+  _profN++;
+  const nowMs = performance.now();
+  if (nowMs - _profLastFlush < 500) return;
+  if (!_profEl) {
+    _profEl = document.createElement('pre');
+    _profEl.style.cssText = 'position:fixed;top:8px;left:8px;z-index:9999;margin:0;padding:8px 10px;' +
+      'background:rgba(0,0,0,.72);color:#8fd;font:11px/1.45 ui-monospace,monospace;white-space:pre;' +
+      'border-radius:6px;pointer-events:none;text-shadow:0 1px 2px #000';
+    document.body.appendChild(_profEl);
+  }
+  const n = _profN;
+  const avg = k => ((_profAcc[k] || 0) / n).toFixed(2).padStart(6);
+  const mx = k => (_profMax[k] || 0).toFixed(2).padStart(6);
+  const fps = (1000 / ((_profAcc.frame || 1) / n)).toFixed(0);
+  const alive = ponies.filter(p => !p.dead).length;
+  _profEl.textContent =
+    `           avg     MAX  (ms)   horses ${alive}\n` +
+    `frame  ${avg('frame')}  ${mx('frame')}   fps ${fps}\n` +
+    `player ${avg('player')}  ${mx('player')}\n` +
+    `duck   ${avg('duck')}  ${mx('duck')}\n` +
+    `ponies ${avg('ponies')}  ${mx('ponies')}\n` +
+    `fx     ${avg('fx')}  ${mx('fx')}\n` +
+    `render ${avg('render')}  ${mx('render')}\n` +
+    `draws ${Math.round((_profAcc.calls || 0) / n)}   tris ${Math.round((_profAcc.tris || 0) / n / 1000)}k`;
+  for (const k in _profAcc) _profAcc[k] = 0;
+  for (const k in _profMax) _profMax[k] = 0;
+  _profN = 0;
+  _profLastFlush = nowMs;
+}
+
 function animate() {
   requestAnimationFrame(animate);
+  frameNo++;
+  if (PROF) _profFrameStart = performance.now();
   let dt = Math.min(clock.getDelta(), 0.05);
 
   // time effects
@@ -1997,9 +2119,14 @@ function animate() {
   if ((phase === 'battle' || phase === 'end') && sdt > 0) {
     if (phase === 'battle') battleTime += sdt;
 
+    let _t = PROF ? performance.now() : 0;
     player.update(sdt);
+    _prof('player', _t);            // Dave: animation mixer + state machine + AI think()
+    _t = PROF ? performance.now() : 0;
     if (duck) duck.update(sdt);
+    _prof('duck', _t);
     if (ponies.length) {
+      _t = PROF ? performance.now() : 0;
       // spatial grid for separation
       const grid = new Map();
       for (const p of ponies) {
@@ -2009,7 +2136,10 @@ function animate() {
         if (!cell) { cell = []; grid.set(key, cell); }
         cell.push(p);
       }
+      _prof('grid', _t);
+      _t = PROF ? performance.now() : 0;
       for (const p of ponies) if (!p.gone) p.update(sdt, grid);
+      _prof('ponies', _t);          // the 100-horse loop: physics, steering, separation, mixers
     }
     updateShockwaves(sdt);
     updateHorseSounds(sdt);
@@ -2062,10 +2192,15 @@ function animate() {
   }
 
   // when paused sdt is 0; the `|| dt` fallback must not sneak the scene back into motion
+  let _t = PROF ? performance.now() : 0;
   updateParticles(paused ? 0 : (sdt || dt * 0.2));
   updatePopups(paused ? 0 : (sdt || dt));
+  _prof('fx', _t);                  // particles + damage popups (canvas/texture work)
   updateCamera(dt);
-  renderer.render(scene, camera);
+  _t = PROF ? performance.now() : 0;
+  renderer.render(scene, camera);   // scene.updateMatrixWorld (all bones) + shadow pass + draw submission
+  _prof('render', _t);
+  _profFrame();
 }
 
 // ---------------------------------------------------------------- boot
@@ -2080,6 +2215,8 @@ function animate() {
     assets.anims = dave; // clips ship inside the same GLB, native to this rig
     assets.horse = horse;
     assets.duck = duckG;
+    // collapse the horse's 8 primitives into one skinned mesh BEFORE clones are ever made
+    mergeSkinnedMeshes(horse.scene);
     // SkeletonUtils.clone shares these BufferGeometries with every spawned entity; tag them so
     // clearBattle()'s dispose pass never frees a geometry the next battle's clones still use.
     for (const g of [dave.scene, horse.scene, duckG.scene]) g.traverse(o => { if (o.geometry) o.geometry.isShared = true; });
