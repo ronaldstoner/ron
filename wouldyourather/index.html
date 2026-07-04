@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>Would You Rather: The Duel</title>
+<style>
+  :root {
+    --gold: #ffd54a;
+    --red: #ff5252;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #101418; }
+  body { font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; user-select: none; -webkit-user-select: none; }
+  #game { position: fixed; inset: 0; display: block; touch-action: none; }
+
+  .titlefont { font-family: "Arial Black", "Avenir Next Heavy", Impact, sans-serif; }
+
+  /* ---------- MENU ---------- */
+  #menu {
+    position: fixed; inset: 0; z-index: 30;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3vh;
+    background: radial-gradient(120% 100% at 50% 0%, #2c3e68 0%, #17203a 55%, #0d1322 100%);
+    transition: opacity .5s ease;
+  }
+  #menu.hidden, .hidden { opacity: 0; pointer-events: none; }
+  #menu h1 {
+    color: #fff; font-size: clamp(28px, 5vw, 64px); letter-spacing: 1px; text-align: center;
+    text-shadow: 0 4px 0 rgba(0,0,0,.35);
+  }
+  #menu h1 .q { color: var(--gold); }
+  #menu .sub { color: #aab6d8; font-size: clamp(14px, 1.6vw, 20px); margin-top: -1.5vh; text-align: center; }
+  .cards { display: flex; gap: 4vw; margin-top: 2vh; }
+  .card {
+    width: clamp(220px, 26vw, 360px); padding: 28px 22px 24px; border-radius: 22px; cursor: pointer;
+    background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    border: 2px solid rgba(255,255,255,.18);
+    text-align: center; color: #fff;
+    transition: transform .15s ease, border-color .15s, box-shadow .15s;
+  }
+  .card:hover { transform: translateY(-8px) scale(1.04) rotate(-1deg); border-color: var(--gold); box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+  .card:nth-child(2):hover { transform: translateY(-8px) scale(1.04) rotate(1deg); }
+  .card .emoji { font-size: clamp(56px, 8vw, 110px); display: block; filter: drop-shadow(0 6px 8px rgba(0,0,0,.4)); }
+  .card h2 { font-size: clamp(18px, 2.2vw, 28px); margin: 12px 0 6px; }
+  .card p { color: #b8c2dd; font-size: clamp(12px, 1.3vw, 15px); line-height: 1.35; }
+  .card .tag { display:inline-block; margin-top: 12px; padding: 5px 14px; border-radius: 999px; font-weight: 800; font-size: 13px; letter-spacing: .5px; }
+  .card.duck .tag { background: #ffd54a; color: #5c4400; }
+  .card.horses .tag { background: #8fd0ff; color: #003a5c; }
+  .or {
+    align-self: center; color: var(--gold); font-size: clamp(20px, 3vw, 40px); font-weight: 900;
+    display: flex; align-items: center;
+  }
+  #menu .hint { color: #7d89ab; font-size: 13px; margin-top: 1vh; }
+
+  /* ---------- COUNTDOWN ---------- */
+  #countdown {
+    position: fixed; inset: 0; z-index: 25; display: flex; align-items: center; justify-content: center;
+    pointer-events: none; color: #fff; font-size: clamp(80px, 18vw, 240px);
+    text-shadow: 0 8px 0 rgba(0,0,0,.35); opacity: 0;
+  }
+  #countdown.pop { animation: cd .82s ease-out; }
+  @keyframes cd {
+    0% { opacity: 0; transform: scale(2.4); }
+    18% { opacity: 1; transform: scale(1); }
+    75% { opacity: 1; transform: scale(.96); }
+    100% { opacity: 0; transform: scale(.9); }
+  }
+
+  /* ---------- HUD ---------- */
+  #hud { position: fixed; inset: 0; z-index: 20; pointer-events: none; }
+  #hud.hidden { display: none; }
+  /* streamer clean-capture mode (press H): hide chrome, keep the fight + watermark */
+  body.cleanhud #hud, body.cleanhud #corner { opacity: 0; transition: opacity .2s; }
+
+  #bossbar {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    width: min(680px, 72vw); text-align: center;
+  }
+  #bossname { color: #fff; font-weight: 900; letter-spacing: 1px; font-size: 15px; text-shadow: 0 2px 3px rgba(0,0,0,.6); margin-bottom: 5px; }
+  .barwrap { height: 18px; border-radius: 9px; background: rgba(0,0,0,.55); border: 2px solid rgba(255,255,255,.35); overflow: hidden; }
+  #bossfill { height: 100%; width: 100%; border-radius: 7px; background: linear-gradient(90deg, #ffb300, #ff5252); transition: width .15s ease; }
+
+  #playerbar { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); width: min(420px, 58vw); text-align: center; }
+  #playername { color: #fff; font-weight: 800; font-size: 13px; text-shadow: 0 2px 3px rgba(0,0,0,.6); margin-bottom: 4px; }
+  #playerfill { height: 100%; width: 100%; border-radius: 6px; background: linear-gradient(90deg, #4cd964, #a5e84c); transition: width .12s ease; }
+  #playerbar .barwrap { height: 14px; }
+
+  #stats {
+    position: absolute; top: 16px; right: 18px; color: #fff; text-align: right;
+    font-weight: 800; font-size: 14px; text-shadow: 0 2px 3px rgba(0,0,0,.7); line-height: 1.7;
+  }
+  #commentary {
+    position: absolute; bottom: 76px; left: 50%; transform: translateX(-50%);
+    color: var(--gold); font-weight: 900; font-size: clamp(16px, 2.2vw, 26px);
+    text-shadow: 0 2px 0 rgba(0,0,0,.55); opacity: 0; transition: opacity .25s; text-align: center; width: 90vw;
+  }
+  /* cascading announcement feed: newest largest at the bottom, prior two shrink above */
+  #announceFeed {
+    position: absolute; top: 8%; left: 0; width: 100%; height: 27%;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 3px;
+    pointer-events: none; overflow: visible;
+  }
+  .amsg {
+    font-family: "Arial Black", "Avenir Next Heavy", Impact, sans-serif; color: #fff;
+    font-size: calc(var(--s, 1) * clamp(24px, 5.4vw, 64px)); line-height: 1.02; white-space: nowrap;
+    text-shadow: 0 4px 0 rgba(0,0,0,.4), 0 0 16px rgba(0,0,0,.35);
+    opacity: 0; transform: translateY(16px) scale(.7);
+    transition: opacity .18s ease, transform .24s cubic-bezier(.2, 1.5, .4, 1), font-size .2s ease;
+  }
+  .amsg.in { transform: translateY(0) scale(1); }
+  .amsg.out { opacity: 0 !important; transform: translateY(-12px) scale(.92); }
+  #vignette {
+    position: fixed; inset: 0; pointer-events: none; z-index: 22; opacity: 0;
+    background: radial-gradient(60% 60% at 50% 50%, transparent 55%, rgba(255,0,0,.45) 100%);
+  }
+
+  /* ---------- combo meter ---------- */
+  #combo {
+    position: absolute; right: 3.5%; top: 42%; transform: translateY(-50%);
+    text-align: center; pointer-events: none; transition: opacity .2s; line-height: 1;
+  }
+  #combo .n {
+    display: block; font-family: "Arial Black", Impact, sans-serif; font-size: clamp(38px, 7vw, 82px);
+    color: var(--gold); text-shadow: 0 4px 0 rgba(0,0,0,.4), 0 0 18px rgba(255,213,74,.35);
+  }
+  #combo .lbl { font-weight: 900; font-size: clamp(11px, 1.5vw, 17px); letter-spacing: 3px; color: #fff; text-shadow: 0 2px 3px rgba(0,0,0,.6); }
+  #combo.bump .n { animation: cbump .26s ease-out; }
+  @keyframes cbump { 0% { transform: scale(1.4); } 55% { transform: scale(.94); } 100% { transform: scale(1); } }
+  #combo.broken .n { color: var(--red); }
+  #combo.broken .lbl { color: #ff9d9d; }
+
+  /* ---------- end-screen grade ---------- */
+  #endgrade {
+    font-family: "Arial Black", Impact, sans-serif; font-size: clamp(70px, 14vw, 170px); line-height: .9;
+    text-shadow: 0 6px 0 rgba(0,0,0,.4); margin-bottom: -1vh;
+  }
+  #endgrade .glabel { font-size: clamp(12px, 1.6vw, 18px); letter-spacing: 3px; color: #aab6d8; display: block; }
+
+  /* ---------- END SCREEN ---------- */
+  #end {
+    position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2vh;
+    background: rgba(8, 10, 18, .72); backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none; transition: opacity .8s ease;
+  }
+  #end.show { opacity: 1; pointer-events: auto; }
+  #endtitle { color: #fff; font-size: clamp(40px, 8vw, 96px); text-shadow: 0 6px 0 rgba(0,0,0,.4); text-align: center; }
+  #endsub { color: #c9d4f0; font-size: clamp(15px, 2vw, 22px); text-align: center; max-width: 80vw; }
+  #endstats { display: flex; gap: 3vw; margin-top: 1vh; }
+  #endstats .stat { text-align: center; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 14px 26px; }
+  #endstats .stat b { display: block; font-size: clamp(22px, 3vw, 34px); color: var(--gold); }
+  #endstats .stat span { font-size: 12px; color: #aab6d8; letter-spacing: 1px; }
+  .btnrow { display: flex; gap: 18px; margin-top: 2.5vh; }
+  .btn {
+    pointer-events: auto; cursor: pointer; border: none; border-radius: 14px; padding: 14px 30px;
+    font-size: 17px; font-weight: 900; letter-spacing: .5px; font-family: inherit;
+    background: var(--gold); color: #423000; box-shadow: 0 5px 0 #b8912a; transition: transform .1s, box-shadow .1s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #b8912a; }
+  .btn.alt { background: #3a4a75; color: #dfe8ff; box-shadow: 0 5px 0 #222c48; }
+
+  /* ---------- corner controls ---------- */
+  #corner { position: fixed; left: 14px; bottom: 14px; z-index: 26; display: flex; gap: 8px; }
+  #corner button {
+    pointer-events: auto; cursor: pointer; width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(255,255,255,.25);
+    background: rgba(10,14,24,.6); color: #fff; font-size: 18px;
+  }
+  #corner button:hover { background: rgba(40,50,80,.8); }
+
+  /* ---------- stoner.com watermark ---------- */
+  #watermark {
+    position: fixed; right: calc(12px + env(safe-area-inset-right)); bottom: calc(10px + env(safe-area-inset-bottom));
+    z-index: 27; pointer-events: auto; text-decoration: none;
+    font-family: "Arial Black", Impact, sans-serif; font-weight: 900; letter-spacing: .5px;
+    font-size: clamp(11px, 1.5vw, 15px); color: rgba(255,255,255,.85);
+    text-shadow: 0 1px 3px rgba(0,0,0,.7); opacity: .8; transition: opacity .2s;
+  }
+  #watermark:hover { opacity: 1; }
+  #watermark .dot { color: var(--gold); }
+
+  /* ---------- rotate-to-landscape hint (portrait phones) ---------- */
+  #rotateHint {
+    position: fixed; left: 50%; top: calc(12px + env(safe-area-inset-top)); transform: translateX(-50%);
+    z-index: 35; display: none; padding: 8px 16px; border-radius: 999px;
+    background: rgba(10,14,24,.82); color: #fff; font-size: 13px; font-weight: 700;
+    border: 1px solid rgba(255,255,255,.2); white-space: nowrap;
+  }
+
+  /* ---------- portrait / small-screen layout ---------- */
+  @media (max-aspect-ratio: 4/5), (max-width: 560px) {
+    #menu { justify-content: flex-start; padding: 7vh 4vw calc(6vh + env(safe-area-inset-bottom)); overflow-y: auto; -webkit-overflow-scrolling: touch; gap: 2vh; }
+    .cards { flex-direction: column; gap: 2.2vh; width: 100%; align-items: center; }
+    .card { width: min(88vw, 420px); }
+    .card .emoji { font-size: clamp(46px, 16vw, 90px); }
+    .or { margin: -0.5vh 0; }
+    #playerbar { bottom: calc(74px + env(safe-area-inset-bottom)); width: min(420px, 82vw); }
+    #corner { bottom: calc(14px + env(safe-area-inset-bottom)); left: calc(14px + env(safe-area-inset-left)); }
+    #bossbar { width: 84vw; top: calc(10px + env(safe-area-inset-top)); }
+    #bossname { font-size: clamp(11px, 3.2vw, 15px); }
+    #stats { font-size: 12px; line-height: 1.5; top: calc(10px + env(safe-area-inset-top)); right: calc(12px + env(safe-area-inset-right)); }
+    #commentary { bottom: 118px; }
+    #combo { top: 28%; right: 5%; }
+    #combo .n { font-size: clamp(30px, 10vw, 52px); }
+    #combo .lbl { font-size: 11px; letter-spacing: 2px; }
+    #watermark { font-size: 10px; opacity: .6; }
+  }
+  #loading { position: fixed; inset: 0; z-index: 50; display:flex; align-items:center; justify-content:center; background:#0d1322; color:#8fa2cc; font-size: 18px; letter-spacing: 2px; transition: opacity .4s; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="loading" class="titlefont">SADDLING UP…</div>
+
+<div id="menu" class="hidden">
+  <h1 class="titlefont">WOULD YOU <span class="q">RATHER</span> FIGHT…</h1>
+  <div class="sub">You load in as one (1) completely unarmed human. Fists. Feet. Vibes. The simulation does the rest. Choose your doom.</div>
+  <div class="cards">
+    <div class="card duck" id="pickDuck">
+      <span class="emoji">🦆</span>
+      <h2 class="titlefont">1 HORSE-SIZED DUCK</h2>
+      <p>One colossal waterfowl. Pecks like a jackhammer. Charges like a freight train. Quacks in subwoofer.</p>
+      <span class="tag">BOSS FIGHT</span>
+    </div>
+    <div class="or titlefont">OR</div>
+    <div class="card horses" id="pickHorses">
+      <span class="emoji">🐴</span>
+      <h2 class="titlefont">100 DUCK-SIZED HORSES</h2>
+      <p>An adorable, furious stampede. Individually pathetic. Collectively? A carpet of tiny hooves and vengeance.</p>
+      <span class="tag">HORDE MODE</span>
+    </div>
+  </div>
+  <div class="hint">a very serious combat simulator · sound on recommended 🔊</div>
+</div>
+
+<div id="countdown" class="titlefont"></div>
+
+<div id="hud" class="hidden">
+  <div id="bossbar">
+    <div id="bossname" class="titlefont">SIR QUACKSALOT THE ENORMOUS</div>
+    <div class="barwrap"><div id="bossfill"></div></div>
+  </div>
+  <div id="playerbar">
+    <div id="playername" class="titlefont">DAVE (UNPAID VOLUNTEER)</div>
+    <div class="barwrap"><div id="playerfill"></div></div>
+  </div>
+  <div id="stats"></div>
+  <div id="combo" class="hidden"><span class="n">0</span><span class="lbl">HIT COMBO</span></div>
+  <div id="commentary" class="titlefont"></div>
+  <div id="announceFeed"></div>
+</div>
+<div id="vignette"></div>
+
+<div id="end">
+  <div id="endgrade" class="titlefont"></div>
+  <div id="endtitle" class="titlefont">VICTORY</div>
+  <div id="endsub"></div>
+  <div id="endstats"></div>
+  <div class="btnrow">
+    <button class="btn" id="rematch">👊 RUN IT BACK</button>
+    <button class="btn alt" id="swap">🔁 TRY THE OTHER ONE</button>
+  </div>
+</div>
+
+<div id="corner">
+  <button id="muteBtn" title="Mute all (M)">🔊</button>
+  <button id="musicBtn" title="Battle drums (B)">🥁</button>
+  <button id="markersBtn" title="Hit markers (K)">💯</button>
+  <button id="pauseBtn" title="Pause (P)">⏸</button>
+</div>
+
+<a id="watermark" href="https://stoner.com" target="_blank" rel="noopener">stoner<span class="dot">.</span>com</a>
+<div id="rotateHint">↻ Rotate to landscape for the best view</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/addons/"
+  }
+}
+</script>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
