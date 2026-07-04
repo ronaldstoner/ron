@@ -1,5 +1,6 @@
 .bundle/
 vendor/
+!wouldyourather/vendor/
 _site/
 .sass-cache/
 .jekyll-metadata
