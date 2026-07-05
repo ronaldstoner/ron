@@ -310,74 +310,69 @@ function confettiRain(center) {
 }
 
 // ---------------------------------------------------------------- hit markers
-// Pooled floating labels. Each is one canvas drawn ONCE at spawn at a FIXED font size, so every
-// marker has the same on-screen height (width just follows the text). No stacking column: each
-// marker gets a little random drift and floats straight up, then fades — overlaps stay brief and
-// natural instead of piling into a staircase. Words (POW/WHACK/…) ride higher and a bit bigger so
-// they read as a layer above the damage numbers rather than colliding with them.
+// Dead simple: pooled floating DAMAGE NUMBERS, nothing else. Each is one canvas drawn once at a
+// fixed font size and rendered at a CONSTANT on-screen size (sizeAttenuation off) so every number
+// looks identical regardless of depth — no giant-vs-tiny inconsistency. They pop at the hit, drift
+// a little, float up, and fade. Word callouts (POW/WHACK/…) were removed on purpose: they garbled
+// against the numbers, and the combo banners at the top already carry that flair.
 const popups = [];
-let showMarkers = true; // toggle for the floating hit numbers / word labels
-const POPUP_BUDGET = 8;  // max new markers per frame; a cleave hitting 15 horses would just overlap
+let showMarkers = true;
+const POPUP_BUDGET = 6;               // cap new numbers per frame; a big cleave would only overlap
 let _popupFrame = -1, _popupCount = 0;
-let lastWordPopupAt = -9;
-const MARK_H = 128;      // fixed canvas height → uniform text height on screen
-const MARK_FONT = 78;
+const MARK_H = 128;                   // canvas height (px)
+const MARK_FONT = 88;
+const MARK_SCALE = 0.07;              // on-screen height as a fraction of viewport, constant at any depth
 function damagePopup(pos, text, color = '#ffdd44') {
   if (!showMarkers) return;
+  text = String(text);
+  if (!/^\d/.test(text)) return;      // numbers only — word labels are dropped here
   if (frameNo !== _popupFrame) { _popupFrame = frameNo; _popupCount = 0; }
   if (_popupCount >= POPUP_BUDGET) return;
-  text = String(text);
-  const isWord = /[A-Za-z]/.test(text);
-  if (isWord) { if (battleTime - lastWordPopupAt < 0.5) return; lastWordPopupAt = battleTime; } // words: keep them rare
   _popupCount++;
 
   let p = popups.find(q => !q.alive);
   if (!p) {
-    if (popups.length >= 56) { p = popups.reduce((a, b) => (b.t > a.t ? b : a)); } // recycle the oldest live one
+    if (popups.length >= 48) { p = popups.reduce((a, b) => (b.t > a.t ? b : a)); } // recycle the oldest live one
     else {
       const cv = document.createElement('canvas'); cv.height = MARK_H;
       const tex = new THREE.CanvasTexture(cv); tex.colorSpace = THREE.SRGBColorSpace;
-      const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false, depthWrite: false }));
+      const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false, depthWrite: false, sizeAttenuation: false }));
       sprite.center.set(0.5, 0.5); scene.add(sprite);
-      p = { cv, tex, sprite, alive: false, t: 0, aspect: 1, word: false };
+      p = { cv, tex, sprite, alive: false, t: 0, aspect: 1 };
       popups.push(p);
     }
   }
 
-  // draw once at a fixed font size; width follows the text (fixed padding), height is constant
   const g = p.cv.getContext('2d');
   g.font = `900 ${MARK_FONT}px "Arial Black", sans-serif`;
-  const w = Math.ceil(g.measureText(text).width) + 48;
+  const w = Math.ceil(g.measureText(text).width) + 40;
   if (p.cv.width !== w) p.cv.width = w; else g.clearRect(0, 0, w, MARK_H); // realloc only when width changes
   g.font = `900 ${MARK_FONT}px "Arial Black", sans-serif`;
   g.textAlign = 'center'; g.textBaseline = 'middle';
-  g.lineWidth = 14; g.lineJoin = 'round'; g.strokeStyle = 'rgba(0,0,0,.9)';
+  g.lineWidth = 16; g.lineJoin = 'round'; g.strokeStyle = 'rgba(0,0,0,.92)';
   g.strokeText(text, w / 2, MARK_H / 2);
   g.fillStyle = color; g.fillText(text, w / 2, MARK_H / 2);
   p.tex.needsUpdate = true;
   p.aspect = w / MARK_H;
-  p.word = isWord;
 
   p.alive = true; p.t = 0;
   p.sprite.visible = true;
   p.sprite.material.opacity = 1;
-  p.vx = rand(-0.55, 0.55); p.vy = rand(1.9, 2.5);
-  const jit = isWord ? 0 : 0.5;                  // numbers fan out so a cleave's digits don't pile up
-  p.sprite.position.set(pos.x + rand(-jit, jit), pos.y + (isWord ? 1.2 : 0.15), pos.z + rand(-jit, jit));
+  p.vx = rand(-0.6, 0.6); p.vy = rand(1.4, 1.9);
+  p.sprite.position.set(pos.x + rand(-0.8, 0.8), pos.y + 0.3, pos.z + rand(-0.8, 0.8)); // scatter so a cleave's digits don't stack
 }
 function updatePopups(dt) {
   for (const p of popups) {
     if (!p.alive) continue;
     p.t += dt;
-    const LIFE = p.word ? 0.95 : 0.8;
+    const LIFE = 0.7;
     if (p.t > LIFE) { p.alive = false; p.sprite.visible = false; continue; }
     p.sprite.position.x += p.vx * dt;
     p.sprite.position.y += p.vy * dt;
-    const base = p.word ? 1.15 : 0.85;            // words a touch bigger than numbers
-    const h = base * (0.72 + 0.28 * Math.min(p.t / 0.07, 1)); // quick pop-in to full size, then steady
-    p.sprite.scale.set(h * p.aspect, h, 1);       // width follows text aspect → never squished
+    const s = MARK_SCALE * (0.6 + 0.4 * Math.min(p.t / 0.06, 1)); // quick pop-in to full size, then steady
+    p.sprite.scale.set(s * p.aspect, s, 1);       // width follows text aspect → never squished
     const k = p.t / LIFE;
-    p.sprite.material.opacity = k < 0.65 ? 1 : (1 - k) / 0.35; // hold, then fade over the last third
+    p.sprite.material.opacity = k < 0.55 ? 1 : (1 - k) / 0.45; // hold, then fade over the last ~45%
   }
 }
 
@@ -1829,7 +1824,6 @@ function clearBattle() {
   lastDmgAt = -9;
   stampedeT = 0; stampedeCd = 14; lastStandDone = false;
   stats = { kills: 0, dmgDealt: 0, swings: 0, combo: 0, maxCombo: 0 };
-  lastWordPopupAt = -9;
   _hudPfill = -1; _hudBfill = -1; _hudStats = ''; // force the HUD to redraw on the new battle's first frame
   resetCombo();
   hideCombo();
