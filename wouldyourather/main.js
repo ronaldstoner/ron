@@ -30,9 +30,9 @@ const PROF = params.has('prof');      // ?prof shows a per-subsystem frame-time 
 if (params.get('mute')) SFX.setMuted(true);
 
 const CFG = {
-  player: { hp: 132, speed: 5.2, swingTime: 0.55, swingRange: 2.0, swingArc: 1.25, dmgPony: [3, 6], dmgDuck: [9, 15], spinCd: 9, regen: 0 },
-  duck: { hp: 365, height: 4.3, speed: 3.8, peckDmg: [6, 9], chargeDmg: 20, stompDmg: 11 },
-  pony: { count: 100, hp: 22, height: 0.62, speed: [2.6, 4.2], biteDmg: [1.32, 1.98] },
+  player: { hp: 144, speed: 5.2, swingTime: 0.55, swingRange: 2.0, swingArc: 1.25, dmgPony: [3, 6], dmgDuck: [9, 15], spinCd: 9, regen: 0 },
+  duck: { hp: 410, height: 4.3, speed: 3.8, peckDmg: [6, 9], chargeDmg: 18, stompDmg: 11 },
+  pony: { count: 100, hp: 22, height: 0.62, speed: [2.6, 4.2], biteDmg: [1.4, 2.05] },
 };
 
 // ---------------------------------------------------------------- renderer / scene
@@ -309,83 +309,75 @@ function confettiRain(center) {
   }
 }
 
-// ---------------------------------------------------------------- damage popups
+// ---------------------------------------------------------------- hit markers
+// Pooled floating labels. Each is one canvas drawn ONCE at spawn at a FIXED font size, so every
+// marker has the same on-screen height (width just follows the text). No stacking column: each
+// marker gets a little random drift and floats straight up, then fades — overlaps stay brief and
+// natural instead of piling into a staircase. Words (POW/WHACK/…) ride higher and a bit bigger so
+// they read as a layer above the damage numbers rather than colliding with them.
 const popups = [];
-let showMarkers = true; // toggle for the floating hit numbers / word labels above heads
-let lastWordPopupAt = -9; // rate-limit word popups (POW/WHACK/…) so they don't stack; numbers are exempt
-// Per-frame popup budget: a spin into a packed swarm can damage 15+ horses in one frame; each popup
-// is a canvas redraw + GPU texture upload, and they just overlap anyway. Cap the redraws per frame.
-const POPUP_BUDGET = 8;
+let showMarkers = true; // toggle for the floating hit numbers / word labels
+const POPUP_BUDGET = 8;  // max new markers per frame; a cleave hitting 15 horses would just overlap
 let _popupFrame = -1, _popupCount = 0;
-const POPUP_SCALE = 0.95;   // every popup (numbers + words) renders at this one size
-const POPUP_OPACITY = 0.78; // translucent so overlapping popups blend instead of occluding each other
-function damagePopup(pos, text, color = '#ffdd44', scale = 1) { // `scale` kept for call sites but normalized below
-  if (!showMarkers) return; // hit markers / number labels toggled off
+let lastWordPopupAt = -9;
+const MARK_H = 128;      // fixed canvas height → uniform text height on screen
+const MARK_FONT = 78;
+function damagePopup(pos, text, color = '#ffdd44') {
+  if (!showMarkers) return;
   if (frameNo !== _popupFrame) { _popupFrame = frameNo; _popupCount = 0; }
-  if (_popupCount >= POPUP_BUDGET) return; // frame budget hit — extra numbers would just overlap
+  if (_popupCount >= POPUP_BUDGET) return;
+  text = String(text);
+  const isWord = /[A-Za-z]/.test(text);
+  if (isWord) { if (battleTime - lastWordPopupAt < 0.5) return; lastWordPopupAt = battleTime; } // words: keep them rare
   _popupCount++;
+
   let p = popups.find(q => !q.alive);
   if (!p) {
-    if (popups.length > 48) { p = popups.reduce((a, b) => (b.t > a.t ? b : a)); } // steal the oldest, not a live one
+    if (popups.length >= 56) { p = popups.reduce((a, b) => (b.t > a.t ? b : a)); } // recycle the oldest live one
     else {
-      const cv = document.createElement('canvas');
-      const tex = new THREE.CanvasTexture(cv);
-      const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false }));
-      p = { sprite, cv, tex, alive: false };
-      scene.add(sprite);
+      const cv = document.createElement('canvas'); cv.height = MARK_H;
+      const tex = new THREE.CanvasTexture(cv); tex.colorSpace = THREE.SRGBColorSpace;
+      const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false, depthWrite: false }));
+      sprite.center.set(0.5, 0.5); scene.add(sprite);
+      p = { cv, tex, sprite, alive: false, t: 0, aspect: 1, word: false };
       popups.push(p);
     }
   }
-  text = String(text);
-  // words may overlay now that they're translucent + uniform; a tiny gate just prevents a same-frame pile-up
-  if (/[A-Za-z]/.test(text)) {
-    if (battleTime - lastWordPopupAt < 0.12) return;
-    lastWordPopupAt = battleTime;
-  }
+
+  // draw once at a fixed font size; width follows the text (fixed padding), height is constant
   const g = p.cv.getContext('2d');
-  const fontPx = 56;
-  g.font = `900 ${fontPx}px "Arial Black", sans-serif`;
-  // size the canvas to the text so wide words ("WHACK") never get clipped
-  const tw = g.measureText(text).width;
-  const W = Math.ceil(tw + 44), H = Math.ceil(fontPx + 34);
-  // Reassigning canvas size reallocates + clears the backing store; only pay that when it changed,
-  // otherwise a cheap clearRect is enough to redraw over the previous glyphs.
-  if (p.cv.width !== W || p.cv.height !== H) { p.cv.width = W; p.cv.height = H; }
-  else g.clearRect(0, 0, W, H);
-  g.font = `900 ${fontPx}px "Arial Black", sans-serif`;
+  g.font = `900 ${MARK_FONT}px "Arial Black", sans-serif`;
+  const w = Math.ceil(g.measureText(text).width) + 48;
+  if (p.cv.width !== w) p.cv.width = w; else g.clearRect(0, 0, w, MARK_H); // realloc only when width changes
+  g.font = `900 ${MARK_FONT}px "Arial Black", sans-serif`;
   g.textAlign = 'center'; g.textBaseline = 'middle';
-  g.lineWidth = 11; g.lineJoin = 'round'; g.strokeStyle = 'rgba(0,0,0,.85)';
-  g.strokeText(text, W / 2, H / 2);
-  g.fillStyle = color; g.fillText(text, W / 2, H / 2);
+  g.lineWidth = 14; g.lineJoin = 'round'; g.strokeStyle = 'rgba(0,0,0,.9)';
+  g.strokeText(text, w / 2, MARK_H / 2);
+  g.fillStyle = color; g.fillText(text, w / 2, MARK_H / 2);
   p.tex.needsUpdate = true;
-  p.aspect = W / H;
+  p.aspect = w / MARK_H;
+  p.word = isWord;
+
   p.alive = true; p.t = 0;
   p.sprite.visible = true;
-  p.sprite.center.set(0.5, 0.5);
-  // graceful anti-stacking: if recent popups already sit near this spot, rise above them into a
-  // readable rising column instead of piling on the same point (fixes the horde-cleave clutter).
-  let sy = pos.y;
-  for (const q of popups) {
-    if (q === p || !q.alive || q.t > 0.6 || q.sx === undefined) continue;
-    const dx = q.sx - pos.x, dz = q.sz - pos.z;
-    if (dx * dx + dz * dz < 0.85) sy = Math.max(sy, q.stackY + 0.5);
-  }
-  if (sy - pos.y > 1.9) sy = pos.y + rand(0, 0.4); // cap the column height so it never towers
-  p.sx = pos.x; p.sz = pos.z; p.stackY = sy;
-  p.sprite.position.set(pos.x + rand(-.08, .08), sy + 0.3, pos.z + rand(-.08, .08));
-  p.baseScale = POPUP_SCALE; // uniform size for all popups regardless of the caller's `scale`
-  p.sprite.material.opacity = POPUP_OPACITY;
+  p.sprite.material.opacity = 1;
+  p.vx = rand(-0.55, 0.55); p.vy = rand(1.9, 2.5);
+  const jit = isWord ? 0 : 0.5;                  // numbers fan out so a cleave's digits don't pile up
+  p.sprite.position.set(pos.x + rand(-jit, jit), pos.y + (isWord ? 1.2 : 0.15), pos.z + rand(-jit, jit));
 }
 function updatePopups(dt) {
   for (const p of popups) {
     if (!p.alive) continue;
     p.t += dt;
-    if (p.t > 0.9) { p.alive = false; p.sprite.visible = false; continue; }
-    p.sprite.position.y += dt * 1.6;
-    const s = p.baseScale * (1 + Math.min(p.t * 6, 1) * 0.25); // subtle pop; identical for every popup
-    const hgt = 0.82 * s;
-    p.sprite.scale.set(hgt * (p.aspect || 2), hgt, 1); // width follows the text so nothing is squished/clipped
-    p.sprite.material.opacity = POPUP_OPACITY * (1 - Math.max(0, (p.t - 0.5) / 0.4));
+    const LIFE = p.word ? 0.95 : 0.8;
+    if (p.t > LIFE) { p.alive = false; p.sprite.visible = false; continue; }
+    p.sprite.position.x += p.vx * dt;
+    p.sprite.position.y += p.vy * dt;
+    const base = p.word ? 1.15 : 0.85;            // words a touch bigger than numbers
+    const h = base * (0.72 + 0.28 * Math.min(p.t / 0.07, 1)); // quick pop-in to full size, then steady
+    p.sprite.scale.set(h * p.aspect, h, 1);       // width follows text aspect → never squished
+    const k = p.t / LIFE;
+    p.sprite.material.opacity = k < 0.65 ? 1 : (1 - k) / 0.35; // hold, then fade over the last third
   }
 }
 
@@ -1210,8 +1202,8 @@ class Duck {
       this.body.scale.set(this.baseS * (1 + q), this.baseS * (1 - q * 1.5), this.baseS * (1 + q));
     } else this.body.scale.setScalar(this.baseS);
 
-    const spdMul = this.enraged ? 1.35 : 1;
-    const cdMul = this.enraged ? 0.6 : 1;
+    const spdMul = this.enraged ? 1.32 : 1;
+    const cdMul = this.enraged ? 0.66 : 1;
     this.stateT += dt;
     this.chargeCd -= dt; this.stompCd -= dt; this.peckCd -= dt; this.counterCd -= dt; this.quackCd -= dt;
 
@@ -2235,7 +2227,7 @@ function animate() {
   setTimeout(() => ui.loading.remove(), 500);
   animate();
   window.GAME_READY = true;
-  if (DEBUG) window.DBG = { get player() { return player; }, get duck() { return duck; }, get ponies() { return ponies; }, get phase() { return phase; }, get battleTime() { return battleTime; }, get stats() { return stats; }, announce, damagePopup, registerHits, comboBreak, V3, scene, camera, THREE };
+  if (DEBUG) window.DBG = { get player() { return player; }, get duck() { return duck; }, get ponies() { return ponies; }, get phase() { return phase; }, get battleTime() { return battleTime; }, get stats() { return stats; }, announce, damagePopup, registerHits, comboBreak, V3, scene, camera, renderer, THREE };
   // autoplay policy: if we skipped the menu, unlock audio on first interaction
   addEventListener('pointerdown', () => SFX.initAudio(), { once: true });
   if (AUTO_PICK === 'duck' || AUTO_PICK === 'horses') {
