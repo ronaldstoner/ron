@@ -363,3 +363,43 @@ pre {
 .post-search-empty {
   color: $grey-color;
 }
+.contact-form {
+  label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  input, textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    margin-bottom: 1.5em;
+    font-family: $base-font-family;
+    font-size: 1em;
+    color: $text-color;
+    border: 1px solid $grey-color-light;
+    border-radius: 3px;
+    background-color: transparent;
+    &:focus {
+      outline: none;
+      border-color: $brand-color;
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  button {
+    padding: 8px 24px;
+    font-family: $base-font-family;
+    font-size: 1em;
+    color: #fff;
+    background-color: $brand-color;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover {
+      background-color: $h-color;
+    }
+  }
+}
