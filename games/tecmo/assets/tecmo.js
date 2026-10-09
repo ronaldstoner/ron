@@ -1,4 +1,4 @@
-/* Tecmo first-person browser bridge 0.4.1. No ROM included.
+/* Tecmo first-person browser bridge 0.4.2. No ROM included.
  * JSNES: Apache-2.0; roster data: MIT. See THIRD_PARTY_NOTICES.txt and licenses/.
  * Concatenated classic scripts in original dependency order. */
 
@@ -12910,18 +12910,18 @@ class Browser {
   // Leave room for the chase outside the painted field, inside the stands.
   const BOUNDS = Object.freeze({ x: 35.5, zMin: -18.5, zMax: 118.5 });
   // The pitch and lens are paired: a 1.9-yard player occupies about 40–55
-  // pixels, with his feet near row 188 in the 384×240 presentation. That
-  // leaves the original NES HUD and the routes ahead of him readable.
+  // pixels, with his feet near row 208 in the 384×240 presentation. The extra
+  // tilt leaves sky and stadium visible below the original NES HUD.
   const PROFILES = Object.freeze({
-    presnap: { back: 8.4, side: 0.75, height: 5, horizon: 60, focal: 214, ahead: 10 },
-    pocket: { back: 8.8, side: 0.85, height: 5.2, horizon: 60, focal: 214, ahead: 14 },
-    runner: { back: 7.8, side: 0.55, height: 4.7, horizon: 60, focal: 212, ahead: 8 },
-    defense: { back: 8.2, side: 0.65, height: 4.9, horizon: 60, focal: 212, ahead: 11 },
-    'kick-setup': { back: 9.2, side: 0.65, height: 5.6, horizon: 57, focal: 210, ahead: 16 },
+    presnap: { back: 8.4, side: 0.75, height: 5, horizon: 80, focal: 214, ahead: 10 },
+    pocket: { back: 8.8, side: 0.85, height: 5.2, horizon: 80, focal: 214, ahead: 14 },
+    runner: { back: 7.8, side: 0.55, height: 4.7, horizon: 80, focal: 212, ahead: 8 },
+    defense: { back: 8.2, side: 0.65, height: 4.9, horizon: 80, focal: 212, ahead: 11 },
+    'kick-setup': { back: 9.2, side: 0.65, height: 5.6, horizon: 77, focal: 210, ahead: 16 },
     'kick-flight': { back: 10.2, side: 0.25, height: 5.2, horizon: 92, focal: 194, ahead: 5 },
     'pass-flight': { back: 9.4, side: 0.3, height: 4.8, horizon: 88, focal: 200, ahead: 6 },
-    loose: { back: 7.8, side: 0.4, height: 4.7, horizon: 60, focal: 212, ahead: 4 },
-    dead: { back: 8.4, side: 0.65, height: 5, horizon: 60, focal: 214, ahead: 7 }
+    loose: { back: 7.8, side: 0.4, height: 4.7, horizon: 80, focal: 212, ahead: 4 },
+    dead: { back: 8.4, side: 0.65, height: 5, horizon: 80, focal: 214, ahead: 7 }
   });
 
   class TecmoFootballCamera {
@@ -12938,7 +12938,7 @@ class Browser {
       this.lastPlayerId = null;
       this.playerGrace = 0;
       this.lastMode = 'presnap';
-      this.current = { x: 0, z: 20, height: 5, horizon: 60, focal: 214, yaw: 0, mode: 'presnap', player: null, focus: null, aim: null, showPlayer: true, label: 'PLAYER FOLLOW', targetId: null };
+      this.current = { x: 0, z: 20, height: 5, horizon: 80, focal: 214, yaw: 0, mode: 'presnap', player: null, focus: null, aim: null, showPlayer: true, label: 'PLAYER FOLLOW', targetId: null };
       return this;
     }
 
@@ -13210,7 +13210,7 @@ class Browser {
         for(let sx=0;sx<w;sx++){
           const side=(sx-w/2)*scale;const x=this.camera.x+this.sin*depth+this.cos*side;const z=this.camera.z+this.cos*depth-this.sin*side;
           let c,fieldOffset=-1;
-          if(Math.abs(x)>27.3||z < -10||z>110)c=((Math.floor(x+z)*3)&1)?[31,48,64]:[36,55,72];
+          if(Math.abs(x)>27.3||z < -10||z>110){if(game?.authentic){const ax=Math.abs(x),box=z>=30&&z<=70;c=box&&(Math.abs(ax-28.6)<.1||Math.abs(ax-29.4)<.1)?[236,238,236]:box&&ax>29.6&&ax<34?[108,84,44]:turf?[turf[0]*.7|0,turf[1]*.7|0,turf[2]*.7|0]:[24,92,52];}else c=((Math.floor(x+z)*3)&1)?[31,48,64]:[36,55,72];}
           else if(Math.abs(x)>26.4)c=[227,237,219];
           else if(z<0||z>100){const base=z<0?endA:endB; c=base.map(v=>Math.floor(v*(Math.floor(x+z)%2===0?0.7:0.85)));}
           else{
@@ -13238,7 +13238,7 @@ class Browser {
         }
       }
       ctx.putImageData(this.frame,0,0,0,start,w,h-start);
-      if(game?.authentic)this.drawNativeStands(game);
+      if(game?.authentic)this.drawNativeStands(game,dt);
       if(!hasNativeField){
         for(let z=10;z<100;z+=10){const n=z<=50?z:100-z;this.groundText(n,-23,z-1.3,.26,'#c0d6ad');this.groundText(n,19.5,z-1.3,.26,'#c0d6ad');}
         this.groundText(defending?.abbr||'AWAY',-7,103,.45,'#e2d8d6');this.groundText(attacking?.abbr||'HOME',-7,-7,.45,'#e2d8d6');
@@ -13283,41 +13283,144 @@ class Browser {
       if(!inside){c.fillStyle=color;c.fillRect(x-1,y+15,3,3);}
       if(player){const foot=this.project(player.x,.03,player.z);if(foot&&foot.y<this.height-2){c.strokeStyle=color;c.lineWidth=1;c.beginPath();c.ellipse(foot.x,foot.y,Math.max(4,foot.s*.7),Math.max(1.5,foot.s*.16),0,0,Math.PI*2);c.stroke();}}
     }
+    skyPhase(game){
+      // Kickoff in daylight, dusk in the third quarter, lights-on night for the fourth and overtime.
+      const q=game?.quarter??1;return game?.overtime||q>=4?'night':q===3?'dusk':'day';
+    }
+    makeCanvas(width,height){
+      const canvas=globalThis.document?.createElement('canvas')||(globalThis.OffscreenCanvas?new OffscreenCanvas(width,height):null);
+      if(!canvas)return null;canvas.width=width;canvas.height=height;return canvas;
+    }
+    stadiumArt(phase){
+      // Small NES-palette textures, built once per sky phase.
+      this.artCache=this.artCache||{};if(this.artCache[phase]!==undefined)return this.artCache[phase];
+      const lit=phase!=='day',clouds=this.makeCanvas(512,40),facade=this.makeCanvas(32,8),bank=this.makeCanvas(16,8);
+      if(!clouds||!facade||!bank)return this.artCache[phase]=null;
+      const cc=clouds.getContext('2d'),[cloud,shade]=phase==='day'?['#fcfcfc','#a4e4fc']:phase==='dusk'?['#fce0a8','#fca044']:['#3c3c7c','#24185c'];
+      let seed=7;const rand=()=>(seed=(seed*1103515245+12345)&0x7fffffff)/0x7fffffff;
+      for(let i=0;i<9;i++){const x=Math.floor(i*57+rand()*24),y=Math.floor(8+rand()*20),len=24+Math.floor(rand()*30);
+        cc.fillStyle=shade;cc.fillRect(x,y+4,len,4);cc.fillStyle=cloud;cc.fillRect(x+4,y,len-8,5);cc.fillRect(x+10,y-3,Math.floor(len/3),3);cc.fillRect(x+Math.floor(len/2),y-2,Math.floor(len/4),2);}
+      if(phase==='night')for(let i=0;i<70;i++){cc.fillStyle=i%5?'#bcbcbc':'#fcfcfc';cc.fillRect(Math.floor(rand()*512),Math.floor(rand()*38),1,1);}
+      const fc=facade.getContext('2d');fc.fillStyle='#24314b';fc.fillRect(0,0,32,8);fc.fillStyle='#bcc4cf';fc.fillRect(0,0,32,1);fc.fillRect(0,7,32,1);
+      fc.fillStyle=lit?'#f8d878':'#526479';for(let x=1;x<32;x+=4)fc.fillRect(x,3,2,2);
+      const bc=bank.getContext('2d');bc.fillStyle='#3c3c3c';bc.fillRect(0,0,16,8);bc.fillStyle=lit?'#fcfcfc':'#a4a4a4';for(let y=1;y<8;y+=3)for(let x=1;x<16;x+=3)bc.fillRect(x,y,2,2);
+      return this.artCache[phase]={clouds,facade,bank,lit};
+    }
     drawNativeStadium(game){
-      const c=this.ctx,w=this.width;
-      c.fillStyle='#080c20';c.fillRect(0,0,w,this.height);
-      // The bowl encloses the field. The fan texture is captured from the
-      // running ROM; the geometry is the new first-person presentation.
-      c.fillStyle='#18233b';c.fillRect(0,Math.floor(this.horizon)-12,w,13);
-      const texture=game.stadiumSprite;
-      if(texture){
-        const shift=((this.yaw/(Math.PI*2)*texture.width)%texture.width+texture.width)%texture.width;
-        for(let x=-texture.width-shift;x<w;x+=texture.width)c.drawImage(texture,Math.floor(x),Math.floor(this.horizon)-23,texture.width,24);
+      const c=this.ctx,w=this.width,hz=Math.floor(this.horizon),phase=this.skyPhase(game);
+      // Banded NES palette skies, stepping lighter toward the horizon. The bands sit
+      // low because the original HUD covers the top 48 rows.
+      const sky={day:['#0078f8','#3cbcfc','#a4e4fc'],dusk:['#4428bc','#e45c10','#fca044'],night:['#000000','#00005c','#0000a8']}[phase];
+      c.fillStyle=sky[0];c.fillRect(0,0,w,this.height);c.fillStyle=sky[1];c.fillRect(0,hz-22,w,22);c.fillStyle=sky[2];c.fillRect(0,hz-9,w,9);
+      const art=this.stadiumArt(phase);
+      if(art){const shift=((this.yaw/(Math.PI*2)*1536)%512+512)%512;for(let x=-shift;x<w;x+=512)c.drawImage(art.clouds,Math.floor(x),hz-48);}
+      // The stands drawn after the field enclose it on every side, so no backdrop strip is needed here.
+    }
+    updateCrowd(game,dt){
+      // Scoring sets the crowd on its feet for a few seconds.
+      const total=(game.scores?.[0]??0)+(game.scores?.[1]??0);
+      if(this.crowdScore!=null&&total>this.crowdScore)this.cheer=4;
+      this.crowdScore=total;this.cheer=Math.max(0,(this.cheer||0)-dt);
+    }
+    facing(x,z,width){
+      // A flat billboard turned toward midfield; x1 to x2 runs left to right as seen from there.
+      const len=Math.hypot(x,z-50)||1,px=(z-50)/len*width/2,pz=-x/len*width/2;
+      return {x1:x-px,z1:z-pz,x2:x+px,z2:z+pz,d:Math.hypot(x-this.camera.x,z-this.camera.z)};
+    }
+    scoreboardTexture(game){
+      const home=game.humanTeam?.abbr||'HOME',away=game.cpuTeam?.abbr||'AWAY',clock=game.clock??0;
+      const key=[home,away,game.scores?.[0]??0,game.scores?.[1]??0,game.quarter??1,Math.floor(clock/60),clock%60].join(':');
+      if(this.boardKey===key&&this.board)return this.board;
+      const board=this.board||this.makeCanvas(96,36);if(!board)return null;
+      const b=board.getContext('2d');b.fillStyle='#000000';b.fillRect(0,0,96,36);b.fillStyle='#f8d800';b.fillRect(0,0,96,1);b.fillRect(0,35,96,1);b.fillRect(0,0,1,36);b.fillRect(95,0,1,36);
+      pixelText(b,`${home} ${game.scores?.[0]??0}`,6,5,1,'#f8f8f8');pixelText(b,`${away} ${game.scores?.[1]??0}`,6,15,1,'#f8f8f8');
+      pixelText(b,`Q${game.quarter??1}`,90,5,1,'#f8d800','right');pixelText(b,`${Math.floor(clock/60)}:${String(clock%60).padStart(2,'0')}`,90,15,1,'#fca044','right');
+      pixelText(b,'TECMO BOWL',48,26,1,'#3cbcfc','center');
+      this.board=board;this.boardKey=key;return board;
+    }
+    bowl(offset,radius=12){
+      // Rounded-rectangle outline of the bowl at a given setback from the first tier.
+      const points=[],r=radius+offset,corners=[[36-radius,-19+radius,-Math.PI/2],[36-radius,119-radius,0],[-36+radius,119-radius,Math.PI/2],[-36+radius,-19+radius,Math.PI]];
+      for(const [cx,cz,start] of corners)for(let i=0;i<=5;i++){const a=start+i/5*Math.PI/2;points.push([cx+Math.cos(a)*r,cz+Math.sin(a)*r]);}
+      return points;
+    }
+    drawNativeStands(game,dt=0){
+      this.updateCrowd(game,dt);
+      const panels=[],step=6,phase=this.skyPhase(game),art=this.stadiumArt(phase);
+      const home=game.humanTeam?.primary||'#285cc4',away=game.cpuTeam?.primary||'#bc303c';
+      const edge=(x1,z1,x2,z2,tier,u0)=>{const length=Math.hypot(x2-x1,z2-z1),n=Math.ceil(length/20);for(let i=0;i<n;i++){const a=i/n,b=(i+1)/n;panels.push({tier,u0:u0+length*a/16,u1:u0+length*b/16,x1:x1+(x2-x1)*a,z1:z1+(z2-z1)*a,x2:x1+(x2-x1)*b,z2:z1+(z2-z1)*b,d:Math.hypot((x1+(x2-x1)*(a+b)/2)-this.camera.x,(z1+(z2-z1)*(a+b)/2)-this.camera.z)});}return length/16;};
+      // Each higher tier sits farther back so the bowl rakes away from the field.
+      for(let tier=0;tier<3;tier++){const pts=this.bowl(tier*step);let u=0;for(let i=0;i<pts.length;i++){const [x1,z1]=pts[i],[x2,z2]=pts[(i+1)%pts.length];u+=edge(x1,z1,x2,z2,tier,u);}}
+      // The upper deck runs along the sidelines only, leaving the ends open to the sky.
+      for(let i=panels.length-1;i>=0;i--){const p=panels[i];if(p.tier===2&&Math.abs((p.z1+p.z2)/2-50)>58)panels.splice(i,1);}
+      panels.sort((a,b)=>b.tier-a.tier||b.d-a.d);
+      // Light towers and end-zone scoreboards stand behind the upper deck.
+      const behind=[];
+      for(const [x,z] of [[-47,-31],[47,-31],[47,131],[-47,131]])behind.push({kind:'tower',x,z,...this.facing(x,z,8)});
+      for(const z of [-40,140])behind.push({kind:'board',x:0,z,...this.facing(0,z,26)});
+      behind.sort((a,b)=>b.d-a.d);
+      const board=this.scoreboardTexture(game);
+      for(const o of behind){
+        if(o.kind==='tower'){
+          const pole=this.facing(o.x,o.z,.9);this.drawStandPanel(pole,0,16,null,'#7c7c7c');this.drawStandPanel(o,16,19.5,art?.bank,'#bcbcbc');
+          if(art?.lit){const s=this.project(o.x,17.75,o.z);if(s){const r=Math.max(3,s.s*6);this.ctx.fillStyle='rgba(252,248,200,.18)';this.ctx.fillRect(s.x-r,s.y-r*.7,r*2,r*1.4);}}
+        }else{
+          for(const dx of [-9,9]){const leg=this.facing(o.x+dx,o.z,1);this.drawStandPanel(leg,0,13,null,'#526479');}
+          this.drawStandPanel(o,13,21,board,'#000000');
+        }
+      }
+      for(const p of panels){
+        const base=1.2+p.tier*3.1,mid=((p.x1+p.x2)/2);
+        if(p.tier===0){const wall=Math.abs((p.z1+p.z2)/2-50)>62?'#24313b':mid<0?home:away;this.drawStandPanel(p,0,1.05,null,wall);this.drawStandPanel(p,1.05,1.2,null,'#f8f8f8');}
+        else{this.drawStandPanel(p,0,base-.3,null,'#1b2531');this.drawStandPanel(p,base-.3,base,null,'#6b7a8c');}
+        this.drawStandPanel(p,base,base+2.5,game.stadiumSprite,'#3b4562',true);this.drawStandPanel(p,base+2.5,base+2.7,null,'#526479');
+        if(p.tier===2){this.drawStandPanel(p,base+2.7,base+3.9,art?.facade,'#24314b');this.drawStandPanel(p,base+3.9,base+4.1,null,'#bcc4cf');}
+      }
+      this.drawSideline(game,home,away);
+    }
+    drawSideline(game,home,away){
+      // Team benches behind the coaching boxes on each sideline.
+      for(const [x,color] of [[-32,home],[32,away]]){const bench={x1:x,z1:x<0?35:65,x2:x,z2:x<0?65:35};this.drawStandPanel(bench,0,.55,null,'#bcbcbc');this.drawStandPanel(bench,.55,1.1,null,color);}
+      const c=this.ctx,marks=[];
+      // Orange sideline yard markers every ten yards.
+      for(let z=10;z<100;z+=10)for(const x of [-28.4,28.4])marks.push({x,z,label:String(z<=50?z:100-z),color:'#fca044'});
+      // The chain crew: down marker at the line of scrimmage, first-down stake at the line to gain.
+      const chains=game.play&&['run','pass'].includes(game.play.kind)&&['live','presnap'].includes(game.phase);
+      if(chains){marks.push({x:28.9,z:game.los,label:String(game.down??1),color:'#f87858',tall:true});const goal=game.los+game.toGo;if(goal<100)marks.push({x:28.9,z:goal,label:'',color:'#f87858',tall:true});
+        const a=this.project(28.9,.05,game.los),b=this.project(28.9,.05,Math.min(100,goal));if(a&&b){c.strokeStyle='#f8d800';c.lineWidth=1;c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.stroke();}}
+      const shown=marks.map(m=>({m,s:this.project(m.x,0,m.z)})).filter(v=>v.s&&v.s.d<90&&v.s.x>-20&&v.s.x<this.width+20).sort((a,b)=>b.s.d-a.s.d);
+      for(const {m,s} of shown){
+        const height=s.s*(m.tall?2.4:.9),width=Math.max(1,s.s*(m.tall?.18:.55)),top=s.y-height;
+        c.fillStyle=m.color;c.fillRect(Math.round(s.x-width/2),Math.round(top),Math.ceil(width),Math.ceil(height));
+        if(m.tall){const flag=Math.max(3,s.s*.6);c.fillRect(Math.round(s.x-flag/2),Math.round(top-flag),Math.ceil(flag),Math.ceil(flag));if(m.label&&flag>=8)pixelText(c,m.label,s.x,top-flag+1,1,'#000000','center');}
+        else if(m.label&&width>=12)pixelText(c,m.label,s.x,top+Math.max(1,(height-7)/2),1,'#000000','center');
       }
     }
-    drawNativeStands(game){
-      const panels=[],step=6;
-      const edge=(x1,z1,x2,z2,tier)=>{const length=Math.hypot(x2-x1,z2-z1),n=Math.ceil(length/20);for(let i=0;i<n;i++){const a=i/n,b=(i+1)/n;panels.push({tier,x1:x1+(x2-x1)*a,z1:z1+(z2-z1)*a,x2:x1+(x2-x1)*b,z2:z1+(z2-z1)*b,d:Math.hypot((x1+(x2-x1)*(a+b)/2)-this.camera.x,(z1+(z2-z1)*(a+b)/2)-this.camera.z)});}};
-      // Each higher tier sits farther back so the bowl rakes away from the field.
-      for(let tier=0;tier<3;tier++){const o=tier*step,l=-36-o,r=36+o,n=-19-o,f=119+o;edge(l,n,r,n,tier);edge(r,n,r,f,tier);edge(r,f,l,f,tier);edge(l,f,l,n,tier);}
-      panels.sort((a,b)=>b.tier-a.tier||b.d-a.d);
-      for(const p of panels){const base=1.2+p.tier*4.4;if(p.tier===0)this.drawStandPanel(p,0,1.2,null,'#24313b');else{this.drawStandPanel(p,0,base-.3,null,'#1b2531');this.drawStandPanel(p,base-.3,base,null,'#6b7a8c');}this.drawStandPanel(p,base,base+3.6,game.stadiumSprite,'#3b4562');this.drawStandPanel(p,base+3.6,base+3.8,null,'#526479');if(p.tier===2)this.drawStandPanel(p,base+3.8,base+4.4,null,'#bcc4cf');}
-    }
-    drawStandPanel(panel,base,top,texture,color){
+    drawStandPanel(panel,base,top,texture,color,crowd=false){
       const c=this.ctx,local=(x,z)=>({side:(x-this.camera.x)*this.cos-(z-this.camera.z)*this.sin,depth:(x-this.camera.x)*this.sin+(z-this.camera.z)*this.cos});
-      let a=local(panel.x1,panel.z1),b=local(panel.x2,panel.z2),u1=0,u2=1;
+      const U0=panel.u0??0,U1=panel.u1??1;
+      let a=local(panel.x1,panel.z1),b=local(panel.x2,panel.z2),u1=U0,u2=U1;
       if(a.depth<1&&b.depth<1)return;
-      if(a.depth<1){const t=(1-a.depth)/(b.depth-a.depth);a={side:a.side+(b.side-a.side)*t,depth:1};u1=t;}
-      if(b.depth<1){const t=(1-b.depth)/(a.depth-b.depth);b={side:b.side+(a.side-b.side)*t,depth:1};u2=1+(u1-1)*t;}
+      if(a.depth<1){const t=(1-a.depth)/(b.depth-a.depth);a={side:a.side+(b.side-a.side)*t,depth:1};u1=U0+(U1-U0)*t;}
+      if(b.depth<1){const t=(1-b.depth)/(a.depth-b.depth);b={side:b.side+(a.side-b.side)*t,depth:1};u2=U1+(u1-U1)*t;}
       let x1=this.width/2+a.side*this.focal/a.depth,x2=this.width/2+b.side*this.focal/b.depth;
       if(x2<x1){[a,b]=[b,a];[u1,u2]=[u2,u1];[x1,x2]=[x2,x1];}
       if(x2<0||x1>this.width||x2-x1<.1)return;
+      const cheering=crowd&&texture&&this.cheer>0,tick=Math.floor(this.time*8);
       c.fillStyle=color;
       for(let x=Math.max(0,Math.floor(x1));x<Math.min(this.width,Math.ceil(x2));x++){
         const t=Math.max(0,Math.min(1,(x+.5-x1)/(x2-x1))),inv=(1-t)/a.depth+t/b.depth;
         const yTop=this.horizon+(this.eye-top)*this.focal*inv,yBottom=this.horizon+(this.eye-base)*this.focal*inv;
         const y=Math.max(-this.height,Math.floor(yTop)),height=Math.min(this.height*3,Math.ceil(yBottom-yTop));if(height<=0)continue;
-        if(texture){const u=((1-t)*u1/a.depth+t*u2/b.depth)/inv,tx=Math.max(0,Math.min(texture.width-1,Math.floor(u*texture.width)));c.drawImage(texture,tx,0,1,texture.height,x,y,1,height);}
+        if(texture){
+          const u=((1-t)*u1/a.depth+t*u2/b.depth)/inv,tx=Math.floor((u%1+1)%1*texture.width)%texture.width;
+          if(cheering){
+            // Fans jump in alternating sections, with the odd camera flash.
+            const jump=((tx>>3)+tick)&1?Math.max(1,Math.round(height*.12)):0;
+            c.fillRect(x,y,1,height);c.drawImage(texture,tx,0,1,texture.height,x,y-jump,1,height);
+            if(((tx*31+tick*17+x)%97)===0){c.fillStyle='#fcfcfc';c.fillRect(x,y+((tx*7+tick)%Math.max(1,height)),1,1);c.fillStyle=color;}
+          }else c.drawImage(texture,tx,0,1,texture.height,x,y,1,height);
+        }
         else c.fillRect(x,y,1,height);
       }
     }
