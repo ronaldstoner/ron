@@ -153,6 +153,117 @@
   #title .opt:hover, #stages .opt:hover { color:#7fe6d6; opacity:1; }
   #selectConfirm:hover, #resume:hover { color:#fff; }
 #moveReadout.aboveBoss { bottom:17%; }
+  /* MUSIC PLAYER: the Bucketbox jukebox. --h is the track hue, --pulse the live bass level. */
+  #jukebox { --h:350; --pulse:0; --spin:0deg; --arm:0deg; --neon:hsl(var(--h) 100% 62%); --neon2:hsl(calc(var(--h) + 60) 100% 65%);
+    flex-direction:row; align-items:stretch; justify-content:center; gap:2.2%; padding:2.2% 2.5% 4.6%;
+    background:radial-gradient(ellipse 60% 90% at 50% 60%, #05030ccc, #05030c66 60%, #000000d9); }
+  #jukebox button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; pointer-events:auto; }
+  .jbWing { flex:0 0 27%; display:flex; flex-direction:column; justify-content:flex-start; padding-top:11%; gap:0.55em; }
+  .jbWingHead { font-family:'Bungee Shade',cursive; font-size:1.5em; color:var(--neon); text-shadow:0 0 0.4em var(--neon); letter-spacing:0.1em; margin-bottom:0.2em; }
+  .jbLeft .jbWingHead { text-align:right; } .jbRight .jbWingHead { text-align:left; }
+  .jbStrip { --c:hsl(var(--h) 95% 60%); pointer-events:auto; cursor:pointer; position:relative; display:flex; align-items:center; gap:0.8em; text-align:left;
+    padding:0.6em 0.8em; background:linear-gradient(#f4ecd6,#e6d9b8); color:#2b1d14; border:2px solid #1b120c;
+    box-shadow:inset 0 0 0 2px #fff8, 3px 3px 0 #000a; transform:skewX(-4deg); transition:transform 0.12s, box-shadow 0.12s, filter 0.12s; filter:saturate(0.55) brightness(0.72); }
+  .jbStrip::before { content:''; position:absolute; left:0; right:0; top:50%; height:2px; background:var(--c); opacity:0.55; }
+  .jbStripCode { flex:none; width:2.6em; padding:0.35em 0; text-align:center; background:var(--c); color:#fff; text-shadow:1px 1px #0008; border:2px solid #1b120c; position:relative; font-size:0.85em; }
+  .jbStripText { flex:1; position:relative; min-width:0; background:linear-gradient(#f4ecd6,#efe4c8); padding:0 0.3em; }
+  .jbStripText b { display:block; font-weight:normal; font-size:0.72em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .jbStripText small { display:block; margin-top:0.5em; font-size:0.5em; color:#7a5a3c; letter-spacing:0.08em; }
+  .jbStrip.on { filter:none; transform:skewX(-4deg) translateX(var(--nudge,0.6em)) scale(1.05); box-shadow:0 0 0 2px var(--c), 0 0 1.2em var(--c), 4px 4px 0 #000; }
+  .jbRight .jbStrip.on { --nudge:-0.6em; }
+  .jbStrip.playing { filter:none; }
+  .jbStrip.playing .jbStripCode { animation:jbBlink 0.5s steps(2) infinite; }
+  @keyframes jbBlink { 50% { background:#fff; color:var(--c); } }
+  .jbEq { display:none; gap:2px; align-items:flex-end; height:1.3em; position:relative; }
+  .jbStrip.playing .jbEq { display:flex; }
+  .jbEq i { width:0.3em; background:var(--c); animation:jbEq 0.6s ease-in-out infinite alternate; }
+  .jbEq i:nth-child(2) { animation-delay:-0.2s; } .jbEq i:nth-child(3) { animation-delay:-0.45s; } .jbEq i:nth-child(4) { animation-delay:-0.1s; }
+  @keyframes jbEq { from { height:15%; } to { height:100%; } }
+  #jukebox.stopped .jbEq i { animation-play-state:paused; }
+
+  .jbCab { flex:0 0 34%; position:relative; display:flex; flex-direction:column; align-items:stretch; padding:0 1.4em 0.9em;
+    border-radius:50% 50% 1.2em 1.2em / 24% 24% 1.2em 1.2em; pointer-events:auto;
+    background:linear-gradient(90deg,#3a1508,#8a3f17 12%,#c66d2c 30%,#e8a15a 50%,#c66d2c 70%,#8a3f17 88%,#3a1508);
+    box-shadow:0 0 0 0.25em #1a0904, 0 0 0 0.5em hsl(var(--h) 100% 60% / calc(0.4 + var(--pulse) * 0.6)), 0 0 calc(2em + var(--pulse) * 3em) hsl(var(--h) 100% 55% / 0.7), inset 0 -1em 2em #0008; }
+  .jbCab::before { content:''; position:absolute; inset:0.55em; border-radius:inherit; pointer-events:none;
+    border:0.22em solid transparent; background:linear-gradient(90deg,#fff6,#fff0 30%,#fff0 70%,#fff6) border-box;
+    -webkit-mask:linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+  .jbCrown { position:absolute; left:50%; top:-1.2em; transform:translateX(-50%); z-index:3; white-space:nowrap; padding:0.45em 1.1em; display:flex; gap:0.4em; align-items:center;
+    background:linear-gradient(#ffe9a8,#e0a93a 55%,#9c6614); border:2px solid #2a1606; border-radius:1em; box-shadow:0 0.25em 0 #2a1606, 0 0 1em hsl(var(--h) 100% 60% / 0.6);
+    font-family:'Bungee Shade',cursive; font-size:1.25em; color:#3b1604; }
+  .jbCrown em { font-style:normal; color:var(--neon); text-shadow:0 0 0.3em var(--neon); animation:jbSpin 3s linear infinite; display:inline-block; }
+  @keyframes jbSpin { to { transform:rotate(360deg); } }
+  .jbArch { position:relative; flex:0 0 40%; margin-top:1.6em; }
+  .jbTube { position:absolute; top:18%; bottom:-6%; width:1.1em; border-radius:0.6em; overflow:hidden;
+    background:linear-gradient(180deg,hsl(var(--h) 100% 60%),hsl(calc(var(--h) + 50) 100% 55%),hsl(calc(var(--h) + 110) 100% 55%));
+    box-shadow:0 0 calc(0.6em + var(--pulse) * 1.4em) var(--neon), inset 0.2em 0 0.3em #fff8, inset -0.2em 0 0.3em #0006; animation:jbHue 6s linear infinite; }
+  .jbTubeL { left:-0.6em; } .jbTubeR { right:-0.6em; }
+  @keyframes jbHue { to { filter:hue-rotate(360deg); } }
+  .jbTube b { position:absolute; bottom:-1em; border-radius:50%; background:#fffc; box-shadow:0 0 0.3em #fff; animation:jbBubble linear infinite; }
+  @keyframes jbBubble { to { transform:translateY(calc(-1 * 30vh)); opacity:0.2; } }
+  .jbDome { position:absolute; inset:0 0.9em; overflow:hidden; border-radius:50% 50% 0.4em 0.4em / 62% 62% 0.4em 0.4em;
+    border:0.3em solid #e9e1cc; box-shadow:0 0 0 0.2em #2a1606, inset 0 0 1.5em #000; background:#03040a; }
+  #jbViz { position:absolute; inset:0; width:100%; height:100%; }
+  .jbGlass { position:absolute; inset:0; pointer-events:none; background:linear-gradient(120deg,#fff3 0 12%,#fff0 22%), radial-gradient(ellipse at 50% 120%,transparent 40%,#0007);
+    box-shadow:inset 0 0 0 0.15em #fff2; }
+  .jbSplash { position:absolute; left:0; right:0; top:22%; text-align:center; opacity:0; pointer-events:none; --h:0; }
+  .jbSplash small { display:block; font-size:0.55em; letter-spacing:0.25em; color:#fff; text-shadow:0 0 0.5em hsl(var(--h) 100% 60%); }
+  .jbSplash b { display:block; font-family:'Bungee Shade',cursive; font-weight:normal; font-size:3.6em; line-height:1.05; color:hsl(var(--h) 100% 70%); text-shadow:0 0 0.25em hsl(var(--h) 100% 55%), 0.05em 0.05em 0 #000; }
+  .jbSplash span { display:inline-block; font-size:0.75em; padding:0.4em 0.8em; background:#000a; border:1px solid hsl(var(--h) 100% 60%); }
+  .jbSplash.go { animation:jbSplash 2.2s cubic-bezier(.2,1.4,.4,1) forwards; }
+  @keyframes jbSplash { 0% { opacity:0; transform:scale(2.2) rotate(-6deg); filter:blur(4px); } 14% { opacity:1; transform:scale(1) rotate(0); filter:none; }
+    75% { opacity:1; transform:scale(1); } 100% { opacity:0; transform:scale(0.85) translateY(-1em); } }
+
+  .jbMarquee { position:relative; margin-top:1.3em; display:flex; align-items:center; gap:0.8em; padding:0.6em 0.8em;
+    background:linear-gradient(#0b0716,#160b24); border:0.2em solid #e9e1cc; box-shadow:0 0 0 0.15em #2a1606, inset 0 0 1em hsl(var(--h) 100% 50% / 0.35); }
+  .jbCode { flex:none; font-family:'Bungee Shade',cursive; font-size:2.1em; color:var(--neon); text-shadow:0 0 0.3em var(--neon); }
+  .jbNow { flex:1; min-width:0; text-align:left; }
+  .jbTitle { font-size:0.95em; color:#fff6dd; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-shadow:0 0 0.4em var(--neon); }
+  .jbTag { margin-top:0.5em; font-size:0.55em; color:var(--neon2); letter-spacing:0.1em; }
+  .jbMeta { margin-top:0.5em; font-size:0.45em; color:#bfb3d6; letter-spacing:0.08em; }
+  #jukebox.stopped .jbTag { animation:blink 0.9s steps(2) infinite; }
+  .jbProgress { position:relative; height:0.55em; margin-top:0.7em; background:#1a0d0a; border:2px solid #2a1606; overflow:hidden; }
+  .jbProgress i { position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg,hsl(var(--h) 100% 45%),var(--neon2)); box-shadow:0 0 0.6em var(--neon); }
+  .jbTimes { display:flex; justify-content:space-between; align-items:center; margin-top:0.5em; font-size:0.55em; color:#fff3d6; text-shadow:1px 1px #2a1606, -1px -1px #2a1606, 1px -1px #2a1606, -1px 1px #2a1606; }
+  .jbMode { padding:0.35em 0.7em !important; background:#2a1606 !important; color:var(--neon) !important; border-radius:0.3em !important; box-shadow:0 0 0.5em hsl(var(--h) 100% 50% / 0.5); }
+  .jbMode:hover { color:#fff !important; }
+
+  .jbDeck { flex:1; display:flex; align-items:center; justify-content:space-around; gap:0.8em; margin-top:0.7em; padding:0.5em 0.7em;
+    background:radial-gradient(ellipse at 30% 40%,#2a1830,#0c0712); border:0.2em solid #e9e1cc; box-shadow:0 0 0 0.15em #2a1606, inset 0 0 1em #000; min-height:0; }
+  .jbTurntable { position:relative; height:100%; aspect-ratio:1; max-height:10em; }
+  .jbRecord { position:absolute; inset:4%; border-radius:50%; transform:rotate(var(--spin));
+    background:repeating-radial-gradient(circle,#111 0 2%,#1d1d1d 2% 3%), #111; box-shadow:0 0 0 0.12em #000, 0 0 calc(var(--pulse) * 1.2em) hsl(var(--h) 100% 60%); }
+  .jbRecord::after { content:''; position:absolute; inset:0; border-radius:50%; background:conic-gradient(#fff0 0 20%,#fff2 25%,#fff0 30% 70%,#fff2 75%,#fff0 80%); }
+  .jbRecord i { position:absolute; inset:33%; border-radius:50%; background:radial-gradient(circle,#000 0 9%,hsl(var(--h) 90% 55%) 10% 62%,#fff 63% 68%,hsl(var(--h) 90% 40%) 69%); }
+  .jbRecord i::after { content:'BH'; position:absolute; left:0; right:0; top:14%; font-size:0.4em; color:#fff; text-align:center; }
+  .jbArm { position:absolute; right:-8%; top:-4%; width:10%; height:62%; transform-origin:50% 8%; transform:rotate(var(--arm)); transition:transform 0.8s;
+    background:linear-gradient(90deg,#999,#eee,#888); border-radius:0.3em; box-shadow:2px 2px 0 #0008; }
+  .jbArm::before { content:''; position:absolute; left:-60%; top:-4%; width:220%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,#eee,#666); }
+  .jbArm::after { content:''; position:absolute; left:-40%; bottom:-6%; width:180%; height:16%; background:#222; border-radius:0.15em; }
+  .jbVolume { display:flex; align-items:center; gap:0.8em; }
+  .jbKnob { --rot:135deg; flex:none; width:5em; height:5em; border-radius:50%; cursor:ns-resize; pointer-events:auto; position:relative; touch-action:none;
+    background:conic-gradient(from 0deg,#888,#fff,#999,#eee,#777,#fff,#888); box-shadow:0 0 0 0.2em #2a1606, 0 0 0 0.35em hsl(var(--h) 100% 60% / 0.6), 0.2em 0.3em 0.4em #000a;
+    transform:rotate(var(--rot)); transition:transform 0.08s; }
+  .jbKnob::before { content:''; position:absolute; inset:18%; border-radius:50%; background:radial-gradient(circle at 35% 30%,#fff,#bbb 45%,#666); }
+  .jbKnob i { position:absolute; left:46%; top:6%; width:8%; height:30%; background:var(--neon); border-radius:0.2em; box-shadow:0 0 0.4em var(--neon); }
+  .jbVolInfo { text-align:left; font-size:0.5em; color:#d8cce8; }
+  .jbVolInfo small { letter-spacing:0.15em; }
+  .jbLeds { display:flex; gap:3px; align-items:flex-end; height:5em; margin:0.6em 0; pointer-events:auto; }
+  .jbLeds i { width:1em; cursor:pointer; background:#2a2030; border-radius:1px; }
+  .jbLeds i:nth-child(n) { height:calc(25% + var(--n,0) * 1%); }
+  .jbLeds i.lit { background:hsl(calc((120 - var(--k,0)) * 1deg) 100% 55%); box-shadow:0 0 0.4em hsl(calc((120 - var(--k,0)) * 1deg) 100% 55%); }
+  .jbVolNum { font-size:1.6em; color:var(--neon); text-shadow:0 0 0.3em var(--neon); }
+  .jbKeys { display:flex; gap:0.5em; margin-top:0.6em; }
+  .jbKeys button { flex:1; padding:0.55em 0 !important; background:linear-gradient(#fffdf4,#d9cfb4) !important; color:#2a1606 !important; border:2px solid #2a1606 !important;
+    border-radius:0.2em 0.2em 0.5em 0.5em !important; box-shadow:0 0.3em 0 #2a1606; font-size:0.8em !important; }
+  .jbKeys button:active { transform:translateY(0.25em); box-shadow:0 0.05em 0 #2a1606; }
+  .jbKeys button:hover { color:hsl(var(--h) 90% 40%) !important; }
+  .jbGrille { height:2.6em; margin-top:0.8em; border-radius:0.4em; border:0.2em solid #e9e1cc;
+    background:repeating-linear-gradient(90deg,#120806 0 0.35em,hsl(var(--h) 100% calc(25% + var(--pulse) * 40%)) 0.35em 0.6em);
+    box-shadow:0 0 0 0.15em #2a1606, 0 0 calc(var(--pulse) * 2em) var(--neon); }
+  .jbHelp { position:absolute; left:0; right:0; bottom:1.4%; font-size:0.55em; color:#d1d9d4c0; text-shadow:1px 1px #000; }
+  .jbHelp button { color:var(--yellow) !important; } .jbHelp button:hover { color:#fff !important; }
+
 </style>
   <script defer src="./game.js" onerror="const show=()=>{const el=document.getElementById('loading');if(el){el.classList.remove('hide');el.textContent='THE BUCKET COULD NOT LOAD GAME.JS. '+(location.protocol==='file:'?'Keep index.html and game.js together and open this release index.html in a browser.':'Check that game.js is uploaded beside index.html, then reload.');el.style.cssText='text-align:center;line-height:2.2;padding:2em';}};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',show,{once:true}):show();"></script>
 <style>
@@ -189,7 +300,7 @@
   <div id="title" class="ui screen hide">
     <div class="top"><div class="logo">BUCKETHEAD'S<span>NIGHTMARE</span></div>
     <div class="tag">16-BIT MAYHEM / FIVE STAGES / ONE BUCKET</div></div>
-    <div class="bottom"><div class="menu"><div class="opt on" role="button" data-i="0">ARCADE MODE</div><div class="opt" role="button" data-i="1">STAGE SELECT</div></div>
+    <div class="bottom"><div class="menu"><div class="opt on" role="button" data-i="0">ARCADE MODE</div><div class="opt" role="button" data-i="1">STAGE SELECT</div><div class="opt" role="button" data-i="2">MUSIC PLAYER</div></div>
     <div class="start">PRESS ENTER</div></div>
     <div class="footer"><div class="releaseLabel"><span>stoner.com</span><span>DEMO VERSION</span></div><div class="small">FAN-MADE TRIBUTE · NOT AFFILIATED WITH BUCKETHEAD</div></div>
   </div>
@@ -209,6 +320,36 @@
   <div id="stagesel" class="ui screen hide" style="background:rgba(0,0,0,0.65)">
     <h2 style="color:var(--yellow);font-size:2em;text-shadow:0.12em 0.12em 0 #c00">STAGE SELECT</h2>
     <div id="stages"></div>
+  </div>
+
+  <div id="jukebox" class="ui screen hide">
+    <div class="jbWing jbLeft"></div>
+    <div class="jbCab">
+      <div class="jbCrown"><span>BUCKET</span><em>✦</em><span>BOX</span></div>
+      <div class="jbArch">
+        <div class="jbTube jbTubeL"></div><div class="jbTube jbTubeR"></div>
+        <div class="jbDome"><canvas id="jbViz"></canvas><div class="jbGlass"></div><div class="jbSplash"></div></div>
+      </div>
+      <div class="jbMarquee">
+        <div class="jbCode">A1</div>
+        <div class="jbNow"><div class="jbTitle"></div><div class="jbTag"></div><div class="jbMeta"></div></div>
+      </div>
+      <div class="jbProgress"><i></i></div>
+      <div class="jbTimes"><span class="jbElapsed">0:00</span><button class="jbMode" data-act="mode">PLAY ALL</button><span class="jbDuration">-:--</span></div>
+      <div class="jbDeck">
+        <div class="jbTurntable"><div class="jbRecord"><i></i></div><div class="jbArm"></div></div>
+        <div class="jbVolume">
+          <div class="jbKnob" title="Drag, scroll or use - / +"><i></i></div>
+          <div class="jbVolInfo"><small>VOLUME</small><div class="jbLeds"></div><span class="jbVolNum">100</span></div>
+        </div>
+      </div>
+      <div class="jbKeys">
+        <button data-act="prev" aria-label="Previous track">◀◀</button><button data-act="play" aria-label="Play or stop">■</button><button data-act="next" aria-label="Next track">▶▶</button>
+      </div>
+      <div class="jbGrille"></div>
+    </div>
+    <div class="jbWing jbRight"></div>
+    <div class="jbHelp"><button data-act="back">◀ ESC BACK</button> &nbsp; ↑↓←→ PICK &nbsp; ENTER PLAY &nbsp; SPACE STOP &nbsp; − / + VOLUME &nbsp; N / B SKIP &nbsp; R MODE</div>
   </div>
 
   <div id="card" class="ui screen hide"><div class="st"></div><div class="tt"></div><div class="sb"></div></div>
